@@ -180,7 +180,8 @@ export default function App() {
             formData.append('관심품목', type);
             formData.append('추가서비스', selectedServices);
 
-            await fetch(scriptUrl, { method: 'POST', mode: 'no-cors', body: formData });
+            // fire and forget pattern for faster UX
+            fetch(scriptUrl, { method: 'POST', mode: 'no-cors', body: formData });
             alert(`${name} 고객님! 1:1 맞춤 상담 예약이 성공적으로 접수되었습니다.`);
             form.reset();
         } catch (error) {
