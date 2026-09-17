@@ -27,6 +27,7 @@ export default function App() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [scriptUrl, setScriptUrl] = useState('');
     const [showVideo, setShowVideo] = useState(true);
+    const [isVideoError, setIsVideoError] = useState(false);
     const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
     const [imageModalSrc, setImageModalSrc] = useState<string | null>(null);
     const [isAffiliateOpen, setIsAffiliateOpen] = useState(false);
@@ -236,15 +237,17 @@ export default function App() {
                     </div>
 
                     <div className="media-area">
-                        {showVideo && (
+                        {showVideo && !isVideoError && (
                             <div id="videoWrapper">
-                                {/* 소리가 나오도록 muted와 autoPlay를 제거했습니다. (브라우저 정책상 소리 있는 자동재생은 차단됨) */}
-                                <video id="promoVideo" loop playsInline controls controlsList="nodownload">
-                                    {/* 깃허브 페이지 하위 경로 호환을 위해 절대경로가 아닌 상대경로 유지 */}
-                                    <source src="promo_video.mp4" type="video/mp4" />
-                                    <source src="./promo9.mp4" type="video/mp4" />
-                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-a-woman-using-a-smartphone-41484-large.mp4" type="video/mp4" />
-                                </video>
+                                <video 
+                                    id="promoVideo" 
+                                    src="promo_video.mp4"
+                                    loop 
+                                    playsInline 
+                                    controls 
+                                    controlsList="nodownload"
+                                    onError={() => setIsVideoError(true)}
+                                />
                             </div>
                         )}
                         
