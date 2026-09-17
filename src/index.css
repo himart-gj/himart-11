@@ -146,11 +146,19 @@ footer { text-align: center; padding: 60px 20px 100px; border-top: 1px solid var
     box-shadow: 0 -5px 20px rgba(212, 175, 55, 0.1);
     padding-bottom: calc(10px + env(safe-area-inset-bottom));
 }
-.floating-icons-wrapper { display: flex; gap: 18px; align-items: center; flex: 1; padding-left: 8px;}
-.floating-icon { display: flex; flex-direction: column; align-items: center; color: #555; text-decoration: none; font-size: 0.75rem; font-weight: 800; gap: 4px; }
-.floating-icon svg { width: 22px; height: 22px; fill: currentColor; transition: 0.2s;}
-.floating-icon:hover { color: var(--primary-red); }
-.floating-icon:hover svg { transform: translateY(-3px); }
+.floating-icons-wrapper { display: flex; gap: 16px; align-items: center; flex: 1; padding-left: 5px;}
+.floating-icon { display: flex; flex-direction: column; align-items: center; color: #333; text-decoration: none; font-size: 0.85rem; font-weight: 800; gap: 6px; }
+.icon-circle { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.floating-icon svg { width: 24px; height: 24px; fill: currentColor; transition: 0.2s;}
+
+.icon-kakao .icon-circle { background-color: #FEE500; color: #3A2929; }
+.icon-naver .icon-circle { background-color: #03C75A; color: #FFFFFF; }
+.icon-phone .icon-circle { background-color: #34C759; color: #FFFFFF; }
+
+.floating-icon:hover .icon-circle { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+.icon-kakao:hover { color: #111; }
+.icon-naver:hover { color: #03C75A; }
+.icon-phone:hover { color: #34C759; }
 
 .floating-reserve-btn { 
     flex: 0 0 auto; background: var(--primary-red); color: #fff; border: none; 

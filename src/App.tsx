@@ -407,17 +407,23 @@ export default function App() {
 
             <div className="floating-bar">
                 <div className="floating-icons-wrapper">
-                    <a href="http://pf.kakao.com/_hnxcxexl/chat" target="_blank" rel="noreferrer" className="floating-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 3c-5.5 0-10 3.5-10 7.8 0 2.8 1.8 5.2 4.5 6.6l-1 3.4c-.1.3.2.6.5.4l4-2.7c.6.1 1.3.2 2 .2 5.5 0 10-3.5 10-7.8S17.5 3 12 3z"></path></svg>
-                        <Editable as="span" id="edit-float-1" defaultHtml="카톡" isAdmin={isAdmin} />
+                    <a href="http://pf.kakao.com/_hnxcxexl/chat" target="_blank" rel="noreferrer" className="floating-icon icon-kakao">
+                        <div className="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M12 3c-5.5 0-10 3.5-10 7.8 0 2.8 1.8 5.2 4.5 6.6l-1 3.4c-.1.3.2.6.5.4l4-2.7c.6.1 1.3.2 2 .2 5.5 0 10-3.5 10-7.8S17.5 3 12 3z"></path></svg>
+                        </div>
+                        <Editable as="span" id="edit-float-1" defaultHtml="카카오톡" isAdmin={isAdmin} />
                     </a>
-                    <a href="https://talk.naver.com/ct/wd21jdv" target="_blank" rel="noreferrer" className="floating-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"></path></svg>
-                        <Editable as="span" id="edit-float-2" defaultHtml="톡톡" isAdmin={isAdmin} />
+                    <a href="https://talk.naver.com/ct/wd21jdv" target="_blank" rel="noreferrer" className="floating-icon icon-naver">
+                        <div className="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"></path></svg>
+                        </div>
+                        <Editable as="span" id="edit-float-2" defaultHtml="네이버톡" isAdmin={isAdmin} />
                     </a>
-                    <a href="tel:031-767-1044" className="floating-icon">
-                        <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.2-.6-2.4-.6-3.6 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1zM19 12h2c0-4.8-3.9-8.7-8.7-8.7v2c3.7 0 6.7 3 6.7 6.7z"></path></svg>
-                        <Editable as="span" id="edit-float-3" defaultHtml="전화" isAdmin={isAdmin} />
+                    <a href="tel:031-767-1044" className="floating-icon icon-phone">
+                        <div className="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.2-.6-2.4-.6-3.6 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1zM19 12h2c0-4.8-3.9-8.7-8.7-8.7v2c3.7 0 6.7 3 6.7 6.7z"></path></svg>
+                        </div>
+                        <Editable as="span" id="edit-float-3" defaultHtml="전화상담" isAdmin={isAdmin} />
                     </a>
                 </div>
                 <button type="button" onClick={goToReservation} className="floating-reserve-btn">
