@@ -148,20 +148,46 @@ export default function App() {
                     </div>
 
                     <div className="media-area">
-                        {showVideo && !isVideoError && (
-                            <div id="videoWrapper">
-                                <video 
-                                    id="promoVideo" 
-                                    src="promo_video.mp4"
-                                    loop 
-                                    playsInline 
-                                    controls 
-                                    controlsList="nodownload"
-                                    onError={() => setIsVideoError(true)}
+                        {/* 1. 상단 상담예약하기 버튼 바로 밑 매장 대표 사진 */}
+                        <div className="store-banner-wrapper">
+                            <div className="store-image-card">
+                                <img 
+                                    src={storeImg} 
+                                    alt="롯데하이마트 경기광주점 매장 전경" 
+                                    className="store-banner-photo"
+                                    onLoad={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = 'block';
+                                        const fallback = target.nextElementSibling as HTMLElement;
+                                        if (fallback) fallback.style.display = 'none';
+                                        const caption = target.parentElement?.querySelector('.store-banner-caption') as HTMLElement;
+                                        if (caption) caption.style.display = 'block';
+                                    }}
+                                    onError={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = 'none';
+                                        const fallback = target.nextElementSibling as HTMLElement;
+                                        if (fallback) fallback.style.display = 'flex';
+                                        const caption = target.parentElement?.querySelector('.store-banner-caption') as HTMLElement;
+                                        if (caption) caption.style.display = 'none';
+                                    }}
                                 />
+                                <div className="store-banner-fallback" style={{ display: 'none' }}>
+                                    <div className="store-fallback-content">
+                                        <div className="store-fallback-pill">[ 경기권 최대 규모 가전 매장 ]</div>
+                                        <h3 className="store-fallback-title">리뉴얼 오픈 1주년 대축제</h3>
+                                        <p className="store-fallback-sub">단 1대만 사도 지점 단독 특별지원 · 롯데하이마트 경기광주점</p>
+                                    </div>
+                                </div>
+                                <div className="store-banner-caption">
+                                    <div className="store-banner-badge">[ 경기권 최대 규모 가전 매장 ]</div>
+                                    <h3 className="store-banner-title">리뉴얼 오픈 1주년 대축제</h3>
+                                    <p className="store-banner-sub">단 1대만 사도 지점 단독 특별지원 · 롯데하이마트 경기광주점</p>
+                                </div>
                             </div>
-                        )}
-                        
+                        </div>
+
+                        {/* 2. 프로모션 사진 갤러리 */}
                         <div className="gallery-wrapper" style={{ display: images.length > 0 ? 'block' : 'none' }}>
                             <div id="promoImageStack">
                                 {images.map((src, i) => (
@@ -176,6 +202,21 @@ export default function App() {
                                 ))}
                             </div>
                         </div>
+
+                        {/* 3. 프로모션 동영상 */}
+                        {showVideo && !isVideoError && (
+                            <div id="videoWrapper">
+                                <video 
+                                    id="promoVideo" 
+                                    src="promo_video.mp4"
+                                    loop 
+                                    playsInline 
+                                    controls 
+                                    controlsList="nodownload"
+                                    onError={() => setIsVideoError(true)}
+                                />
+                            </div>
+                        )}
                     </div>
                 </section>
 
@@ -260,45 +301,6 @@ export default function App() {
                                     <span>블로그 전체 소식보기</span>
                                     <span>→</span>
                                 </a>
-                            </div>
-                        </div>
-
-                        {/* 그 바로 아래 매장이미지 */}
-                        <div className="store-banner-wrapper">
-                            <div className="store-image-card">
-                                <img 
-                                    src={storeImg} 
-                                    alt="롯데하이마트 경기광주점 매장 전경" 
-                                    className="store-banner-photo"
-                                    onLoad={(e) => {
-                                        const target = e.target as HTMLImageElement;
-                                        target.style.display = 'block';
-                                        const fallback = target.nextElementSibling as HTMLElement;
-                                        if (fallback) fallback.style.display = 'none';
-                                        const caption = target.parentElement?.querySelector('.store-banner-caption') as HTMLElement;
-                                        if (caption) caption.style.display = 'block';
-                                    }}
-                                    onError={(e) => {
-                                        const target = e.target as HTMLImageElement;
-                                        target.style.display = 'none';
-                                        const fallback = target.nextElementSibling as HTMLElement;
-                                        if (fallback) fallback.style.display = 'flex';
-                                        const caption = target.parentElement?.querySelector('.store-banner-caption') as HTMLElement;
-                                        if (caption) caption.style.display = 'none';
-                                    }}
-                                />
-                                <div className="store-banner-fallback" style={{ display: 'none' }}>
-                                    <div className="store-fallback-content">
-                                        <div className="store-fallback-pill">[ 경기권 최대 규모 가전 매장 ]</div>
-                                        <h3 className="store-fallback-title">리뉴얼 오픈 1주년 대축제</h3>
-                                        <p className="store-fallback-sub">단 1대만 사도 지점 단독 특별지원 · 롯데하이마트 경기광주점</p>
-                                    </div>
-                                </div>
-                                <div className="store-banner-caption">
-                                    <div className="store-banner-badge">[ 경기권 최대 규모 가전 매장 ]</div>
-                                    <h3 className="store-banner-title">리뉴얼 오픈 1주년 대축제</h3>
-                                    <p className="store-banner-sub">단 1대만 사도 지점 단독 특별지원 · 롯데하이마트 경기광주점</p>
-                                </div>
                             </div>
                         </div>
                     </div>
