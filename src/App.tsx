@@ -328,6 +328,17 @@ export default function App() {
     // 구글 앱스 스크립트 웹앱 URL (고객 제공 최신 연동 주소)
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbzBeEb2kGqYAq5RyGsakTPD7l8xNbZzNrA9tXGwyuedgHzmO6mA6L_pOvps-NYSJ_xz/exec';
 
+    // 롯데하이마트 경기광주점 공식 검증 링크
+    const STORE_LINKS = {
+        phone: 'tel:031-767-1044',
+        kakaoChannel: 'https://pf.kakao.com/_hnxcxexl',
+        kakaoChat: 'https://pf.kakao.com/_hnxcxexl/chat',
+        naverPlace: 'https://map.naver.com/p/search/%EB%A1%AF%EB%8D%B0%ED%95%98%EC%9D%B4%EB%A7%88%ED%8A%B8%20%EA%B2%BD%EA%B8%B0%EA%B4%91%EC%A3%BC%EC%A0%90',
+        naverSearch: 'https://search.naver.com/search.naver?query=%EB%A1%AF%EB%8D%B0%ED%95%98%EC%9D%B4%EB%A7%88%ED%8A%B8+%EA%B2%BD%EA%B8%B0%EA%B4%91%EC%A3%BC%EC%A0%90',
+        facebook: 'https://www.facebook.com/himartggukji',
+        instagram: 'https://www.instagram.com/himartggukji'
+    };
+
     // 메타 픽셀 유입 추적
     const [trafficSource, setTrafficSource] = useState<{ source?: string; campaign?: string }>({});
 
@@ -726,18 +737,18 @@ export default function App() {
                     {/* SNS 바로가기 그룹 */}
                     <div className="clean-nav-sns-group">
                         <a 
-                            href="https://blog.naver.com/himart_gj" 
+                            href={STORE_LINKS.naverPlace} 
                             target="_blank" 
                             rel="noreferrer"
                             className="clean-sns-btn blog"
-                            title="롯데하이마트 경기광주점 공식 네이버 블로그"
-                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_블로그' })}
+                            title="롯데하이마트 경기광주점 공식 네이버 플레이스·블로그 소식"
+                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버플레이스' })}
                         >
                             <span className="btn-icon-dot naver-dot">N</span>
-                            <span className="btn-txt">네이버 블로그</span>
+                            <span className="btn-txt">네이버 플레이스</span>
                         </a>
                         <a 
-                            href="https://www.instagram.com/himart_gwangju" 
+                            href={STORE_LINKS.instagram} 
                             target="_blank" 
                             rel="noreferrer"
                             className="clean-sns-btn insta"
@@ -748,11 +759,11 @@ export default function App() {
                             <span className="btn-txt">인스타그램</span>
                         </a>
                         <a 
-                            href="https://www.facebook.com" 
+                            href={STORE_LINKS.facebook} 
                             target="_blank" 
                             rel="noreferrer"
                             className="clean-sns-btn fb"
-                            title="페이스북"
+                            title="롯데하이마트 경기광주점 공식 페이스북"
                             onClick={() => trackMetaEvent('Contact', { channel: '한줄_페이스북' })}
                         >
                             <span className="btn-icon-dot fb-dot">f</span>
@@ -765,31 +776,31 @@ export default function App() {
                     {/* 실시간 톡 및 전화 문의 그룹 */}
                     <div className="clean-nav-inquiry-group">
                         <a 
-                            href="https://pf.kakao.com/_xgpxlXG" 
+                            href={STORE_LINKS.kakaoChat} 
                             target="_blank" 
                             rel="noreferrer"
                             className="clean-inquiry-btn kakao"
-                            title="롯데하이마트 경기광주점 카카오톡 채널 상담"
+                            title="롯데하이마트 경기광주점 카카오톡 1:1 실시간 상담"
                             onClick={() => trackMetaEvent('Contact', { channel: '한줄_카톡문의' })}
                         >
                             <span className="btn-emoji">💬</span>
                             <span className="btn-txt">카톡문의</span>
                         </a>
                         <a 
-                            href="https://talk.naver.com/W4S0B8" 
+                            href={STORE_LINKS.naverPlace} 
                             target="_blank" 
                             rel="noreferrer"
                             className="clean-inquiry-btn talk"
-                            title="롯데하이마트 경기광주점 네이버톡톡 실시간 상담"
-                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버톡문의' })}
+                            title="롯데하이마트 경기광주점 네이버 스마트플레이스 문의"
+                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버문의' })}
                         >
                             <span className="btn-emoji">🟢</span>
-                            <span className="btn-txt">네이버톡문의</span>
+                            <span className="btn-txt">네이버 문의</span>
                         </a>
                         <a 
-                            href="tel:031-767-1044" 
+                            href={STORE_LINKS.phone} 
                             className="clean-inquiry-btn call"
-                            title="매장 전화 바로 걸기"
+                            title="매장 전화 바로 걸기 (031-767-1044)"
                             onClick={() => trackMetaEvent('Contact', { channel: '한줄_전화문의' })}
                         >
                             <span className="btn-emoji">📞</span>
@@ -1036,14 +1047,14 @@ export default function App() {
                                 </div>
 
                                 <div className="receipt-actions">
-                                    <a href="tel:031-767-1044" className="action-btn call" onClick={() => trackMetaEvent('Contact', { channel: '완료_전화' })}>
+                                    <a href={STORE_LINKS.phone} className="action-btn call" onClick={() => trackMetaEvent('Contact', { channel: '완료_전화' })}>
                                         📞 매장 바로 통화
                                     </a>
-                                    <a href="https://pf.kakao.com/_xgpxlXG" target="_blank" rel="noreferrer" className="action-btn kakao" onClick={() => trackMetaEvent('Contact', { channel: '완료_카톡' })}>
-                                        💬 카톡 문의
+                                    <a href={STORE_LINKS.kakaoChat} target="_blank" rel="noreferrer" className="action-btn kakao" onClick={() => trackMetaEvent('Contact', { channel: '완료_카톡' })}>
+                                        💬 카톡 1:1 상담
                                     </a>
-                                    <a href="https://talk.naver.com/W4S0B8" target="_blank" rel="noreferrer" className="action-btn talk" onClick={() => trackMetaEvent('Contact', { channel: '완료_네이버톡' })}>
-                                        🟢 네이버톡 문의
+                                    <a href={STORE_LINKS.naverPlace} target="_blank" rel="noreferrer" className="action-btn talk" onClick={() => trackMetaEvent('Contact', { channel: '완료_네이버문의' })}>
+                                        🟢 네이버 문의
                                     </a>
                                 </div>
 
@@ -1125,11 +1136,13 @@ export default function App() {
                     <div className="clean-footer-links">
                         <button type="button" onClick={() => setIsPrivacyModalOpen(true)}>개인정보처리방침</button>
                         <span>|</span>
-                        <a href="https://blog.naver.com/himart_gj" target="_blank" rel="noreferrer">네이버 블로그</a>
+                        <a href={STORE_LINKS.naverPlace} target="_blank" rel="noreferrer">네이버 플레이스</a>
                         <span>|</span>
-                        <a href="https://www.instagram.com/himart_gwangju" target="_blank" rel="noreferrer">인스타그램</a>
+                        <a href={STORE_LINKS.instagram} target="_blank" rel="noreferrer">인스타그램</a>
                         <span>|</span>
-                        <a href="https://pf.kakao.com/_xgpxlXG" target="_blank" rel="noreferrer">카카오톡 채널</a>
+                        <a href={STORE_LINKS.facebook} target="_blank" rel="noreferrer">페이스북</a>
+                        <span>|</span>
+                        <a href={STORE_LINKS.kakaoChannel} target="_blank" rel="noreferrer">카카오톡 채널</a>
                     </div>
                     <p className="clean-footer-copy">© LOTTE HIMART Gyeonggi-Gwangju Branch. All rights reserved.</p>
                 </div>
