@@ -348,13 +348,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(5px);
+    height: 100dvh;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: 12px;
+    box-sizing: border-box;
     animation: fadeInOverlay 0.18s ease-out;
 }
 
@@ -365,13 +367,15 @@ body {
 
 .clean-popup-card {
     background: #ffffff;
-    border-radius: 20px;
+    border-radius: 18px;
     max-width: 480px;
     width: 100%;
+    max-height: 86vh;
+    max-height: 86dvh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.28);
     border: 1px solid #e2e8f0;
     animation: popUpCard 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -382,20 +386,21 @@ body {
 }
 
 .clean-popup-header {
+    flex-shrink: 0;
     background: #0f172a;
     color: #ffffff;
-    padding: 22px 22px 18px;
+    padding: 16px 18px 12px;
 }
 
 .clean-popup-title-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .clean-popup-title {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #ffffff;
     display: flex;
@@ -406,8 +411,8 @@ body {
     background: rgba(255, 255, 255, 0.12);
     border: none;
     color: #e2e8f0;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 0.95rem;
@@ -426,17 +431,21 @@ body {
 .clean-popup-top-banner {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 10px;
-    padding: 11px 14px;
-    font-size: 0.92rem;
-    line-height: 1.5;
+    border-radius: 8px;
+    padding: 7px 11px;
+    font-size: 0.82rem;
+    line-height: 1.45;
     color: #f1f5f9;
     font-weight: 600;
     letter-spacing: -0.01em;
 }
 
 .clean-popup-body {
-    padding: 24px 22px;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 16px 18px;
 }
 
 .clean-check-section .sec-label {
@@ -730,20 +739,21 @@ body {
     border-color: rgba(255, 255, 255, 0.35);
 }
 
-/* 요금제 클릭 시 하단에 뜨는 상세 혜택 카드 */
-.mvno-benefit-detail-card {
+/* 컴팩트 알뜰요금제 상세 안내 카드 (심플 & 높이 최적화) */
+.mvno-compact-detail-card {
     background: #ffffff;
     border: 1.5px solid #bfdbfe;
     border-radius: 12px;
-    padding: 14px 16px;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);
-    animation: fadeInBenefit 0.2s ease-out;
+    padding: 12px 14px;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+    animation: fadeInBenefit 0.18s ease-out;
 }
 
 @keyframes fadeInBenefit {
     from {
         opacity: 0;
-        transform: translateY(-4px);
+        transform: translateY(-3px);
     }
     to {
         opacity: 1;
@@ -751,16 +761,18 @@ body {
     }
 }
 
-.mvno-benefit-card-top {
+.mvno-compact-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
     gap: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #e2e8f0;
+    flex-wrap: wrap;
 }
 
-.mvno-badge-row {
+.mvno-compact-badge-row {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -770,22 +782,28 @@ body {
 .kt-mini-pill {
     background: #fee2e2;
     color: #b91c1c;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 800;
-    padding: 2px 6px;
+    padding: 2px 5px;
     border-radius: 4px;
 }
 
-.mvno-card-price {
-    font-size: 1.05rem;
+.mvno-compact-plan-name {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.mvno-compact-price {
+    font-size: 1rem;
     font-weight: 900;
-    color: #1e3a8a;
+    color: #1d4ed8;
 }
 
 .mvno-contract-badge {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 800;
-    padding: 2.5px 8px;
+    padding: 2px 7px;
     border-radius: 6px;
     display: inline-flex;
     align-items: center;
@@ -794,7 +812,7 @@ body {
 
 .mvno-contract-badge.no-contract {
     background: #ecfdf5;
-    color: #065f46;
+    color: #047857;
     border: 1px solid #a7f3d0;
 }
 
@@ -805,178 +823,48 @@ body {
     font-weight: 900;
 }
 
-.mvno-card-badge {
-    background: #eff6ff;
-    color: #2563eb;
-    border: 1px solid #dbeafe;
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 2px 7px;
-    border-radius: 20px;
-}
-
-.mvno-card-select-btn {
-    font-size: 0.78rem;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid #cbd5e1;
-    background: #f8fafc;
-    color: #475569;
-    cursor: pointer;
-    transition: all 0.15s ease-in-out;
-}
-
-.mvno-card-select-btn:hover {
-    background: #e2e8f0;
-}
-
-.mvno-card-select-btn.selected {
-    background: #059669;
-    border-color: #047857;
-    color: #ffffff;
-    box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
-}
-
-.mvno-contract-callout {
-    margin-bottom: 10px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 0.78rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.mvno-contract-callout.callout-contract {
-    background: #fff1f2;
-    border: 1px solid #fecdd3;
-    color: #9f1239;
-}
-
-.mvno-contract-callout.callout-no-contract {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    color: #166534;
-}
-
-.mvno-card-tagline {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #475569;
-    margin-bottom: 10px;
-}
-
-.mvno-card-specs {
+.mvno-compact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 6px;
+    margin-bottom: 8px;
 }
 
-@media (max-width: 480px) {
-    .mvno-card-specs {
-        grid-template-columns: 1fr;
-    }
-}
-
-.spec-pill {
+.compact-grid-cell {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 8px 10px;
+    border-radius: 6px;
+    padding: 6px 8px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
 }
 
-.spec-pill.highlight-contract {
-    background: #fffbeb;
-    border-color: #fde68a;
+.compact-grid-cell.full-width {
+    grid-column: span 2;
 }
 
-.spec-label {
-    font-size: 0.72rem;
+.compact-lbl {
+    font-size: 0.68rem;
     font-weight: 700;
     color: #64748b;
 }
 
-.spec-value {
-    font-size: 0.82rem;
+.compact-val {
+    font-size: 0.78rem;
     font-weight: 800;
     color: #0f172a;
+    line-height: 1.35;
 }
 
-.mvno-card-points {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 8px;
-    padding: 10px 12px;
-}
-
-.points-title {
-    font-size: 0.74rem;
-    font-weight: 800;
-    color: #166534;
-    margin-bottom: 6px;
-}
-
-.points-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.points-list li {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #1e293b;
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    line-height: 1.4;
-}
-
-.point-dot {
-    color: #16a34a;
-    font-weight: 900;
+.mvno-compact-footer-bar {
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 5px 8px;
     font-size: 0.72rem;
-    margin-top: 1px;
-}
-
-.mvno-guide-footer-box {
-    margin-top: 10px;
-    padding: 10px 12px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.guide-footer-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    font-size: 0.75rem;
-}
-
-.guide-tag {
-    font-weight: 800;
-    color: #334155;
-    background: #e2e8f0;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-.guide-desc {
-    color: #475569;
     font-weight: 600;
+    color: #475569;
+    text-align: center;
 }
 
 /* 예약 폼 상단 요약 카드 (중복 체크 목록 제거 후 깔끔한 요약) */
@@ -1146,11 +1034,12 @@ body {
 }
 
 .clean-popup-footer {
-    padding: 16px 22px;
-    background: #f8fafc;
+    flex-shrink: 0;
+    padding: 12px 18px;
+    background: #ffffff;
     border-top: 1px solid #e2e8f0;
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .popup-btn-cancel {
@@ -1158,9 +1047,9 @@ body {
     background: #ffffff;
     color: #475569;
     border: 1px solid #cbd5e1;
-    padding: 13px;
-    border-radius: 10px;
-    font-size: 0.92rem;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.88rem;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.15s;
@@ -1175,9 +1064,9 @@ body {
     background: #0f172a;
     color: #ffffff;
     border: none;
-    padding: 13px;
-    border-radius: 10px;
-    font-size: 0.94rem;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
     font-weight: 800;
     cursor: pointer;
     transition: all 0.18s ease;

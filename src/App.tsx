@@ -325,8 +325,8 @@ export default function App() {
     // 개인정보 처리방침 모달
     const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState<boolean>(false);
 
-    // 구글 앱스 스크립트 웹앱 URL
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbz_aXpUoJm_Yv22F6H_K6FqP2nE5W4r1Q_placeholder/exec';
+    // 구글 앱스 스크립트 웹앱 URL (고객 제공 최신 연동 주소)
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwpVPXo0cwN3B4tJJ_F_l7MgvouUAD6Fi0IUq-kEiDf5fgHtzA-427K_0JpioEsPfVb/exec';
 
     // 메타 픽셀 유입 추적
     const [trafficSource, setTrafficSource] = useState<{ source?: string; campaign?: string }>({});
@@ -623,93 +623,39 @@ export default function App() {
                                     })}
                                 </div>
 
-                                {/* 해당하는 월요금 눌렀을 때 그 하단에 해당요금제 상세 혜택 나오게 */}
+                                {/* 해당하는 월요금 눌렀을 때 그 하단에 해당요금제 핵심 안내 (간결 & 컴팩트) */}
                                 {currentPlanInfo && (
-                                    <div className="mvno-benefit-detail-card">
-                                        <div className="mvno-benefit-card-top">
-                                            <div className="mvno-badge-row">
+                                    <div className="mvno-compact-detail-card">
+                                        <div className="mvno-compact-top">
+                                            <div className="mvno-compact-badge-row">
                                                 <span className="kt-mini-pill">KT망</span>
-                                                <span className="mvno-card-price">{currentPlanInfo.fee}</span>
+                                                <span className="mvno-compact-plan-name">{currentPlanInfo.planName}</span>
                                                 <span className={`mvno-contract-badge ${currentPlanInfo.contractBadgeClass}`}>
-                                                    {currentPlanInfo.contractType === '24개월 약정' ? '🔒 24개월 약정' : '✨ 무약정 (약정 없음)'}
+                                                    {currentPlanInfo.contractType === '24개월 약정' ? '🔒 24개월 약정' : '✨ 무약정'}
                                                 </span>
-                                                <span className="mvno-card-badge">{currentPlanInfo.badge}</span>
                                             </div>
-                                            <button
-                                                type="button"
-                                                className={`mvno-card-select-btn ${selectedChecks.includes(currentPlanInfo.fee) ? 'selected' : ''}`}
-                                                onClick={() => handleMvnoPlanSelect(currentPlanInfo.fee, subGroup.items)}
-                                            >
-                                                {selectedChecks.includes(currentPlanInfo.fee) ? '✓ 요금제 선택됨' : '터치하여 상담 선택'}
-                                            </button>
+                                            <span className="mvno-compact-price">{currentPlanInfo.fee}</span>
                                         </div>
 
-                                        <p className="mvno-card-tagline">{currentPlanInfo.tagline}</p>
-
-                                        {/* 약정 구분 강조 안내 */}
-                                        <div className={`mvno-contract-callout ${currentPlanInfo.contractType === '24개월 약정' ? 'callout-contract' : 'callout-no-contract'}`}>
-                                            {currentPlanInfo.contractType === '24개월 약정' ? (
-                                                <span className="callout-text">
-                                                    <strong>🔒 24개월 약정 상품:</strong> 24개월 약정 가입 조건으로 파격적인 할인 요금이 적용되는 요금제입니다.
-                                                </span>
-                                            ) : (
-                                                <span className="callout-text">
-                                                    <strong>✨ 무약정 상품:</strong> 위약금이나 약정 의무 기간이 없어 언제든 자유롭게 해지 및 번호이동 가능합니다.
-                                                </span>
-                                            )}
-                                        </div>
-
-                                        <div className="mvno-card-specs">
-                                            <div className="spec-pill">
-                                                <span className="spec-label">📋 요금제명</span>
-                                                <span className="spec-value">{currentPlanInfo.planName}</span>
+                                        <div className="mvno-compact-grid">
+                                            <div className="compact-grid-cell">
+                                                <span className="compact-lbl">데이터 / 속도</span>
+                                                <span className="compact-val">{currentPlanInfo.network} {currentPlanInfo.data} ({currentPlanInfo.qos})</span>
                                             </div>
-                                            <div className="spec-pill highlight-contract">
-                                                <span className="spec-label">⚖ 약정 여부 / 월 납부액</span>
-                                                <span className={`spec-value font-bold ${currentPlanInfo.contractType === '24개월 약정' ? 'text-red-600' : 'text-emerald-700'}`}>
+                                            <div className="compact-grid-cell">
+                                                <span className="compact-lbl">음성 / 문자</span>
+                                                <span className="compact-val">{currentPlanInfo.call}</span>
+                                            </div>
+                                            <div className="compact-grid-cell full-width">
+                                                <span className="compact-lbl">약정 & 요금 조건</span>
+                                                <span className={`compact-val font-bold ${currentPlanInfo.contractType === '24개월 약정' ? 'text-red-600' : 'text-emerald-700'}`}>
                                                     {currentPlanInfo.subFeeNotice}
                                                 </span>
                                             </div>
-                                            <div className="spec-pill">
-                                                <span className="spec-label">📶 데이터 / 통신망</span>
-                                                <span className="spec-value">{currentPlanInfo.network} {currentPlanInfo.data} (KT망)</span>
-                                            </div>
-                                            <div className="spec-pill">
-                                                <span className="spec-label">⚡ 소진 시 QoS</span>
-                                                <span className="spec-value font-bold text-blue-700">{currentPlanInfo.qos}</span>
-                                            </div>
-                                            <div className="spec-pill">
-                                                <span className="spec-label">📞 음성 / 문자</span>
-                                                <span className="spec-value">{currentPlanInfo.call}</span>
-                                            </div>
-                                            <div className="spec-pill">
-                                                <span className="spec-label">🌐 테더링 / KT공용WiFi</span>
-                                                <span className="spec-value">테더링 {currentPlanInfo.tethering} · WiFi {currentPlanInfo.ktWifi}</span>
-                                            </div>
                                         </div>
 
-                                        <div className="mvno-card-points">
-                                            <div className="points-title">주요 혜택 및 상세 안내</div>
-                                            <ul className="points-list">
-                                                {currentPlanInfo.benefits.map((b, bIdx) => (
-                                                    <li key={bIdx}>
-                                                        <span className="point-dot">✔</span>
-                                                        <span>{b}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        {/* 하이마트 요금제 가이드 부가 안내 (유심 / 개통 시간) */}
-                                        <div className="mvno-guide-footer-box">
-                                            <div className="guide-footer-item">
-                                                <span className="guide-tag">💳 유심 비용</span>
-                                                <span className="guide-desc">일반유심 6,600원 / NFC 8,800원 / eSIM 3,000원</span>
-                                            </div>
-                                            <div className="guide-footer-item">
-                                                <span className="guide-tag">⏰ 개통 시간</span>
-                                                <span className="guide-desc">신규 08:00~20:00 / 번호이동 10:00~20:00 (일요일·공휴일 제외)</span>
-                                            </div>
+                                        <div className="mvno-compact-footer-bar">
+                                            <span>💳 유심: 일반 6,600원 · NFC 8,800원 · eSIM 3,000원 | 테더링 무료 지원</span>
                                         </div>
                                     </div>
                                 )}
