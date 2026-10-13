@@ -333,10 +333,10 @@ export default function App() {
         phone: 'tel:031-767-1044',
         kakaoChannel: 'https://pf.kakao.com/_hnxcxexl',
         kakaoChat: 'https://pf.kakao.com/_hnxcxexl/chat',
-        naverPlace: 'https://map.naver.com/p/search/%EB%A1%AF%EB%8D%B0%ED%95%98%EC%9D%B4%EB%A7%88%ED%8A%B8%20%EA%B2%BD%EA%B8%B0%EA%B4%91%EC%A3%BC%EC%A0%90',
-        naverSearch: 'https://search.naver.com/search.naver?query=%EB%A1%AF%EB%8D%B0%ED%95%98%EC%9D%B4%EB%A7%88%ED%8A%B8+%EA%B2%BD%EA%B8%B0%EA%B4%91%EC%A3%BC%EC%A0%90',
-        facebook: 'https://www.facebook.com/himartggukji',
-        instagram: 'https://www.instagram.com/himartggukji'
+        naverBlog: 'https://m.blog.naver.com/himart411',
+        naverTalk: 'https://talk.naver.com/profile/wd21jdv',
+        facebook: 'https://www.facebook.com/share/1EjioPJz2r/',
+        instagram: 'https://instagram.com/himart.ggukji?rpxt=MTVtMGd2cG51NzNwOQ%3D%3D'
     };
 
     // 메타 픽셀 유입 추적
@@ -737,15 +737,15 @@ export default function App() {
                     {/* SNS 바로가기 그룹 */}
                     <div className="clean-nav-sns-group">
                         <a 
-                            href={STORE_LINKS.naverPlace} 
+                            href={STORE_LINKS.naverBlog} 
                             target="_blank" 
                             rel="noreferrer"
                             className="clean-sns-btn blog"
-                            title="롯데하이마트 경기광주점 공식 네이버 플레이스·블로그 소식"
-                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버플레이스' })}
+                            title="롯데하이마트 경기광주점 공식 네이버 블로그"
+                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버블로그' })}
                         >
                             <span className="btn-icon-dot naver-dot">N</span>
-                            <span className="btn-txt">네이버 플레이스</span>
+                            <span className="btn-txt">네이버 블로그</span>
                         </a>
                         <a 
                             href={STORE_LINKS.instagram} 
@@ -787,15 +787,15 @@ export default function App() {
                             <span className="btn-txt">카톡문의</span>
                         </a>
                         <a 
-                            href={STORE_LINKS.naverPlace} 
+                            href={STORE_LINKS.naverTalk} 
                             target="_blank" 
                             rel="noreferrer"
                             className="clean-inquiry-btn talk"
-                            title="롯데하이마트 경기광주점 네이버 스마트플레이스 문의"
-                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버문의' })}
+                            title="롯데하이마트 경기광주점 네이버 톡톡 1:1 상담"
+                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버톡톡' })}
                         >
                             <span className="btn-emoji">🟢</span>
-                            <span className="btn-txt">네이버 문의</span>
+                            <span className="btn-txt">네이버톡톡</span>
                         </a>
                         <a 
                             href={STORE_LINKS.phone} 
@@ -1053,8 +1053,8 @@ export default function App() {
                                     <a href={STORE_LINKS.kakaoChat} target="_blank" rel="noreferrer" className="action-btn kakao" onClick={() => trackMetaEvent('Contact', { channel: '완료_카톡' })}>
                                         💬 카톡 1:1 상담
                                     </a>
-                                    <a href={STORE_LINKS.naverPlace} target="_blank" rel="noreferrer" className="action-btn talk" onClick={() => trackMetaEvent('Contact', { channel: '완료_네이버문의' })}>
-                                        🟢 네이버 문의
+                                    <a href={STORE_LINKS.naverTalk} target="_blank" rel="noreferrer" className="action-btn talk" onClick={() => trackMetaEvent('Contact', { channel: '완료_네이버톡톡' })}>
+                                        🟢 네이버톡톡 문의
                                     </a>
                                 </div>
 
@@ -1136,7 +1136,7 @@ export default function App() {
                     <div className="clean-footer-links">
                         <button type="button" onClick={() => setIsPrivacyModalOpen(true)}>개인정보처리방침</button>
                         <span>|</span>
-                        <a href={STORE_LINKS.naverPlace} target="_blank" rel="noreferrer">네이버 플레이스</a>
+                        <a href={STORE_LINKS.naverBlog} target="_blank" rel="noreferrer">네이버 블로그</a>
                         <span>|</span>
                         <a href={STORE_LINKS.instagram} target="_blank" rel="noreferrer">인스타그램</a>
                         <span>|</span>
