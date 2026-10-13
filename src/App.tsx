@@ -326,7 +326,7 @@ export default function App() {
     const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState<boolean>(false);
 
     // 구글 앱스 스크립트 웹앱 URL (고객 제공 최신 연동 주소)
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwpVPXo0cwN3B4tJJ_F_l7MgvouUAD6Fi0IUq-kEiDf5fgHtzA-427K_0JpioEsPfVb/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzBeEb2kGqYAq5RyGsakTPD7l8xNbZzNrA9tXGwyuedgHzmO6mA6L_pOvps-NYSJ_xz/exec';
 
     // 메타 픽셀 유입 추적
     const [trafficSource, setTrafficSource] = useState<{ source?: string; campaign?: string }>({});
