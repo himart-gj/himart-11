@@ -106,17 +106,18 @@ body {
 }
 
 /* ==============================================================================
- * 2. 한 줄 가로 정렬 바 (SNS 3개 + 실시간 문의 3개)
+ * 2. 한 줄 가로 정렬 바 (실시간 문의 3개)
  * ============================================================================== */
 .clean-quick-nav-bar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.85);
     padding: 10px 16px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
 }
 
 .clean-quick-nav-inner {
@@ -141,7 +142,7 @@ body {
     align-items: center;
     gap: 6px;
     padding: 7px 12px;
-    border-radius: 9px;
+    border-radius: 10px;
     font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
@@ -183,7 +184,7 @@ body {
 .clean-nav-inquiry-group {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
@@ -191,30 +192,35 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 14px;
-    border-radius: 9px;
+    padding: 8px 16px;
+    border-radius: 9999px;
     font-size: 0.85rem;
     font-weight: 800;
     text-decoration: none;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     border: 1px solid transparent;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
 }
 
 .clean-inquiry-btn:hover {
-    transform: translateY(-1.5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.1);
+}
+
+.clean-inquiry-btn:active {
+    transform: translateY(0);
 }
 
 .clean-inquiry-btn.kakao {
     background: var(--kakao-yellow);
     color: #191919;
-    border-color: #f0d500;
+    border-color: rgba(240, 213, 0, 0.8);
 }
 
 .clean-inquiry-btn.talk {
     background: var(--naver-green);
     color: #ffffff;
-    border-color: #02b04f;
+    border-color: rgba(2, 176, 79, 0.8);
 }
 
 .clean-inquiry-btn.call {
@@ -228,53 +234,55 @@ body {
 .clean-main-content {
     max-width: 960px;
     margin: 0 auto;
-    padding: 44px 20px 80px;
+    padding: 48px 20px 88px;
     width: 100%;
     flex: 1;
 }
 
 .clean-hero-simple {
     text-align: center;
-    margin-bottom: 38px;
+    margin-bottom: 36px;
 }
 
 .clean-hero-badge {
-    display: inline-block;
-    background: #fee2e2;
-    color: #b91c1c;
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    color: #1d4ed8;
+    border: 1px solid rgba(147, 197, 253, 0.7);
     font-size: 0.82rem;
     font-weight: 800;
-    padding: 5px 14px;
+    padding: 6px 16px;
     border-radius: 9999px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     letter-spacing: -0.01em;
+    box-shadow: 0 2px 10px -2px rgba(37, 99, 235, 0.12);
 }
 
 .clean-hero-title {
     font-family: 'GmarketSans', -apple-system, sans-serif;
-    font-size: clamp(2rem, 5vw, 2.7rem);
+    font-size: clamp(2.05rem, 5vw, 2.8rem);
     font-weight: 900;
     color: #0f172a;
-    line-height: 1.25;
-    margin-bottom: 10px;
-    letter-spacing: -0.03em;
+    line-height: 1.22;
+    margin-bottom: 12px;
+    letter-spacing: -0.035em;
 }
 
 .clean-hero-impact-line {
-    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
-    font-weight: 700;
-    color: #475569;
+    font-size: clamp(1.08rem, 2.5vw, 1.25rem);
+    font-weight: 800;
+    color: #334155;
     line-height: 1.5;
+    margin-top: 6px;
+    letter-spacing: -0.02em;
 }
 
 /* ==============================================================================
- * 4. [고객 요청 핵심] 6개 카테고리 카드:
- *    - 설명 문구 일체 없음
- *    - '상담내용 확인' 글자 없음
- *    - 오직 이모티콘 + 이름만 극도로 정돈되고 고급스러운 인터랙션으로 표출
+ * 4. 6개 카테고리 카드 (Toss / Apple Store 스타일 입체감 & 48x48 아이콘 배지)
  * ============================================================================== */
 .clean-categories-section {
-    margin-bottom: 40px;
+    margin-bottom: 44px;
 }
 
 .clean-grid-6 {
@@ -285,62 +293,100 @@ body {
 
 .clean-cat-card {
     background: #ffffff;
-    border: 1px solid var(--card-border);
-    border-radius: 18px;
-    padding: 34px 16px 30px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 30px 20px 26px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
     outline: none;
     position: relative;
     user-select: none;
 }
 
+/* 우측 상단 은은한 화살표 아이콘 표시 */
+.clean-cat-card::after {
+    content: '›';
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #94a3b8;
+    line-height: 1;
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), color 0.24s ease;
+}
+
 .clean-cat-card:hover {
-    transform: translateY(-4px);
-    border-color: #cbd5e1;
-    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-3px);
+    border-color: #2563eb;
+    box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.14), 0 0 0 1px rgba(37, 99, 235, 0.2);
     background: #ffffff;
+}
+
+.clean-cat-card:hover::after {
+    color: #2563eb;
+    transform: translateX(2px);
 }
 
 .clean-cat-card:active {
     transform: translateY(-1px);
+    border-color: #2563eb;
 }
 
 .clean-cat-card.active {
-    border-color: #0f172a;
-    box-shadow: 0 0 0 2px #0f172a;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px #2563eb, 0 8px 24px -4px rgba(37, 99, 235, 0.18);
+    background: #f8fbff;
 }
 
+.clean-cat-card.active::after {
+    color: #2563eb;
+}
+
+/* 48x48px 은은한 소프트 블루/그레이 둥근 사각형(border-radius: 14px) 배경 배지 */
 .clean-card-icon {
-    font-size: 2.85rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #eff6ff 0%, #f1f5f9 100%);
+    border: 1px solid rgba(203, 213, 225, 0.6);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.65rem;
     line-height: 1;
     margin-bottom: 14px;
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 6px rgba(15, 23, 42, 0.04);
+    transition: all 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .clean-cat-card:hover .clean-card-icon {
-    transform: scale(1.15);
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+    border-color: rgba(147, 197, 253, 0.8);
 }
 
 .clean-card-name {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #0f172a;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    transition: color 0.2s ease;
+}
+
+.clean-cat-card:hover .clean-card-name {
+    color: #1e3a8a;
 }
 
 /* ==============================================================================
- * 5. [고객 요청 핵심] 초간결 팝업 모달
- *    - 상단 멘트 (예: "삼성, LG 및 기타 가전 단품/세트 상담")
- *    - 복잡한 상세설명 & 캐시백/상품권 내용 제거
- *    - 주요상담체크: 단품, 세트 등 단순하게
+ * 5. 초간결 팝업 모달 (Toss 스타일 깔끔한 바텀/센터 시트 감성)
  * ============================================================================== */
 .clean-popup-overlay {
     position: fixed;
@@ -349,15 +395,16 @@ body {
     width: 100%;
     height: 100%;
     height: 100dvh;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(4px);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding: 14px;
     box-sizing: border-box;
-    animation: fadeInOverlay 0.18s ease-out;
+    animation: fadeInOverlay 0.2s ease-out;
 }
 
 @keyframes fadeInOverlay {
@@ -367,7 +414,7 @@ body {
 
 .clean-popup-card {
     background: #ffffff;
-    border-radius: 18px;
+    border-radius: 22px;
     max-width: 480px;
     width: 100%;
     max-height: 86vh;
@@ -375,44 +422,45 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.28);
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.32), 0 0 0 1px rgba(15, 23, 42, 0.05);
     border: 1px solid #e2e8f0;
-    animation: popUpCard 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: popUpCard 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes popUpCard {
-    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    from { opacity: 0; transform: scale(0.96) translateY(10px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .clean-popup-header {
     flex-shrink: 0;
-    background: #0f172a;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
     color: #ffffff;
-    padding: 16px 18px 12px;
+    padding: 18px 20px 14px;
 }
 
 .clean-popup-title-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .clean-popup-title {
-    font-size: 1.15rem;
+    font-size: 1.18rem;
     font-weight: 800;
     color: #ffffff;
     display: flex;
     align-items: center;
+    letter-spacing: -0.02em;
 }
 
 .clean-popup-close-x {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.14);
     border: none;
     color: #e2e8f0;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 0.95rem;
@@ -420,22 +468,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.15s;
+    transition: background 0.18s ease;
 }
 
 .clean-popup-close-x:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.26);
     color: #ffffff;
 }
 
 .clean-popup-top-banner {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 8px;
-    padding: 7px 11px;
-    font-size: 0.82rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 0.83rem;
     line-height: 1.45;
-    color: #f1f5f9;
+    color: #f8fafc;
     font-weight: 600;
     letter-spacing: -0.01em;
 }
@@ -445,7 +493,7 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-    padding: 16px 18px;
+    padding: 18px 20px;
 }
 
 .clean-check-section .sec-label {
@@ -467,18 +515,18 @@ body {
     gap: 6px;
     background: #f8fafc;
     border: 1.5px solid #e2e8f0;
-    padding: 9px 16px;
-    border-radius: 10px;
+    padding: 10px 16px;
+    border-radius: 12px;
     font-size: 0.92rem;
     font-weight: 700;
     color: #475569;
     cursor: pointer;
-    transition: all 0.18s ease;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .popup-simple-chip:hover {
     background: #f1f5f9;
-    border-color: #cbd5e1;
+    border-color: #93c5fd;
     color: #0f172a;
 }
 
@@ -487,6 +535,7 @@ body {
     border-color: #2563eb;
     color: #1d4ed8;
     font-weight: 800;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
 }
 
 .popup-simple-chip .chip-mark {
@@ -502,8 +551,9 @@ body {
 }
 
 .sub-option-box {
-    background: #f1f5f9;
-    border-left: 3px solid #2563eb;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3.5px solid #2563eb;
     border-radius: 0 12px 12px 0;
     padding: 12px 14px;
     margin-top: 4px;
@@ -532,7 +582,7 @@ body {
     background: #ffffff;
     border: 1.5px solid #cbd5e1;
     padding: 7px 13px;
-    border-radius: 8px;
+    border-radius: 9px;
     font-size: 0.86rem;
     font-weight: 700;
     color: #334155;
@@ -541,7 +591,7 @@ body {
 }
 
 .popup-sub-chip:hover {
-    background: #e2e8f0;
+    background: #f1f5f9;
     color: #0f172a;
 }
 
@@ -550,6 +600,7 @@ body {
     border-color: #1d4ed8;
     color: #ffffff;
     font-weight: 800;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
 }
 
 .popup-sub-chip .chip-mark {
@@ -561,8 +612,8 @@ body {
 .clean-additional-section {
     background: #f8fafc;
     border: 1.5px dashed #cbd5e1;
-    border-radius: 12px;
-    padding: 12px 14px;
+    border-radius: 14px;
+    padding: 14px 16px;
     margin-top: 6px;
 }
 
@@ -578,7 +629,7 @@ body {
     color: #4338ca;
     font-size: 0.72rem;
     font-weight: 800;
-    padding: 2px 7px;
+    padding: 2px 8px;
     border-radius: 6px;
 }
 
@@ -867,14 +918,14 @@ body {
     text-align: center;
 }
 
-/* 예약 폼 상단 요약 카드 (중복 체크 목록 제거 후 깔끔한 요약) */
+/* 예약 폼 상단 요약 카드 */
 .clean-selected-summary-card {
     background: #ffffff;
     border: 1.5px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px 20px;
-    margin-bottom: 22px;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
 }
 
 .summary-card-header {
@@ -882,7 +933,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
     border-bottom: 1px dashed #e2e8f0;
 }
 
@@ -905,26 +956,25 @@ body {
     color: #ffffff;
     font-size: 0.85rem;
     font-weight: 800;
-    padding: 3px 10px;
-    border-radius: 6px;
+    padding: 4px 12px;
+    border-radius: 9999px;
 }
 
 .summary-edit-btn {
-    background: #f1f5f9;
+    background: #f8fafc;
     border: 1px solid #cbd5e1;
     color: #2563eb;
     font-size: 0.82rem;
     font-weight: 800;
     cursor: pointer;
-    padding: 4px 10px;
-    border-radius: 6px;
+    padding: 5px 12px;
+    border-radius: 8px;
     transition: all 0.15s ease;
 }
 
 .summary-edit-btn:hover {
     background: #eff6ff;
     border-color: #93c5fd;
-    text-decoration: underline;
 }
 
 .summary-card-body {
@@ -976,30 +1026,44 @@ body {
     align-items: center;
     gap: 14px;
     background: #f8fafc;
-    border: 2px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px 18px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 18px 20px;
     cursor: pointer;
     text-align: left;
-    transition: all 0.2s ease;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .consultation-type-card:hover {
     background: #ffffff;
-    border-color: #cbd5e1;
+    border-color: #93c5fd;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 6px 18px -2px rgba(15, 23, 42, 0.06);
 }
 
 .consultation-type-card.selected {
     background: #eff6ff;
     border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.16), 0 6px 16px -4px rgba(37, 99, 235, 0.12);
 }
 
 .consultation-type-card .type-icon {
-    font-size: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
     line-height: 1;
+    flex-shrink: 0;
+}
+
+.consultation-type-card.selected .type-icon {
+    border-color: #bfdbfe;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.1);
 }
 
 .consultation-type-card .type-info {
@@ -1010,7 +1074,7 @@ body {
     font-size: 1.05rem;
     font-weight: 800;
     color: #0f172a;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 .consultation-type-card.selected .type-title {
@@ -1018,9 +1082,9 @@ body {
 }
 
 .consultation-type-card .type-desc {
-    font-size: 0.8rem;
+    font-size: 0.81rem;
     color: #64748b;
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
 .consultation-type-card .type-check {
@@ -1035,68 +1099,70 @@ body {
 
 .clean-popup-footer {
     flex-shrink: 0;
-    padding: 12px 18px;
+    padding: 14px 20px;
     background: #ffffff;
     border-top: 1px solid #e2e8f0;
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .popup-btn-cancel {
     flex: 1;
-    background: #ffffff;
+    background: #f8fafc;
     color: #475569;
     border: 1px solid #cbd5e1;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 0.88rem;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: all 0.15s ease;
 }
 
 .popup-btn-cancel:hover {
     background: #f1f5f9;
+    color: #0f172a;
 }
 
 .popup-btn-confirm {
     flex: 2;
-    background: #0f172a;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     color: #ffffff;
     border: none;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.94rem;
     font-weight: 800;
     cursor: pointer;
-    transition: all 0.18s ease;
+    box-shadow: 0 6px 16px -3px rgba(37, 99, 235, 0.35);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .popup-btn-confirm:hover {
-    background: #1e293b;
-    transform: translateY(-1px);
+    transform: translateY(-1.5px);
+    box-shadow: 0 10px 20px -3px rgba(37, 99, 235, 0.45);
 }
 
 /* ==============================================================================
  * 6. 예약 폼 영역 (팝업에서 예약 진행 시 표출)
  * ============================================================================== */
 .clean-booking-section {
-    margin-top: 24px;
+    margin-top: 28px;
     animation: fadeInOverlay 0.25s ease;
 }
 
 .clean-booking-box {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 20px;
-    padding: 34px 28px;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    border: 1.5px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 38px 32px;
+    box-shadow: 0 12px 36px -6px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
 }
 
 .clean-booking-header {
     text-align: center;
     margin-bottom: 26px;
-    padding-bottom: 20px;
+    padding-bottom: 22px;
     border-bottom: 1px solid #e2e8f0;
     position: relative;
 }
@@ -1104,60 +1170,64 @@ body {
 .clean-booking-tag {
     display: inline-block;
     background: #eff6ff;
-    color: #1d4ed8;
-    font-size: 0.82rem;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    font-size: 0.8rem;
     font-weight: 800;
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 9999px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .clean-booking-title {
-    font-size: 1.4rem;
-    font-weight: 800;
+    font-size: 1.48rem;
+    font-weight: 900;
     color: #0f172a;
     margin-bottom: 6px;
+    letter-spacing: -0.025em;
 }
 
 .clean-booking-lead {
-    font-size: 0.92rem;
+    font-size: 0.93rem;
     color: #64748b;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .clean-change-cat-btn {
-    background: transparent;
+    background: #f8fafc;
     border: 1px solid #cbd5e1;
     color: #475569;
-    padding: 5px 12px;
-    border-radius: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
     font-size: 0.8rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 .clean-change-cat-btn:hover {
     background: #f1f5f9;
     color: #0f172a;
+    border-color: #94a3b8;
 }
 
 .clean-form {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 24px;
 }
 
 .form-group-block {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .form-group-title {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 800;
-    color: #1e293b;
+    color: #0f172a;
+    letter-spacing: -0.01em;
 }
 
 .form-chips-wrap {
@@ -1193,40 +1263,56 @@ body {
 .date-time-flex,
 .name-phone-flex {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
 .clean-input {
     width: 100%;
-    padding: 12px 14px;
-    border-radius: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
     border: 1.5px solid #cbd5e1;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: #0f172a;
-    background: #ffffff;
+    background: #f8fafc;
     outline: none;
-    transition: border-color 0.2s;
+    transition: all 0.2s ease;
+}
+
+.clean-input::placeholder {
+    color: #94a3b8;
+    font-weight: 500;
 }
 
 .clean-input:focus {
-    border-color: #0f172a;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .clean-textarea {
     width: 100%;
-    padding: 12px 14px;
-    border-radius: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
     border: 1.5px solid #cbd5e1;
-    font-size: 0.92rem;
+    font-size: 0.94rem;
+    font-weight: 600;
     color: #0f172a;
-    background: #ffffff;
+    background: #f8fafc;
     outline: none;
     resize: vertical;
-    transition: border-color 0.2s;
+    transition: all 0.2s ease;
+}
+
+.clean-textarea::placeholder {
+    color: #94a3b8;
+    font-weight: 500;
 }
 
 .clean-textarea:focus {
-    border-color: #0f172a;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .privacy-check-row {
@@ -1234,8 +1320,8 @@ body {
     justify-content: space-between;
     align-items: center;
     background: #f8fafc;
-    padding: 12px 16px;
-    border-radius: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
     border: 1px solid #e2e8f0;
 }
 
@@ -1243,9 +1329,16 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.86rem;
+    font-size: 0.87rem;
     color: #334155;
-    font-weight: 600;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.privacy-label input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #2563eb;
     cursor: pointer;
 }
 
@@ -1259,22 +1352,25 @@ body {
 }
 
 .clean-submit-btn {
-    background: #0f172a;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     color: #ffffff;
     border: none;
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 1.05rem;
+    padding: 17px 24px;
+    border-radius: 14px;
+    font-size: 1.06rem;
     font-weight: 800;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
 }
 
 .clean-submit-btn:hover:not(:disabled) {
-    background: #1e293b;
-    transform: translateY(-1.5px);
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.5);
+}
+
+.clean-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .clean-submit-btn:disabled {
@@ -1287,11 +1383,11 @@ body {
  * ============================================================================== */
 .clean-receipt-box {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 20px;
-    padding: 40px 24px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 42px 28px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    box-shadow: 0 12px 36px -6px rgba(15, 23, 42, 0.06);
 }
 
 .receipt-success-badge {
@@ -1321,8 +1417,8 @@ body {
 .receipt-ticket {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 18px 20px;
+    border-radius: 16px;
+    padding: 20px 22px;
     max-width: 480px;
     margin: 0 auto 24px;
     display: flex;
@@ -1344,6 +1440,7 @@ body {
 .ticket-row .val {
     color: #0f172a;
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
 }
 
 .ticket-row .val.highlight {
@@ -1408,7 +1505,7 @@ body {
 .clean-footer {
     background: #0f172a;
     color: #94a3b8;
-    padding: 34px 20px;
+    padding: 36px 20px;
     font-size: 0.84rem;
     border-top: 1px solid #1e293b;
     margin-top: auto;
@@ -1424,7 +1521,7 @@ body {
 }
 
 .clean-footer-info {
-    line-height: 1.6;
+    line-height: 1.65;
     color: #cbd5e1;
 }
 
@@ -1441,10 +1538,10 @@ body {
 .clean-map-link-badge {
     display: inline-block;
     margin-left: 5px;
-    padding: 1px 6px;
+    padding: 1px 7px;
     background: rgba(37, 99, 235, 0.28);
     border: 1px solid rgba(147, 197, 253, 0.45);
-    border-radius: 5px;
+    border-radius: 6px;
     color: #93c5fd !important;
     font-size: 0.75rem;
     font-weight: 800;
@@ -1460,10 +1557,10 @@ body {
 .footer-map-link {
     display: inline-block;
     margin-left: 4px;
-    padding: 1px 6px;
+    padding: 1px 7px;
     background: #1e293b;
     border: 1px solid #334155;
-    border-radius: 5px;
+    border-radius: 6px;
     color: #93c5fd !important;
     font-size: 0.76rem;
     font-weight: 800;
@@ -1480,27 +1577,38 @@ body {
  * 3-2. 온라인 사전예약 고객 전용 3대 핵심 혜택 상시 배너
  * ============================================================================== */
 .prebooking-benefit-card {
-    max-width: 720px;
-    margin: 18px auto 24px;
+    max-width: 740px;
+    margin: 20px auto 28px;
     background: #ffffff;
-    border: 1.5px solid #cbd5e1;
-    border-top: 4px solid #1e3a8a;
-    border-radius: 16px;
-    padding: 20px 24px 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 22px 26px 18px;
     text-align: left;
-    box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.prebooking-benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
 }
 
 .prebooking-benefit-header {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #e2e8f0;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
 }
 
 .prebooking-benefit-title {
-    font-size: 1.05rem;
+    font-size: 1.06rem;
     font-weight: 900;
     color: #0f172a;
     letter-spacing: -0.02em;
@@ -1510,14 +1618,14 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 14px;
 }
 
 .prebooking-benefit-list li {
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     font-size: 0.94rem;
     font-weight: 700;
     color: #1e293b;
@@ -1525,119 +1633,157 @@ body {
 }
 
 .prebooking-benefit-list .benefit-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
     color: #2563eb;
+    font-size: 0.75rem;
     font-weight: 900;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
 }
 
 .prebooking-benefit-disclaimer {
-    font-size: 0.78rem;
+    font-size: 0.77rem;
     color: #64748b;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.45;
+    padding-top: 8px;
+    border-top: 1px dashed #e2e8f0;
 }
 
 /* ==============================================================================
  * 4-2. 첫 화면 '하이프리드 가전 지원 결합 혜택' 핵심 안내 섹션
+ *      - 상단 딥 네이비~로열 블루 VIP 그라데이션 헤더
+ *      - STEP 1~3 블루 캡슐 배지 & 균형 잡힌 카드 레이아웃
+ *      - 플랜 비교표 tabular-nums, nowrap, 하이프리드 300 인기 행 강조
+ *      - 블루 그라데이션 & 풍성한 그림자 메인 CTA 버튼
+ *      - 정돈된 공정위 필수 고지 4대 문구 박스
  * ============================================================================== */
 .hifreed-highlight-section {
-    margin-bottom: 40px;
+    margin-bottom: 44px;
 }
 
 .hifreed-card {
     background: #ffffff;
-    border: 2px solid #1e3a8a;
-    border-radius: 22px;
-    padding: 32px 26px 26px;
-    box-shadow: 0 14px 34px -8px rgba(15, 23, 42, 0.09);
+    border: 1.5px solid #cbd5e1;
+    border-radius: 24px;
+    padding: 0 28px 28px;
+    box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
 }
 
+/* 상단 헤더: 딥 네이비~로열 블루 그라데이션 배경 & 화이트 텍스트 */
 .hifreed-header {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+    color: #ffffff;
     text-align: center;
-    margin-bottom: 24px;
+    margin: 0 -28px 28px -28px;
+    padding: 34px 28px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hifreed-hot-badge {
-    display: inline-block;
-    background: #0f172a;
-    color: #f8fafc;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
     font-size: 0.82rem;
     font-weight: 800;
-    padding: 5px 14px;
+    padding: 5px 15px;
     border-radius: 9999px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .hifreed-headline {
-    font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+    font-size: clamp(1.4rem, 3.4vw, 1.85rem);
     font-weight: 900;
-    color: #0f172a;
+    color: #ffffff;
     line-height: 1.3;
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    letter-spacing: -0.025em;
 }
 
 .hifreed-subcopy {
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    color: #1d4ed8;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 12px;
-    padding: 10px 16px;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    padding: 11px 18px;
     display: inline-block;
-    line-height: 1.5;
+    max-width: 780px;
+    line-height: 1.55;
 }
 
-/* 3단계 핵심 절차 요약 (가로 3단 카드) */
+/* 3단계 핵심 절차 요약 (가로 3단 카드 & 블루 캡슐 배지) */
 .hifreed-steps-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 14px;
+    margin-bottom: 26px;
 }
 
 .hifreed-step-box {
     background: #f8fafc;
     border: 1.5px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px 14px;
+    border-radius: 16px;
+    padding: 18px 16px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.hifreed-step-box:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
 }
 
 .hifreed-step-box .step-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     align-self: flex-start;
-    background: #1e3a8a;
-    color: #ffffff;
-    font-size: 0.76rem;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #2563eb;
+    font-size: 0.78rem;
     font-weight: 800;
-    padding: 3px 9px;
-    border-radius: 6px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    letter-spacing: -0.01em;
 }
 
 .hifreed-step-box .step-desc {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: #1e293b;
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
 /* 플랜별 지원금 및 만기 환급금 표 */
 .hifreed-table-wrapper {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .hifreed-table-title {
-    font-size: 0.98rem;
+    font-size: 1rem;
     font-weight: 800;
     color: #0f172a;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    letter-spacing: -0.02em;
 }
 
 .hifreed-table-title::before {
@@ -1651,38 +1797,45 @@ body {
 
 .hifreed-table-scroll {
     overflow-x: auto;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 14px;
+    -webkit-overflow-scrolling: touch;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
     background: #ffffff;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
 }
 
 .hifreed-plan-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 540px;
+    min-width: 580px;
     font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
 }
 
 .hifreed-plan-table thead tr {
-    background: #0f172a;
-    color: #ffffff;
+    background: #f1f5f9;
+    color: #334155;
 }
 
 .hifreed-plan-table th {
-    padding: 12px 10px;
+    padding: 13px 14px;
     font-weight: 800;
     text-align: center;
-    font-size: 0.84rem;
-    border-bottom: 1px solid #1e293b;
+    font-size: 0.83rem;
+    border-bottom: 1.5px solid #e2e8f0;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
 }
 
 .hifreed-plan-table td {
-    padding: 12px 10px;
+    padding: 14px 14px;
     text-align: center;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #f1f5f9;
     color: #334155;
     font-weight: 700;
     line-height: 1.4;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
 }
 
 .hifreed-plan-table tbody tr:last-child td {
@@ -1696,8 +1849,9 @@ body {
 }
 
 .hifreed-plan-table .plan-support-cell {
-    color: #1d4ed8;
+    color: #2563eb;
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .hifreed-plan-table .plan-support-cell span {
@@ -1711,101 +1865,114 @@ body {
     white-space: nowrap;
 }
 
+/* 가장 인기 있는 '하이프리드 300' 행: 연푸른 배경(#EFF6FF) + 좌측 4px 로열 블루 포인트 보더 */
 .hifreed-plan-table .popular-row {
-    background: #eff6ff;
+    background: #EFF6FF;
 }
 
 .hifreed-plan-table .popular-row td {
     color: #1e3a8a;
+    font-weight: 800;
+    background: #EFF6FF;
+}
+
+.hifreed-plan-table .popular-row td:first-child {
+    border-left: 4px solid #2563EB;
 }
 
 .popular-pill {
     display: inline-block;
-    background: #2563eb;
+    background: #2563EB;
     color: #ffffff;
     font-size: 0.7rem;
     font-weight: 800;
-    padding: 1.5px 6px;
-    border-radius: 4px;
-    margin-right: 4px;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    margin-right: 5px;
     vertical-align: middle;
 }
 
 /* 다구좌 결합 안내 */
 .hifreed-multi-guide {
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 0.88rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 13px 16px;
+    font-size: 0.87rem;
     font-weight: 700;
-    color: #1e293b;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    color: #334155;
+    line-height: 1.55;
+    margin-bottom: 24px;
 }
 
-/* 섹션 하단 바로가기 버튼 */
+/* 섹션 하단 바로가기 메인 버튼: 블루 그라데이션 & 풍성한 그림자 */
 .hifreed-cta-wrap {
     text-align: center;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 }
 
 .hifreed-cta-btn {
     width: 100%;
-    max-width: 480px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    max-width: 500px;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
     color: #ffffff;
     border: none;
-    border-radius: 14px;
-    padding: 16px 24px;
-    font-size: 1.02rem;
+    border-radius: 16px;
+    padding: 17px 26px;
+    font-size: 1.04rem;
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 8px 20px -4px rgba(30, 58, 138, 0.35);
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+    transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: -0.01em;
 }
 
 .hifreed-cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px -4px rgba(30, 58, 138, 0.45);
+    transform: translateY(-2.5px);
+    box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.52);
+}
+
+.hifreed-cta-btn:active {
+    transform: translateY(0);
 }
 
 /* 공정거래위원회 필수 고지 4대 문구 (하단 회색 안심 안내 박스) */
 .hifreed-ftc-notice-box {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 14px 16px;
+    border-radius: 14px;
+    padding: 16px 18px;
     text-align: left;
 }
 
 .ftc-notice-title {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 800;
     color: #475569;
     margin-bottom: 6px;
+    letter-spacing: -0.01em;
 }
 
 .ftc-notice-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: 0.76rem;
+    gap: 5px;
+    font-size: 0.75rem;
     color: #64748b;
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 /* ==============================================================================
  * 6-2. 예약 폼 상단 '전문 마이스터 신뢰 배지' 및 하단 '안심 예약 보장' 문구
  * ============================================================================== */
 .meister-trust-badge-box {
-    background: #f8fafc;
-    border: 1.5px solid #cbd5e1;
-    border-left: 4px solid #1e3a8a;
-    border-radius: 14px;
-    padding: 16px 18px;
-    margin-bottom: 22px;
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #2563eb;
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1814,32 +1981,32 @@ body {
 .meister-trust-item {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
     font-size: 0.9rem;
     font-weight: 700;
     color: #1e293b;
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
 .meister-trust-item .trust-icon {
     flex-shrink: 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 .safe-booking-guarantee-box {
     background: #eff6ff;
-    border: 1.5px solid #bfdbfe;
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 0.88rem;
+    border: 1px solid #bfdbfe;
+    border-radius: 14px;
+    padding: 13px 16px;
+    font-size: 0.87rem;
     color: #1e3a8a;
-    line-height: 1.5;
+    line-height: 1.55;
     text-align: center;
 }
 
 .safe-booking-guarantee-box strong {
     font-weight: 900;
-    color: #1d4ed8;
+    color: #2563eb;
 }
 
 /* ==============================================================================
@@ -1851,15 +2018,15 @@ body {
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    margin: 4px 0;
+    margin: 6px 0;
 }
 
 .footer-sns-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 12px;
-    border-radius: 8px;
+    padding: 7px 13px;
+    border-radius: 9999px;
     background: #1e293b;
     border: 1px solid #334155;
     color: #e2e8f0;
@@ -1924,30 +2091,50 @@ body {
     }
 
     .clean-cat-card {
-        padding: 26px 12px 22px;
-        border-radius: 16px;
+        padding: 24px 14px 20px;
+        border-radius: 18px;
+    }
+
+    .clean-cat-card::after {
+        top: 12px;
+        right: 14px;
+        font-size: 1.15rem;
     }
 
     .clean-card-icon {
-        font-size: 2.3rem;
-        margin-bottom: 10px;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        font-size: 1.55rem;
+        margin-bottom: 12px;
     }
 
     .clean-card-name {
-        font-size: 1.08rem;
+        font-size: 1.06rem;
     }
 
     .prebooking-benefit-card {
-        padding: 16px 16px 14px;
+        padding: 18px 18px 15px;
     }
 
     .hifreed-card {
-        padding: 22px 16px 20px;
+        padding: 0 18px 22px;
+        border-radius: 20px;
+    }
+
+    .hifreed-header {
+        margin: 0 -18px 22px -18px;
+        padding: 26px 18px 24px;
     }
 
     .hifreed-steps-grid {
         grid-template-columns: 1fr;
-        gap: 8px;
+        gap: 10px;
+    }
+
+    .clean-booking-box {
+        padding: 26px 18px;
+        border-radius: 20px;
     }
 
     .date-time-flex,
@@ -1968,4 +2155,5 @@ body {
         display: none;
     }
 }
+
 
