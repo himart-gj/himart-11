@@ -31,8 +31,8 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: '가전구매',
         icon: '📺',
         popupHeaderLead: '삼성, LG 및 기타 가전 단품/세트 상담',
-        // 요청: 단품/세트만 주요 옵션으로 두고 이사/입주/웨딩은 같은 선상이 아닌 추가 선택으로 분리
-        mainOptions: ['단품 상담', '세트 상담'],
+        // 요청: 단품/세트/가전 구독(케어) 주요 옵션으로 두고 이사/입주/웨딩은 추가 선택으로 분리
+        mainOptions: ['단품 상담', '세트 상담', '가전 구독(케어)'],
         additionalOptions: {
             title: '추가 상황 선택 (선택 사항)',
             items: ['입주', '웨딩', '이사']
@@ -331,6 +331,7 @@ export default function App() {
     // 롯데하이마트 경기광주점 공식 검증 링크
     const STORE_LINKS = {
         phone: 'tel:031-767-1044',
+        naverMap: 'https://naver.me/5Ifcoycf',
         kakaoChannel: 'https://pf.kakao.com/_hnxcxexl',
         kakaoChat: 'https://pf.kakao.com/_hnxcxexl/chat',
         naverBlog: 'https://m.blog.naver.com/himart411',
@@ -416,6 +417,29 @@ export default function App() {
             content_name: modalCategory.name,
             content_category: modalCategory.id,
             checked_items: selectedChecks.length > 0 ? selectedChecks.join(', ') : '미선택'
+        });
+
+        setTimeout(() => {
+            const el = document.getElementById('reservationFormSection');
+            if (el) {
+                const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }, 100);
+    };
+
+    // 하이프리드 가전 지원 결합 혜택 섹션 하단 바로가기 버튼 클릭 -> 가전구매 카테고리 선택 상태로 하단 예약폼 활성화 & 스크롤
+    const handleHiFreedBooking = () => {
+        setSelectedServiceId('appliance');
+        setSelectedChecks(prev => prev.includes('하이프리드 가전 지원 결합 혜택') ? prev : [...prev, '하이프리드 가전 지원 결합 혜택']);
+        setIsBookingActive(true);
+        setBookingSubmitted(false);
+        setModalCategory(null);
+
+        trackMetaEvent('InitiateCheckout', {
+            content_name: '가전구매 (하이프리드 결합 혜택)',
+            content_category: 'appliance',
+            checked_items: '하이프리드 가전 지원 결합 혜택'
         });
 
         setTimeout(() => {
@@ -705,7 +729,7 @@ export default function App() {
     return (
         <div className="landing-clean-wrapper">
             {/* ==============================================================================
-             * 1. 최상단 매장 기본 정보 바 (기본주소, 연락처, 영업시간 10:00 - 20:00)
+             * 1. 최상단 매장 기본 정보 바 (기본주소 + 길찾기, 연락처, 영업시간 10:00 - 20:00)
              * ============================================================================== */}
             <header className="clean-top-store-bar">
                 <div className="clean-top-store-inner">
@@ -715,7 +739,16 @@ export default function App() {
                     </div>
                     <div className="clean-store-meta-group">
                         <span className="clean-meta-item">
-                            📍 경기도 광주시 이배재로 8 (경안동 36-9)
+                            📍 경기도 광주시 이배재로 8{' '}
+                            <a
+                                href={STORE_LINKS.naverMap}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="clean-map-link-badge"
+                                onClick={() => trackMetaEvent('FindLocation', { location: '상단_길찾기' })}
+                            >
+                                [길찾기]
+                            </a>
                         </span>
                         <span className="clean-meta-divider">|</span>
                         <span className="clean-meta-item">
@@ -730,50 +763,10 @@ export default function App() {
             </header>
 
             {/* ==============================================================================
-             * 2. 네이버 블로그, 인스타, 페이스북 + 카톡문의, 네이버톡문의, 전화문의 한 줄 배치
+             * 2. 상단 퀵 링크 바 (역이탈 방지 최적화: 즉시 상담 창구 3가지만 배치)
              * ============================================================================== */}
             <nav className="clean-quick-nav-bar">
                 <div className="clean-quick-nav-inner">
-                    {/* SNS 바로가기 그룹 */}
-                    <div className="clean-nav-sns-group">
-                        <a 
-                            href={STORE_LINKS.naverBlog} 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="clean-sns-btn blog"
-                            title="롯데하이마트 경기광주점 공식 네이버 블로그"
-                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_네이버블로그' })}
-                        >
-                            <span className="btn-icon-dot naver-dot">N</span>
-                            <span className="btn-txt">네이버 블로그</span>
-                        </a>
-                        <a 
-                            href={STORE_LINKS.instagram} 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="clean-sns-btn insta"
-                            title="롯데하이마트 경기광주점 공식 인스타그램"
-                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_인스타' })}
-                        >
-                            <span className="btn-icon-dot insta-dot">📸</span>
-                            <span className="btn-txt">인스타그램</span>
-                        </a>
-                        <a 
-                            href={STORE_LINKS.facebook} 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="clean-sns-btn fb"
-                            title="롯데하이마트 경기광주점 공식 페이스북"
-                            onClick={() => trackMetaEvent('Contact', { channel: '한줄_페이스북' })}
-                        >
-                            <span className="btn-icon-dot fb-dot">f</span>
-                            <span className="btn-txt">페이스북</span>
-                        </a>
-                    </div>
-
-                    <div className="clean-nav-v-line" />
-
-                    {/* 실시간 톡 및 전화 문의 그룹 */}
                     <div className="clean-nav-inquiry-group">
                         <a 
                             href={STORE_LINKS.kakaoChat} 
@@ -811,7 +804,7 @@ export default function App() {
             </nav>
 
             {/* ==============================================================================
-             * 3. 임팩트 있는 한 줄 헤더
+             * 3. 임팩트 있는 메인 타이틀 & 사전예약 전용 3대 핵심 혜택 상시 배너
              * ============================================================================== */}
             <main className="clean-main-content">
                 <section className="clean-hero-simple">
@@ -819,13 +812,38 @@ export default function App() {
                     <h1 className="clean-hero-title">
                         롯데하이마트 경기광주점
                     </h1>
+
+                    {/* 사전예약 전용 3대 핵심 혜택 상시 배너 */}
+                    <div className="prebooking-benefit-card">
+                        <div className="prebooking-benefit-header">
+                            <span className="prebooking-benefit-title">🎁 온라인 사전예약 고객 전용 3대 핵심 혜택</span>
+                        </div>
+                        <ul className="prebooking-benefit-list">
+                            <li>
+                                <span className="benefit-check">✔</span>
+                                <span>LG·삼성 다품목 동시구매 시 브랜드 특별 추가 지원금 적용</span>
+                            </li>
+                            <li>
+                                <span className="benefit-check">✔</span>
+                                <span>결제 금액대별 제휴카드 캐시백 및 L.POINT 적립 혜택 (조건 충족 시)</span>
+                            </li>
+                            <li>
+                                <span className="benefit-check">✔</span>
+                                <span>입주·웨딩·이사 및 단품/세트 1:1 맞춤형 투명 비교견적서 우선 제공</span>
+                            </li>
+                        </ul>
+                        <p className="prebooking-benefit-disclaimer">
+                            ※ 안내 혜택은 당월 행사 및 제휴카드 발급·실적 조건에 따라 달라질 수 있습니다.
+                        </p>
+                    </div>
+
                     <p className="clean-hero-impact-line">
                         원하시는 상담을 선택해 주세요
                     </p>
                 </section>
 
                 {/* ==============================================================================
-                 * 4. 첫 화면 카드 (깔끔한 이모티콘 + 명칭만 노출)
+                 * 4. 첫 화면 6대 카테고리 카드 (깔끔한 이모티콘 + 명칭만 노출)
                  * ============================================================================== */}
                 <section className="clean-categories-section">
                     <div className="clean-grid-6">
@@ -840,6 +858,109 @@ export default function App() {
                                 <div className="clean-card-name">{cat.name}</div>
                             </button>
                         ))}
+                    </div>
+                </section>
+
+                {/* ==============================================================================
+                 * 4-2. 첫 화면 '하이프리드 가전 지원 결합 혜택' 핵심 안내 섹션 전면 배치
+                 * ============================================================================== */}
+                <section className="hifreed-highlight-section">
+                    <div className="hifreed-card">
+                        <div className="hifreed-header">
+                            <span className="hifreed-hot-badge">🔥 경기광주점 인기 혜택</span>
+                            <h2 className="hifreed-headline">하이프리드 가전 지원 결합 혜택 안내</h2>
+                            <p className="hifreed-subcopy">
+                                삼성·LG 등 브랜드 제한 없이 가전 지원금 35개월 분할 입금 지원 + 150회 만기 시 납입 원금 100% 전액 환급 (만기 85% + 축하금 15%)
+                            </p>
+                        </div>
+
+                        {/* 3단계 핵심 절차 요약 (가로 3단 카드) */}
+                        <div className="hifreed-steps-grid">
+                            <div className="hifreed-step-box">
+                                <span className="step-badge">STEP 1. 가전 자유 선택</span>
+                                <p className="step-desc">브랜드·품목 제한 없이 필요한 가전제품 선택</p>
+                            </div>
+                            <div className="hifreed-step-box">
+                                <span className="step-badge">STEP 2. 35개월 분할 지원</span>
+                                <p className="step-desc">제휴카드 결제 후 35개월간 매월 10일 현금 입금 지원</p>
+                            </div>
+                            <div className="hifreed-step-box">
+                                <span className="step-badge">STEP 3. 만기 100% 환급</span>
+                                <p className="step-desc">150회 만기 완납 시 만기 85% + 축하금 15% 합산 100% 전액 환급</p>
+                            </div>
+                        </div>
+
+                        {/* 플랜별 지원금 및 만기 환급금 한눈에 보기 (모바일 가독성 좋은 깔끔한 표) */}
+                        <div className="hifreed-table-wrapper">
+                            <div className="hifreed-table-title">플랜별 지원금 및 만기 환급금 한눈에 보기</div>
+                            <div className="hifreed-table-scroll">
+                                <table className="hifreed-plan-table">
+                                    <thead>
+                                        <tr>
+                                            <th>플랜 구분</th>
+                                            <th>월 상조회비 (150회)</th>
+                                            <th>35개월 가전 지원금</th>
+                                            <th>150회 만기 환급</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td className="plan-name-cell">하이프리드 75 (1구좌)</td>
+                                            <td>월 상조회비 33,000원(150회)</td>
+                                            <td className="plan-support-cell">월 23,473원 입금 <span>(총 75만 원 지원)</span></td>
+                                            <td className="plan-refund-cell">만기 환급 495만 원</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="plan-name-cell">하이프리드 150 (2구좌)</td>
+                                            <td>월 상조회비 66,000원(150회)</td>
+                                            <td className="plan-support-cell">월 46,946원 입금 <span>(총 150만 원 지원)</span></td>
+                                            <td className="plan-refund-cell">만기 환급 990만 원</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="plan-name-cell">하이프리드 225 (3구좌)</td>
+                                            <td>월 상조회비 99,000원(150회)</td>
+                                            <td className="plan-support-cell">월 70,419원 입금 <span>(총 225만 원 지원)</span></td>
+                                            <td className="plan-refund-cell">만기 환급 1,485만 원</td>
+                                        </tr>
+                                        <tr className="popular-row">
+                                            <td className="plan-name-cell">
+                                                <span className="popular-pill">인기</span> 하이프리드 300 (4구좌·인기)
+                                            </td>
+                                            <td>월 상조회비 132,000원(150회)</td>
+                                            <td className="plan-support-cell">월 93,892원 입금 <span>(총 300만 원 지원)</span></td>
+                                            <td className="plan-refund-cell">만기 환급 1,980만 원</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {/* 다구좌 결합 안내 */}
+                        <div className="hifreed-multi-guide">
+                            💡 플랜별 중복·자유 조합 가능 (최대 8개까지 가입 가능 — 300 플랜×2개 시 총 600만 원 지원 / ×4개 시 총 1,200만 원 지원 / ×8개 시 총 2,400만 원 분할 지원)
+                        </div>
+
+                        {/* 섹션 하단 바로가기 버튼 */}
+                        <div className="hifreed-cta-wrap">
+                            <button
+                                type="button"
+                                className="hifreed-cta-btn"
+                                onClick={handleHiFreedBooking}
+                            >
+                                이 혜택 포함하여 가전 상담 예약하기 🡵
+                            </button>
+                        </div>
+
+                        {/* 공정거래위원회 필수 고지 4대 문구 (하단 회색 안심 안내 박스) */}
+                        <div className="hifreed-ftc-notice-box">
+                            <div className="ftc-notice-title">공정거래위원회 필수 고지 안내</div>
+                            <ol className="ftc-notice-list">
+                                <li>1) 본 상품은 선불식 할부거래(상조) 결합 상품이며, 은행의 예·적금 등 금융상품이 아닙니다.</li>
+                                <li>2) 상조 서비스를 미이용한 상태로 150회 만기 완납 시, 만기환급금 85% + 만기축하금 15%를 합산하여 납입 원금 100% 전액이 환급됩니다.</li>
+                                <li>3) 35회차 이내 중도 해약 시 가전 지원금 지원이 중단되며, 상조 표준약관에 따라 중도해약환급금이 적용됩니다.</li>
+                                <li>4) 가입 기간 중 상조는 물론 크루즈 여행, 웨딩 등 프리드라이프 라이프케어 서비스로 100% 전환 이용 가능합니다.</li>
+                            </ol>
+                        </div>
                     </div>
                 </section>
 
@@ -866,6 +987,18 @@ export default function App() {
                                     >
                                         ✕ 다른 상담 선택하기 (첫 화면으로)
                                     </button>
+                                </div>
+
+                                {/* 6. 예약 폼 상단 '전문 마이스터 신뢰 배지' 추가 */}
+                                <div className="meister-trust-badge-box">
+                                    <div className="meister-trust-item">
+                                        <span className="trust-icon">🛡️</span>
+                                        <span>롯데하이마트 경기광주점 분야별 전문 마이스터가 과장 없이 정직한 1:1 맞춤 견적을 직접 설계해 드립니다.</span>
+                                    </div>
+                                    <div className="meister-trust-item">
+                                        <span className="trust-icon">🚗</span>
+                                        <span>매장 방문 시 전용 지상 대형 무료 주차장(경기도 광주시 이배재로 8)을 편리하게 이용하실 수 있습니다.</span>
+                                    </div>
                                 </div>
 
                                 <form onSubmit={handleSubmitReservation} className="clean-form">
@@ -915,7 +1048,7 @@ export default function App() {
                                                 className={`consultation-type-card ${consultationType === '매장 방문' ? 'selected' : ''}`}
                                                 onClick={() => setConsultationType('매장 방문')}
                                             >
-                                                <div className="type-icon">🏬</div>
+                                                <div className="type-icon">🏢</div>
                                                 <div className="type-info">
                                                     <div className="type-title">매장 방문</div>
                                                     <div className="type-desc">경기광주점 직접 내방 1:1 상담 (10:00 - 20:00)</div>
@@ -931,7 +1064,7 @@ export default function App() {
                                                 <div className="type-icon">📞</div>
                                                 <div className="type-info">
                                                     <div className="type-title">비대면 상담</div>
-                                                    <div className="type-desc">전화 또는 카톡/메신저 유선 견적 상담</div>
+                                                    <div className="type-desc">카톡·문자 비대면 견적표 우선 수령 또는 유선 상담</div>
                                                 </div>
                                                 <div className="type-check">{consultationType === '비대면 상담' ? '●' : '○'}</div>
                                             </button>
@@ -1001,6 +1134,11 @@ export default function App() {
                                         </button>
                                     </div>
 
+                                    {/* 7. 제출 버튼 상단 '영업 전화 안심 문구' 추가 */}
+                                    <div className="safe-booking-guarantee-box">
+                                        🔒 <strong>안심 예약 보장:</strong> 원치 않는 권유 전화 없이, 요청하신 맞춤 견적·혜택표부터 카카오톡이나 문자로 편하게 받아보실 수 있습니다.
+                                    </div>
+
                                     <button 
                                         type="submit" 
                                         className="clean-submit-btn"
@@ -1016,7 +1154,7 @@ export default function App() {
                                 <div className="receipt-success-badge">🎉 예약 접수 완료</div>
                                 <h2 className="receipt-title">상담 예약이 정상적으로 접수되었습니다!</h2>
                                 <p className="receipt-desc">
-                                    롯데하이마트 경기광주점 전문 상담 매니저가 남겨주신 연락처로 신속히 안내 전화를 드립니다.
+                                    롯데하이마트 경기광주점 전문 상담 매니저가 남겨주신 연락처로 신속히 안내를 도와드립니다.
                                 </p>
 
                                 <div className="receipt-ticket">
@@ -1042,7 +1180,7 @@ export default function App() {
                                     </div>
                                     <div className="ticket-row">
                                         <span className="lbl">매장 위치</span>
-                                        <span className="val">경기 광주시 이배재로 8 (031-767-1044)</span>
+                                        <span className="val">경기도 광주시 이배재로 8 (031-767-1044)</span>
                                     </div>
                                 </div>
 
@@ -1125,24 +1263,70 @@ export default function App() {
             )}
 
             {/* ==============================================================================
-             * 7. 단정한 푸터
+             * 7. 단정한 푸터 (주소 통일 + 길찾기 연결 + 공식 SNS 홍보 채널 하단 배치)
              * ============================================================================== */}
             <footer className="clean-footer">
                 <div className="clean-footer-inner">
                     <p className="clean-footer-info">
-                        <strong>롯데하이마트 경기광주점</strong> | 대표전화: <a href="tel:031-767-1044">031-767-1044</a> | 연중무휴 10:00 - 20:00<br />
-                        사업장 소재지: 경기도 광주시 이배재로 8 (경안동 36-9)
+                        <strong>롯데하이마트 경기광주점</strong> | 대표전화: <a href="tel:031-767-1044">031-767-1044</a> | 영업시간: 10:00 - 20:00 (연중무휴)<br />
+                        주소: 경기도 광주시 이배재로 8{' '}
+                        <a
+                            href={STORE_LINKS.naverMap}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="footer-map-link"
+                            onClick={() => trackMetaEvent('FindLocation', { location: '푸터_길찾기' })}
+                        >
+                            [길찾기]
+                        </a>
                     </p>
+
+                    {/* 하단 푸터 SNS 홍보 채널 버튼 영역 */}
+                    <div className="clean-footer-sns-group">
+                        <a 
+                            href={STORE_LINKS.naverBlog} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="footer-sns-btn"
+                            onClick={() => trackMetaEvent('Contact', { channel: '푸터_네이버블로그' })}
+                        >
+                            <span className="btn-icon-dot naver-dot">N</span>
+                            <span>네이버 블로그</span>
+                        </a>
+                        <a 
+                            href={STORE_LINKS.instagram} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="footer-sns-btn"
+                            onClick={() => trackMetaEvent('Contact', { channel: '푸터_인스타' })}
+                        >
+                            <span className="btn-icon-dot insta-dot">📸</span>
+                            <span>인스타그램</span>
+                        </a>
+                        <a 
+                            href={STORE_LINKS.facebook} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="footer-sns-btn"
+                            onClick={() => trackMetaEvent('Contact', { channel: '푸터_페이스북' })}
+                        >
+                            <span className="btn-icon-dot fb-dot">f</span>
+                            <span>페이스북</span>
+                        </a>
+                        <a 
+                            href={STORE_LINKS.kakaoChannel} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="footer-sns-btn"
+                            onClick={() => trackMetaEvent('Contact', { channel: '푸터_카카오채널' })}
+                        >
+                            <span>💬</span>
+                            <span>카카오톡 채널</span>
+                        </a>
+                    </div>
+
                     <div className="clean-footer-links">
                         <button type="button" onClick={() => setIsPrivacyModalOpen(true)}>개인정보처리방침</button>
-                        <span>|</span>
-                        <a href={STORE_LINKS.naverBlog} target="_blank" rel="noreferrer">네이버 블로그</a>
-                        <span>|</span>
-                        <a href={STORE_LINKS.instagram} target="_blank" rel="noreferrer">인스타그램</a>
-                        <span>|</span>
-                        <a href={STORE_LINKS.facebook} target="_blank" rel="noreferrer">페이스북</a>
-                        <span>|</span>
-                        <a href={STORE_LINKS.kakaoChannel} target="_blank" rel="noreferrer">카카오톡 채널</a>
                     </div>
                     <p className="clean-footer-copy">© LOTTE HIMART Gyeonggi-Gwangju Branch. All rights reserved.</p>
                 </div>
