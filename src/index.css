@@ -2156,4 +2156,917 @@ body {
     }
 }
 
+/* ==============================================================================
+ * 9. 상단 네비게이션 스위칭 탭 ('상담 예약' <-> '매장 쇼룸 투어') & 미리보기 배너
+ * ============================================================================== */
+.main-mode-switch-wrap {
+    max-width: 680px;
+    margin: 0 auto 24px;
+    background: #e2e8f0;
+    padding: 6px;
+    border-radius: 9999px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.06);
+}
+
+.main-mode-tab-btn {
+    border: none;
+    background: transparent;
+    color: #475569;
+    font-size: 0.96rem;
+    font-weight: 800;
+    padding: 13px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.main-mode-tab-btn:hover:not(.active) {
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.main-mode-tab-btn.active {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.35);
+}
+
+/* 탭 1(상담 예약 화면) 6대 카테고리 바로 위 쇼룸 투어 이동 배너 버튼 */
+.showroom-preview-banner-wrap {
+    margin-bottom: 18px;
+}
+
+.showroom-preview-banner-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1.5px solid #93c5fd;
+    border-radius: 16px;
+    padding: 14px 20px;
+    color: #1e3a8a;
+    font-size: 0.96rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 14px -3px rgba(37, 99, 235, 0.14);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: -0.015em;
+}
+
+.showroom-preview-banner-btn:hover {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-color: #2563eb;
+    color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.22);
+}
+
+/* ==============================================================================
+ * 10. [탭 2] 🏢 A·B동 매장 쇼룸 투어 (STEP 1 ~ STEP 3)
+ * ============================================================================== */
+.showroom-tour-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    animation: fadeInOverlay 0.28s ease-out;
+}
+
+.showroom-step1-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 28px 24px 24px;
+    box-shadow: 0 10px 30px -6px rgba(15, 23, 42, 0.06);
+}
+
+.showroom-step-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.showroom-step-pill,
+.panel-step-pill {
+    display: inline-flex;
+    align-items: center;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #2563eb;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-bottom: 8px;
+}
+
+.showroom-step-title {
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+
+.showroom-step-sub {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.55;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.showroom-step-sub strong {
+    color: #1e3a8a;
+    font-weight: 800;
+}
+
+/* [STEP 1] 매장 외관 와이드 라운드 카드 (border-radius: 20px) */
+.showroom-exterior-Card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 62%, #1e293b 100%);
+    border: 1.5px solid #cbd5e1;
+    box-shadow: 0 14px 32px -8px rgba(15, 23, 42, 0.18);
+    min-height: 340px;
+    margin-bottom: 18px;
+}
+
+.showroom-exterior-img {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-height: 460px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.showroom-exterior-img.is-loaded {
+    display: block;
+}
+
+.showroom-exterior-img.is-loaded + .twin-building-fallback {
+    display: none;
+}
+
+/* 이미지 미로드 시 세련된 트윈 빌딩 그래픽 배경 */
+.twin-building-fallback {
+    padding: 30px 20px 105px;
+    position: relative;
+    z-index: 1;
+}
+
+.twin-buildings-stage {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 10px;
+    max-width: 820px;
+    margin: 0 auto 14px;
+}
+
+.building-graphic {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(147, 197, 253, 0.65);
+    border-radius: 16px 16px 8px 8px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+}
+
+.building-graphic:hover,
+.building-graphic.selected {
+    transform: translateY(-3px);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.45), 0 14px 28px rgba(15, 23, 42, 0.32);
+}
+
+.building-roof-sign {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 7px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    letter-spacing: -0.01em;
+}
+
+.building-roof-sign strong {
+    color: #93c5fd;
+}
+
+.lotte-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    display: inline-block;
+}
+
+.building-window-floor {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.building-window-floor .fl-tag {
+    background: #1e3a8a;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.building-window-floor .fl-txt {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.35;
+}
+
+.building-entrance {
+    margin-top: auto;
+    background: #e2e8f0;
+    color: #334155;
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.building-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.building-bridge span {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e2e8f0;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 8px 6px;
+    border-radius: 8px;
+    writing-mode: vertical-rl;
+}
+
+.parking-lot-strip {
+    max-width: 820px;
+    margin: 0 auto;
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    padding: 7px 14px;
+    color: #cbd5e1;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* 사진 위 왼쪽(가로 25% 지점) & 오른쪽(가로 75% 지점) 글래스모피즘 핫스팟 핀 오버레이 */
+.exterior-hotspots-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.exterior-hotspot-pin {
+    pointer-events: auto;
+    position: absolute;
+    bottom: 16px;
+    transform: translateX(-50%);
+    width: 44%;
+    max-width: 390px;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border: 1.5px solid rgba(147, 197, 253, 0.65);
+    border-radius: 14px;
+    padding: 10px 14px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.45);
+    transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 왼쪽 핀: 가로 25% 지점 / 오른쪽 핀: 가로 75% 지점 */
+.exterior-hotspot-pin.pin-left {
+    left: 25%;
+}
+
+.exterior-hotspot-pin.pin-right {
+    left: 75%;
+}
+
+.exterior-hotspot-pin:hover,
+.exterior-hotspot-pin.active {
+    background: rgba(30, 58, 138, 0.92);
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.38), 0 12px 28px rgba(15, 23, 42, 0.5);
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.hotspot-pulse-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #38bdf8;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 0 10px #38bdf8;
+    animation: hotspotPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes hotspotPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.85);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+    }
+}
+
+.hotspot-pin-text {
+    font-size: 0.79rem;
+    font-weight: 800;
+    line-height: 1.38;
+    color: #f8fafc;
+    letter-spacing: -0.015em;
+}
+
+/* 사진 바로 아래 모바일 터치 친화적 대형 탭 버튼 2개 */
+.building-big-tabs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.building-big-tab {
+    background: #f8fafc;
+    border: 2px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 16px 18px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.building-big-tab:hover {
+    background: #eff6ff;
+    border-color: #60a5fa;
+    transform: translateY(-2px);
+}
+
+.building-big-tab.active {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    border-color: #1e3a8a;
+    color: #ffffff;
+    box-shadow: 0 10px 24px -6px rgba(30, 58, 138, 0.45);
+}
+
+.building-big-tab .big-tab-title {
+    font-size: 1.02rem;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.building-big-tab.active .big-tab-title {
+    color: #ffffff;
+}
+
+.building-big-tab .big-tab-sub {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.building-big-tab.active .big-tab-sub {
+    color: #bfdbfe;
+}
+
+/* ==============================================================================
+ * [STEP 2] 동 선택 시 1층(1F) / 2층(2F) 층별 스위칭 및 내부 사진 뷰어 패널
+ * ============================================================================== */
+.showroom-step2-panel {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: 0 14px 36px -8px rgba(15, 23, 42, 0.08);
+    animation: slideFadeUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.showroom-panel-top-bar {
+    margin-bottom: 18px;
+}
+
+.panel-building-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.panel-active-building-badge {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 9999px;
+}
+
+.panel-zone-headline {
+    font-size: clamp(1.22rem, 2.8vw, 1.5rem);
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+}
+
+/* 1층(1F) / 2층(2F) 층별 전환 탭 */
+.floor-switch-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.floor-switch-btn {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floor-switch-btn:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+}
+
+.floor-switch-btn.active {
+    background: #eff6ff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.16), 0 6px 16px -4px rgba(37, 99, 235, 0.15);
+}
+
+.floor-switch-btn .fl-btn-main {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.floor-switch-btn.active .fl-btn-main {
+    color: #1d4ed8;
+}
+
+.floor-switch-btn .fl-btn-sub {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.floor-switch-btn.active .fl-btn-sub {
+    color: #2563eb;
+}
+
+/* 층별 전체 내부 전경 사진 슬롯 & 깨진 아이콘 없는 쇼룸 일러스트 배너 */
+.floor-overview-photo-slot {
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 26px;
+    border: 1px solid #cbd5e1;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.floor-overview-img {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.floor-overview-img.is-loaded {
+    display: block;
+}
+
+.floor-overview-img.is-loaded + .floor-overview-fallback {
+    display: none;
+}
+
+.floor-overview-fallback {
+    padding: 28px 22px;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.floor-fallback-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.floor-fallback-emoji {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+}
+
+.floor-fallback-badge {
+    background: rgba(56, 189, 248, 0.18);
+    border: 1px solid rgba(125, 211, 252, 0.4);
+    color: #bae6fd;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    letter-spacing: 0.04em;
+}
+
+.floor-fallback-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.floor-fallback-desc {
+    font-size: 0.86rem;
+    color: #cbd5e1;
+    max-width: 680px;
+    line-height: 1.5;
+}
+
+/* ==============================================================================
+ * [STEP 3] 층별 세부 코너 칩 선택 & 코너 상세 설명 카드
+ * ============================================================================== */
+.showroom-step3-section {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 22px;
+}
+
+.step3-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.step3-guide-txt {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.corner-chips-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.corner-select-chip {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 12px 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.corner-select-chip:hover {
+    background: #ffffff;
+    border-color: #93c5fd;
+    transform: translateY(-2px);
+}
+
+.corner-select-chip.active {
+    background: #eff6ff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15), 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.corner-chip-num {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #64748b;
+    background: #e2e8f0;
+    padding: 2px 7px;
+    border-radius: 6px;
+}
+
+.corner-select-chip.active .corner-chip-num {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.corner-chip-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.35;
+}
+
+.corner-select-chip.active .corner-chip-title {
+    color: #1e3a8a;
+}
+
+/* 코너 상세 설명 카드 */
+.corner-detail-card {
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.06);
+    animation: fadeInOverlay 0.22s ease-out;
+}
+
+.corner-photo-slot {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-bottom: 1px solid #cbd5e1;
+    overflow: hidden;
+}
+
+.corner-slot-img {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.corner-slot-img.is-loaded {
+    display: block;
+}
+
+.corner-slot-img.is-loaded + .corner-slot-fallback {
+    display: none;
+}
+
+.corner-slot-fallback {
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.corner-fallback-icon-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1.5px solid #93c5fd;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+}
+
+.corner-fallback-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: left;
+}
+
+.corner-fallback-zone {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: #2563eb;
+}
+
+.corner-fallback-name {
+    font-size: 1.12rem;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.corner-detail-body {
+    padding: 22px 24px 24px;
+    background: #ffffff;
+    text-align: left;
+}
+
+.corner-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.corner-location-tag {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 9999px;
+}
+
+.corner-linked-cat-tag {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 9999px;
+}
+
+.corner-detail-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.corner-detail-desc {
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.corner-items-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+
+.corner-items-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.corner-items-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.corner-item-tag {
+    background: #ffffff;
+    border: 1.5px solid #bfdbfe;
+    color: #1e3a8a;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+.corner-book-cta-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 22px;
+    font-size: 1.02rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.corner-book-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.5);
+}
+
+@media (max-width: 768px) {
+    .main-mode-switch-wrap {
+        grid-template-columns: 1fr;
+        border-radius: 18px;
+    }
+
+    .main-mode-tab-btn {
+        border-radius: 14px;
+        padding: 12px 14px;
+        font-size: 0.92rem;
+    }
+
+    .showroom-step1-card,
+    .showroom-step2-panel {
+        padding: 20px 16px;
+        border-radius: 20px;
+    }
+
+    .twin-building-fallback {
+        padding: 20px 12px 150px;
+    }
+
+    .twin-buildings-stage {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .building-bridge {
+        display: none;
+    }
+
+    .exterior-hotspot-pin {
+        width: 46%;
+        padding: 8px 10px;
+        bottom: 12px;
+    }
+
+    .hotspot-pin-text {
+        font-size: 0.72rem;
+    }
+
+    .building-big-tabs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .corner-detail-body {
+        padding: 18px 16px 20px;
+    }
+}
+
+
 

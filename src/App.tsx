@@ -294,7 +294,322 @@ const KT_MVNO_PLANS_DATA: Record<string, MvnoPlanInfo> = {
     }
 };
 
+// ==============================================================================
+// A·B동 매장 쇼룸 투어 (층별 및 세부 코너 안내) 데이터 정의
+// ==============================================================================
+interface ShowroomCorner {
+    id: string;
+    icon: string;
+    title: string;           // 예: '📱 모바일 전문관 (애플존·삼성존)'
+    cleanTitle: string;      // 프리필용 깔끔한 코너명 (이모지 제외)
+    items: string[];         // 전시 품목 태그 배열
+    description: string;     // 코너 상세 설명
+    linkedCategoryId: string; // 연동 예약 카테고리 ID ('smartphone' | 'appliance' | 'interior')
+    linkedCategoryName: string; // 연동 예약 카테고리명 ('스마트폰' | '가전구매' | '홈인테리어')
+    imageSlot: string;       // 코너 사진 슬롯 경로
+}
+
+interface ShowroomFloor {
+    floorKey: '1F' | '2F';
+    floorLabel: string;      // '1층 (1F)' | '2층 (2F)'
+    zoneTitle: string;       // 예: 'A동 1층 - 스마트 모바일 & IT·오디오 존'
+    shortSummary: string;
+    imageSlot: string;       // './a_1f.jpg' 등
+    corners: ShowroomCorner[];
+}
+
+interface ShowroomBuilding {
+    buildingKey: 'A' | 'B';
+    buildingName: string;    // 'A동 (좌측관)' | 'B동 (우측관)'
+    hotspotText: string;
+    enterBtnText: string;
+    summary1F: string;
+    summary2F: string;
+    floors: Record<'1F' | '2F', ShowroomFloor>;
+}
+
+const SHOWROOM_BUILDINGS: Record<'A' | 'B', ShowroomBuilding> = {
+    A: {
+        buildingKey: 'A',
+        buildingName: 'A동 (좌측관)',
+        hotspotText: '📍 A동 (좌측관) 클릭 | 1F 모바일·IT·오디오 / 2F 냉장·세탁·주방·장리폼',
+        enterBtnText: '🏢 A동 (좌측관) 내부 들어가기',
+        summary1F: '1F 모바일·IT·오디오',
+        summary2F: '2F 냉장·세탁·주방·장리폼',
+        floors: {
+            '1F': {
+                floorKey: '1F',
+                floorLabel: '1층 (1F)',
+                zoneTitle: 'A동 1층 - 스마트 모바일 & IT·오디오 존',
+                shortSummary: 'Apple·Galaxy 공식 체험존, 통신 3사/자급제/알뜰폰, 최신 노트북·데스크탑·타건존, 하이엔드 블루투스 오디오 청음 공간',
+                imageSlot: './a_1f.jpg',
+                corners: [
+                    {
+                        id: 'a-1f-mobile',
+                        icon: '📱',
+                        title: '📱 모바일 전문관 (애플존·삼성존)',
+                        cleanTitle: '모바일 전문관 (애플존·삼성존)',
+                        items: [
+                            'Apple 공식 체험존(아이폰·아이패드·애플워치)',
+                            '삼성 Galaxy 체험존',
+                            'SKT·KT·LGU+ 통신 3사',
+                            '자급제폰',
+                            '하이마트 알뜰요금제'
+                        ],
+                        description: '최신 아이폰과 갤럭시 전 라인업을 직접 만져보고, 통신 3사 지원금부터 자급제·알뜰폰 요금제까지 한자리에서 투명하게 비교할 수 있는 모바일 특화 공간입니다.',
+                        linkedCategoryId: 'smartphone',
+                        linkedCategoryName: '스마트폰',
+                        imageSlot: './a_1f_corner1.jpg'
+                    },
+                    {
+                        id: 'a-1f-it',
+                        icon: '💻',
+                        title: '💻 IT·컴퓨터 & 모니터·타건 존',
+                        cleanTitle: 'IT·컴퓨터 & 모니터·타건 존',
+                        items: [
+                            '그램·갤럭시북 등 최신 노트북',
+                            '데스크탑 PC',
+                            '고주사율 모니터',
+                            '기계식 키보드·마우스'
+                        ],
+                        description: '학생용·사무용 노트북부터 고성능 데스크탑과 모니터, 직접 눌러보고 고르는 키보드·마우스까지 완벽하게 갖춘 디지털 IT 체험관입니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './a_1f_corner2.jpg'
+                    },
+                    {
+                        id: 'a-1f-audio',
+                        icon: '🎧',
+                        title: '🎧 블루투스 오디오 & 스마트 가전 존',
+                        cleanTitle: '블루투스 오디오 & 스마트 가전 존',
+                        items: [
+                            '프리미엄 블루투스 스피커',
+                            '노이즈캔슬링 블루투스 이어폰·헤드폰',
+                            '소형 스마트 가전'
+                        ],
+                        description: '공간의 품격을 높여주는 하이엔드 블루투스 스피커와 이어폰의 생생한 사운드를 직접 청음해 보고 선택하실 수 있습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './a_1f_corner3.jpg'
+                    }
+                ]
+            },
+            '2F': {
+                floorKey: '2F',
+                floorLabel: '2층 (2F)',
+                zoneTitle: 'A동 2층 - 대형 주방·세탁 가전 & 빌트인 리폼 관',
+                shortSummary: '비스포크·오브제 냉장고/김치냉장고, 올인원 세탁건조기·워시타워, 식기세척기·인덕션, 맞춤 냉장고장 리폼 & 싱크볼·수전',
+                imageSlot: './a_2f.jpg',
+                corners: [
+                    {
+                        id: 'a-2f-fridge',
+                        icon: '🧊',
+                        title: '🧊 냉장고 & 김치냉장고 프리미엄 존',
+                        cleanTitle: '냉장고 & 김치냉장고 프리미엄 존',
+                        items: [
+                            '삼성 비스포크·LG 오브제 키친핏/프리스탠딩 냉장고',
+                            '스탠드형·뚜껑형 김치냉장고'
+                        ],
+                        description: '우리 집 주방 가구장에 딱 맞게 떨어지는 빌트인 키친핏부터 대용량 4도어 냉장고, 맞춤 숙성 김치냉장고까지 실물 컬러와 내부 수납을 한눈에 비교하실 수 있습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './a_2f_corner1.jpg'
+                    },
+                    {
+                        id: 'a-2f-washer',
+                        icon: '🧺',
+                        title: '🧺 세탁기·건조기 & 올인원 콤보 존',
+                        cleanTitle: '세탁기·건조기 & 올인원 콤보 존',
+                        items: [
+                            '일체형 세탁건조기(콤보)',
+                            '원바디 워시타워',
+                            '대용량 드럼/통돌이 세탁기',
+                            '건조기'
+                        ],
+                        description: '세탁부터 건조까지 한 번에 끝나는 최신 AI 올인원 콤보와 직렬/병렬 설치형 워시타워의 실제 높이와 도어 열림 반경을 직접 확인하실 수 있습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './a_2f_corner2.jpg'
+                    },
+                    {
+                        id: 'a-2f-kitchen',
+                        icon: '🍳',
+                        title: '🍳 식기세척기·인덕션 & 소형 주방가전 존',
+                        cleanTitle: '식기세척기·인덕션 & 소형 주방가전 존',
+                        items: [
+                            '12~14인용 빌트인 식기세척기',
+                            '고화력 인덕션',
+                            '가스레인지',
+                            'IH 전기밥솥',
+                            '초고속 믹서기·블렌더'
+                        ],
+                        description: '살림 시간을 줄여주는 식기세척기와 인덕션부터 매일 쓰는 밥솥·믹서기까지 국내외 인기 주방가전을 총망라한 쿠킹 라이프 존입니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './a_2f_corner3.jpg'
+                    },
+                    {
+                        id: 'a-2f-reform',
+                        icon: '🛠️',
+                        title: '🛠️ 맞춤 냉장고장 리폼 & 싱크볼·수전 존',
+                        cleanTitle: '맞춤 냉장고장 리폼 & 싱크볼·수전 존',
+                        items: [
+                            '키친핏 맞춤 냉장고장·식기세척기장 리폼',
+                            '프리미엄 사각 싱크볼',
+                            '고급 주방 수전'
+                        ],
+                        description: '가전 구매와 동시에 튀어나온 냉장고장을 깔끔하게 리폼하거나, 스크래치에 강한 고급 사각 싱크볼과 수전까지 원스톱 실측·시공 상담을 받으실 수 있습니다.',
+                        linkedCategoryId: 'interior',
+                        linkedCategoryName: '홈인테리어',
+                        imageSlot: './a_2f_corner4.jpg'
+                    }
+                ]
+            }
+        }
+    },
+    B: {
+        buildingKey: 'B',
+        buildingName: 'B동 (우측관)',
+        hotspotText: '📍 B동 (우측관) 클릭 | 1F TV·에어컨·청소기·게임 / 2F 홈인테리어·창호·안마의자',
+        enterBtnText: '🏢 B동 (우측관) 내부 들어가기',
+        summary1F: '1F TV·에어컨·청소기·게임',
+        summary2F: '2F 홈인테리어·창호·안마의자',
+        floors: {
+            '1F': {
+                floorKey: '1F',
+                floorLabel: '1층 (1F)',
+                zoneTitle: 'B동 1층 - 대형 TV·에어케어 & 클린·뷰티·게임 관',
+                shortSummary: '65~98인치 초대형 TV 홈시네마, 시스템·스탠드 에어컨 & 계절가전, 직배수 로봇청소기 시연존, 다이슨 뷰티·콘솔 게임기',
+                imageSlot: './b_1f.jpg',
+                corners: [
+                    {
+                        id: 'b-1f-tv',
+                        icon: '📺',
+                        title: '📺 초대형 TV & 홈시네마 체험 존',
+                        cleanTitle: '초대형 TV & 홈시네마 체험 존',
+                        items: [
+                            '삼성 Neo QLED·OLED TV',
+                            'LG 올레드(OLED)·QNED TV',
+                            '프리미엄 사운드바'
+                        ],
+                        description: '거실 평수별(30평~50평대 이상) 최적의 시청 거리에 맞춘 65~98인치 초대형 TV 화질과 입체 사운드를 나란히 맞비교하실 수 있습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './b_1f_corner1.jpg'
+                    },
+                    {
+                        id: 'b-1f-air',
+                        icon: '❄️',
+                        title: '❄️ 시스템·스탠드 에어컨 & 사계절 환경가전 존',
+                        cleanTitle: '시스템·스탠드 에어컨 & 사계절 환경가전 존',
+                        items: [
+                            '가정용 시스템에어컨',
+                            '무풍/휘센 스탠드·벽걸이 에어컨',
+                            '대형 공기청정기',
+                            '겨울 난방가전(히터·온수/카본매트·가습기)'
+                        ],
+                        description: '신축 입주·이사 필수품인 천장형 시스템에어컨 설계부터 사계절 실내 공기를 책임지는 공기청정기와 겨울철 난방·가습 가전을 한자리에 모았습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './b_1f_corner2.jpg'
+                    },
+                    {
+                        id: 'b-1f-robot',
+                        icon: '🤖',
+                        title: '🤖 로봇청소기 & 무선청소기 비교 시연 존',
+                        cleanTitle: '로봇청소기 & 무선청소기 비교 시연 존',
+                        items: [
+                            '로보락·드리미·에코백스·삼성·LG 올인원 로봇청소기(직배수/일반)',
+                            '다이슨·삼성·LG 무선 스틱청소기'
+                        ],
+                        description: '가장 인기가 높은 직배수/자동세척 로봇청소기 주요 브랜드와 초경량 무선청소기의 흡입력·그립감을 현장에서 직접 체험해 보실 수 있습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './b_1f_corner3.jpg'
+                    },
+                    {
+                        id: 'b-1f-beauty',
+                        icon: '🎮',
+                        title: '🎮 뷰티·퍼스널케어 & 콘솔 게임기 존',
+                        cleanTitle: '뷰티·퍼스널케어 & 콘솔 게임기 존',
+                        items: [
+                            '다이슨 등 프리미엄 헤어드라이어·스타일러',
+                            '전동면도기',
+                            '플레이스테이션·닌텐도 등 인기 콘솔 게임기'
+                        ],
+                        description: '선물용으로도 인기가 높은 프리미엄 헤어·뷰티 기기와 온 가족이 즐기는 콘솔 게임기를 직접 시연해 보고 구매하실 수 있습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './b_1f_corner4.jpg'
+                    }
+                ]
+            },
+            '2F': {
+                floorKey: '2F',
+                floorLabel: '2층 (2F)',
+                zoneTitle: 'B동 2층 - 홈인테리어 & 힐링 안마의자·스마트홈 관',
+                shortSummary: 'KCC 홈CC창호·영림중문·LED 조명, 세라젬·바디프랜드 프리미엄 안마의자 체험존, 스마트 도어락·홈캠 & 가정용 태양광',
+                imageSlot: './b_2f.jpg',
+                corners: [
+                    {
+                        id: 'b-2f-window',
+                        icon: '🚪',
+                        title: '🚪 홈CC창호(샷시)·영림중문 & 인테리어 조명 존',
+                        cleanTitle: '홈CC창호(샷시)·영림중문 & 인테리어 조명 존',
+                        items: [
+                            'KCC 글라스 홈CC창호(단열 샷시)',
+                            '영림 프리미엄 중문(3연동·스윙·원슬라이딩)',
+                            '거실·다이닝 LED 조명'
+                        ],
+                        description: '냉난방비를 아껴주는 고단열 홈CC창호와 현관 분위기를 바꾸는 영림중문, 감각적인 실내 조명의 실제 자재와 개폐감을 눈으로 확인하고 무료 실측 견적을 받아보실 수 있습니다.',
+                        linkedCategoryId: 'interior',
+                        linkedCategoryName: '홈인테리어',
+                        imageSlot: './b_2f_corner1.jpg'
+                    },
+                    {
+                        id: 'b-2f-massage',
+                        icon: '💺',
+                        title: '💺 프리미엄 안마의자 힐링 체험 존',
+                        cleanTitle: '프리미엄 안마의자 힐링 체험 존',
+                        items: [
+                            '세라젬·바디프랜드·코지마 등 브랜드별 프리미엄 안마의자 및 소형 마사지기'
+                        ],
+                        description: '프라이빗하고 편안한 분위기에서 여러 브랜드의 안마의자와 척추 온열기기를 직접 누워보고 체형에 가장 잘 맞는 모델을 고르실 수 있습니다.',
+                        linkedCategoryId: 'appliance',
+                        linkedCategoryName: '가전구매',
+                        imageSlot: './b_2f_corner2.jpg'
+                    },
+                    {
+                        id: 'b-2f-smarthome',
+                        icon: '🔒',
+                        title: '🔒 스마트 도어락·홈캠 & 가정용 태양광 존',
+                        cleanTitle: '스마트 도어락·홈캠 & 가정용 태양광 존',
+                        items: [
+                            '지문·안면인식 스마트 도어락',
+                            'AI 홈캠(실내외 보안카메라)',
+                            '가정용 태양광 발전 설비 상담'
+                        ],
+                        description: '우리 집 안전을 지키는 최신 스마트 도어락·홈캠 설치부터 전기요금 절감을 위한 가정용 태양광 솔루션까지 전문가와 1:1로 상담하실 수 있습니다.',
+                        linkedCategoryId: 'interior',
+                        linkedCategoryName: '홈인테리어',
+                        imageSlot: './b_2f_corner3.jpg'
+                    }
+                ]
+            }
+        }
+    }
+};
+
 export default function App() {
+    // 상단 메인 탭 상태: 'booking' (📋 1:1 맞춤 상담 예약) | 'showroom' (🏢 A·B동 매장 쇼룸 투어)
+    const [activeMainTab, setActiveMainTab] = useState<'booking' | 'showroom'>('booking');
+
+    // 쇼룸 투어 상태: 선택된 동('A' | 'B'), 층('1F' | '2F'), 세부 코너 ID, 이미지 로드 상태
+    const [selectedBuilding, setSelectedBuilding] = useState<'A' | 'B'>('A');
+    const [selectedFloor, setSelectedFloor] = useState<'1F' | '2F'>('1F');
+    const [selectedCornerId, setSelectedCornerId] = useState<string>('a-1f-mobile');
+    const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
+
     // 팝업 모달 상태: 카테고리 클릭 시 심플 팝업 오픈
     const [modalCategory, setModalCategory] = useState<ServiceCategory | null>(null);
 
@@ -327,6 +642,7 @@ export default function App() {
 
     // 구글 앱스 스크립트 웹앱 URL (고객 제공 최신 연동 주소)
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbzBeEb2kGqYAq5RyGsakTPD7l8xNbZzNrA9tXGwyuedgHzmO6mA6L_pOvps-NYSJ_xz/exec';
+
 
     // 롯데하이마트 경기광주점 공식 검증 링크
     const STORE_LINKS = {
@@ -430,6 +746,7 @@ export default function App() {
 
     // 하이프리드 가전 지원 결합 혜택 섹션 하단 바로가기 버튼 클릭 -> 가전구매 카테고리 선택 상태로 하단 예약폼 활성화 & 스크롤
     const handleHiFreedBooking = () => {
+        setActiveMainTab('booking');
         setSelectedServiceId('appliance');
         setSelectedChecks(prev => prev.includes('하이프리드 가전 지원 결합 혜택') ? prev : [...prev, '하이프리드 가전 지원 결합 혜택']);
         setIsBookingActive(true);
@@ -449,6 +766,82 @@ export default function App() {
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }, 100);
+    };
+
+    // 쇼룸 투어: 동(A동/B동) 선택 핸들러
+    const handleSelectBuilding = (buildingKey: 'A' | 'B', scrollToPanel: boolean = true) => {
+        setSelectedBuilding(buildingKey);
+        setSelectedFloor('1F');
+        const firstCorner = SHOWROOM_BUILDINGS[buildingKey].floors['1F'].corners[0];
+        if (firstCorner) {
+            setSelectedCornerId(firstCorner.id);
+        }
+        trackMetaEvent('ViewContent', {
+            content_name: `매장투어_${buildingKey}동`,
+            content_category: 'showroom_tour'
+        });
+
+        if (scrollToPanel) {
+            setTimeout(() => {
+                const el = document.getElementById('showroomFloorPanel');
+                if (el) {
+                    const y = el.getBoundingClientRect().top + window.pageYOffset - 76;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }, 80);
+        }
+    };
+
+    // 쇼룸 투어: 층(1F/2F) 선택 핸들러
+    const handleSelectFloor = (floorKey: '1F' | '2F') => {
+        setSelectedFloor(floorKey);
+        const firstCorner = SHOWROOM_BUILDINGS[selectedBuilding].floors[floorKey].corners[0];
+        if (firstCorner) {
+            setSelectedCornerId(firstCorner.id);
+        }
+        trackMetaEvent('ViewContent', {
+            content_name: `매장투어_${selectedBuilding}동_${floorKey}`,
+            content_category: 'showroom_tour'
+        });
+    };
+
+    // 쇼룸 투어: 코너 카드 하단 '[이 코너 전문 마이스터 상담 예약하기 ⤓]' 원클릭 예약 연동 핸들러
+    const handleCornerBooking = (buildingKey: 'A' | 'B', floorKey: '1F' | '2F', corner: ShowroomCorner) => {
+        const floorText = floorKey === '1F' ? '1층' : '2층';
+        const tourPrefill = `[매장투어 선택: ${buildingKey}동 ${floorText} - ${corner.cleanTitle}] `;
+
+        setActiveMainTab('booking');
+        setSelectedServiceId(corner.linkedCategoryId);
+        setCustomerNote(prev => {
+            const stripped = prev.replace(/^\[매장투어 선택:[^\]]+\]\s*/, '');
+            return `${tourPrefill}${stripped}`;
+        });
+        setIsBookingActive(true);
+        setBookingSubmitted(false);
+        setModalCategory(null);
+
+        trackMetaEvent('InitiateCheckout', {
+            content_name: `${corner.cleanTitle} (${buildingKey}동 ${floorText})`,
+            content_category: corner.linkedCategoryId,
+            checked_items: tourPrefill.trim()
+        });
+
+        setTimeout(() => {
+            const el = document.getElementById('reservationFormSection');
+            if (el) {
+                const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }, 120);
+    };
+
+    // 이미지 정상 로드 기록 헬퍼 (깨진 이미지 아이콘 원천 차단)
+    const markImageLoaded = (src: string) => {
+        setLoadedImages(prev => ({ ...prev, [src]: true }));
+    };
+
+    const markImageError = (src: string) => {
+        setLoadedImages(prev => ({ ...prev, [src]: false }));
     };
 
     // 예약 취소 / 처음으로
@@ -556,6 +949,9 @@ export default function App() {
     };
 
     const currentSelectedCategory = SERVICE_CATEGORIES.find(c => c.id === selectedServiceId) || SERVICE_CATEGORIES[0];
+    const currentBuildingData = SHOWROOM_BUILDINGS[selectedBuilding];
+    const currentFloorData = currentBuildingData.floors[selectedFloor];
+    const currentCornerData = currentFloorData.corners.find(c => c.id === selectedCornerId) || currentFloorData.corners[0];
 
     // 서브 옵션 렌더링 헬퍼 컴포넌트
     const renderOptionSelector = (category: ServiceCategory) => {
@@ -837,29 +1233,349 @@ export default function App() {
                         </p>
                     </div>
 
-                    <p className="clean-hero-impact-line">
-                        원하시는 상담을 선택해 주세요
-                    </p>
+                    {/* 1. 상단 네비게이션 스위칭 탭 신설 ('상담 예약' <-> '매장 쇼룸 투어') */}
+                    <div className="main-mode-switch-wrap" role="tablist" aria-label="페이지 모드 전환">
+                        <button
+                            type="button"
+                            role="tab"
+                            aria-selected={activeMainTab === 'booking'}
+                            className={`main-mode-tab-btn ${activeMainTab === 'booking' ? 'active' : ''}`}
+                            onClick={() => setActiveMainTab('booking')}
+                        >
+                            📋 1:1 맞춤 상담 예약
+                        </button>
+                        <button
+                            type="button"
+                            role="tab"
+                            aria-selected={activeMainTab === 'showroom'}
+                            className={`main-mode-tab-btn ${activeMainTab === 'showroom' ? 'active' : ''}`}
+                            onClick={() => {
+                                setActiveMainTab('showroom');
+                                trackMetaEvent('ViewContent', { content_name: 'A·B동 매장 쇼룸 투어 탭', content_category: 'showroom_tour' });
+                            }}
+                        >
+                            🏢 A·B동 매장 쇼룸 투어 (층별 안내)
+                        </button>
+                    </div>
+
+                    {activeMainTab === 'booking' && (
+                        <p className="clean-hero-impact-line">
+                            원하시는 상담을 선택해 주세요
+                        </p>
+                    )}
                 </section>
 
                 {/* ==============================================================================
-                 * 4. 첫 화면 6대 카테고리 카드 (깔끔한 이모티콘 + 명칭만 노출)
+                 * [탭 2] 🏢 A·B동 매장 쇼룸 투어 (층별 안내) 화면
                  * ============================================================================== */}
-                <section className="clean-categories-section">
-                    <div className="clean-grid-6">
-                        {SERVICE_CATEGORIES.map(cat => (
+                {activeMainTab === 'showroom' && (
+                    <section className="showroom-tour-container">
+                        {/* [STEP 1] 매장 전경 사진 & A동(왼쪽)·B동(오른쪽) 인터랙티브 클릭 핫스팟 */}
+                        <div className="showroom-step1-card">
+                            <div className="showroom-step-header">
+                                <span className="showroom-step-pill">STEP 1 · 매장 외관 동 선택</span>
+                                <h2 className="showroom-step-title">구경하실 건물(A동·B동)을 터치해 주세요</h2>
+                                <p className="showroom-step-sub">
+                                    롯데하이마트 경기광주점은 좌측 <strong>A동(모바일·IT·주방·세탁·장리폼)</strong>과 우측 <strong>B동(초대형TV·에어컨·로봇청소기·홈인테리어·안마의자)</strong> 2개 관으로 이루어진 경기권 최대 규모 매장입니다.
+                                </p>
+                            </div>
+
+                            {/* 와이드 라운드 카드 (border-radius: 20px) + 트윈 빌딩 그래픽 fallback + 핫스팟 오버레이 */}
+                            <div className="showroom-exterior-Card">
+                                <img
+                                    src="./store_exterior.jpg"
+                                    alt="롯데하이마트 경기광주점 A동·B동 외관 전경"
+                                    className={`showroom-exterior-img ${loadedImages['./store_exterior.jpg'] ? 'is-loaded' : ''}`}
+                                    onLoad={() => markImageLoaded('./store_exterior.jpg')}
+                                    onError={() => markImageError('./store_exterior.jpg')}
+                                />
+
+                                {/* 이미지가 아직 로드되지 않았을 때 어색하지 않게 깔리는 세련된 트윈 빌딩 그래픽 배경 */}
+                                <div className="twin-building-fallback" aria-hidden={loadedImages['./store_exterior.jpg'] ? 'true' : 'false'}>
+                                    <div className="sky-glow" />
+                                    <div className="twin-buildings-stage">
+                                        {/* 왼쪽 A동 그래픽 */}
+                                        <div
+                                            className={`building-graphic building-a ${selectedBuilding === 'A' ? 'selected' : ''}`}
+                                            onClick={() => handleSelectBuilding('A')}
+                                        >
+                                            <div className="building-roof-sign">
+                                                <span className="lotte-dot" /> LOTTE HIMART <strong>A동 (좌측관)</strong>
+                                            </div>
+                                            <div className="building-window-floor">
+                                                <span className="fl-tag">2F</span>
+                                                <span className="fl-txt">냉장고 · 김치냉장고 · 세탁/건조 · 주방 · 장리폼</span>
+                                            </div>
+                                            <div className="building-window-floor">
+                                                <span className="fl-tag">1F</span>
+                                                <span className="fl-txt">모바일(애플·삼성) · IT/노트북 · 블루투스 오디오</span>
+                                            </div>
+                                            <div className="building-entrance">A동 정문 입구</div>
+                                        </div>
+
+                                        {/* 중앙 연결 브릿지 */}
+                                        <div className="building-bridge">
+                                            <span>연결통로</span>
+                                        </div>
+
+                                        {/* 오른쪽 B동 그래픽 */}
+                                        <div
+                                            className={`building-graphic building-b ${selectedBuilding === 'B' ? 'selected' : ''}`}
+                                            onClick={() => handleSelectBuilding('B')}
+                                        >
+                                            <div className="building-roof-sign">
+                                                <span className="lotte-dot" /> LOTTE HIMART <strong>B동 (우측관)</strong>
+                                            </div>
+                                            <div className="building-window-floor">
+                                                <span className="fl-tag">2F</span>
+                                                <span className="fl-txt">홈CC창호 · 영림중문 · 안마의자 · 도어락/태양광</span>
+                                            </div>
+                                            <div className="building-window-floor">
+                                                <span className="fl-tag">1F</span>
+                                                <span className="fl-txt">초대형 TV · 에어컨 · 로봇청소기 · 뷰티/콘솔게임</span>
+                                            </div>
+                                            <div className="building-entrance">B동 정문 입구</div>
+                                        </div>
+                                    </div>
+                                    <div className="parking-lot-strip">
+                                        🚗 매장 전면 전용 지상 대형 무료 주차장 완비 (경기도 광주시 이배재로 8)
+                                    </div>
+                                </div>
+
+                                {/* 사진 위 왼쪽(가로 25% 지점) & 오른쪽(가로 75% 지점) 반짝이는 펄스 글래스모피즘 터치 핀 오버레이 */}
+                                <div className="exterior-hotspots-layer">
+                                    <button
+                                        type="button"
+                                        className={`exterior-hotspot-pin pin-left ${selectedBuilding === 'A' ? 'active' : ''}`}
+                                        onClick={() => handleSelectBuilding('A')}
+                                    >
+                                        <span className="hotspot-pulse-dot" />
+                                        <span className="hotspot-pin-text">
+                                            📍 A동 (좌측관) 클릭 | 1F 모바일·IT·오디오 / 2F 냉장·세탁·주방·장리폼
+                                        </span>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        className={`exterior-hotspot-pin pin-right ${selectedBuilding === 'B' ? 'active' : ''}`}
+                                        onClick={() => handleSelectBuilding('B')}
+                                    >
+                                        <span className="hotspot-pulse-dot" />
+                                        <span className="hotspot-pin-text">
+                                            📍 B동 (우측관) 클릭 | 1F TV·에어컨·청소기·게임 / 2F 홈인테리어·창호·안마의자
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* 사진 바로 아래 모바일 터치 친화적 대형 탭 버튼 2개 */}
+                            <div className="building-big-tabs-grid">
+                                <button
+                                    type="button"
+                                    className={`building-big-tab ${selectedBuilding === 'A' ? 'active' : ''}`}
+                                    onClick={() => handleSelectBuilding('A')}
+                                >
+                                    <span className="big-tab-title">🏢 A동 (좌측관) 내부 들어가기</span>
+                                    <span className="big-tab-sub">1F 모바일·IT·오디오 / 2F 냉장·세탁·주방·장리폼</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`building-big-tab ${selectedBuilding === 'B' ? 'active' : ''}`}
+                                    onClick={() => handleSelectBuilding('B')}
+                                >
+                                    <span className="big-tab-title">🏢 B동 (우측관) 내부 들어가기</span>
+                                    <span className="big-tab-sub">1F TV·에어컨·청소기·게임 / 2F 홈인테리어·창호·안마의자</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* [STEP 2] 동 선택 시 '1층(1F) / 2층(2F)' 층별 스위칭 및 내부 사진 뷰어 */}
+                        <div
+                            id="showroomFloorPanel"
+                            key={`${selectedBuilding}-${selectedFloor}`}
+                            className="showroom-step2-panel"
+                        >
+                            <div className="showroom-panel-top-bar">
+                                <div className="panel-building-badge-row">
+                                    <span className="panel-step-pill">STEP 2 · 층별 쇼룸 탐색</span>
+                                    <span className="panel-active-building-badge">
+                                        현재 선택: 🏢 {currentBuildingData.buildingName}
+                                    </span>
+                                </div>
+                                <h3 className="panel-zone-headline">{currentFloorData.zoneTitle}</h3>
+                            </div>
+
+                            {/* 1층(1F) / 2층(2F) 대형 층별 전환 탭 */}
+                            <div className="floor-switch-tabs">
+                                <button
+                                    type="button"
+                                    className={`floor-switch-btn ${selectedFloor === '1F' ? 'active' : ''}`}
+                                    onClick={() => handleSelectFloor('1F')}
+                                >
+                                    <span className="fl-btn-main">1층 (1F) 내부 보기</span>
+                                    <span className="fl-btn-sub">{currentBuildingData.summary1F}</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`floor-switch-btn ${selectedFloor === '2F' ? 'active' : ''}`}
+                                    onClick={() => handleSelectFloor('2F')}
+                                >
+                                    <span className="fl-btn-main">2층 (2F) 내부 보기</span>
+                                    <span className="fl-btn-sub">{currentBuildingData.summary2F}</span>
+                                </button>
+                            </div>
+
+                            {/* 층 전체 내부 전경 사진 슬롯 (./a_1f.jpg, ./a_2f.jpg, ./b_1f.jpg, ./b_2f.jpg + 깨진 아이콘 없는 프리미엄 쇼룸 일러스트 배너) */}
+                            <div className="floor-overview-photo-slot">
+                                <img
+                                    src={currentFloorData.imageSlot}
+                                    alt={currentFloorData.zoneTitle}
+                                    className={`floor-overview-img ${loadedImages[currentFloorData.imageSlot] ? 'is-loaded' : ''}`}
+                                    onLoad={() => markImageLoaded(currentFloorData.imageSlot)}
+                                    onError={() => markImageError(currentFloorData.imageSlot)}
+                                />
+                                <div className="floor-overview-fallback" aria-hidden={loadedImages[currentFloorData.imageSlot] ? 'true' : 'false'}>
+                                    <div className="floor-fallback-icons">
+                                        {currentFloorData.corners.map(c => (
+                                            <span key={c.id} className="floor-fallback-emoji">{c.icon}</span>
+                                        ))}
+                                    </div>
+                                    <div className="floor-fallback-badge">
+                                        {selectedBuilding}동 {selectedFloor} PREMIUM SHOWROOM
+                                    </div>
+                                    <div className="floor-fallback-title">{currentFloorData.zoneTitle}</div>
+                                    <p className="floor-fallback-desc">{currentFloorData.shortSummary}</p>
+                                </div>
+                            </div>
+
+                            {/* [STEP 3] 층별 세부 코너 칩 선택 & 코너 상세 설명 카드 */}
+                            <div className="showroom-step3-section">
+                                <div className="step3-label-row">
+                                    <span className="panel-step-pill">STEP 3 · 세부 코너 선택</span>
+                                    <span className="step3-guide-txt">원하시는 코너를 터치하면 전시 품목과 상세 안내가 표시됩니다</span>
+                                </div>
+
+                                {/* 세부 코너 선택 칩(Chip) 목록 */}
+                                <div className="corner-chips-list">
+                                    {currentFloorData.corners.map((corner, index) => {
+                                        const isSelected = currentCornerData.id === corner.id;
+                                        return (
+                                            <button
+                                                key={corner.id}
+                                                type="button"
+                                                className={`corner-select-chip ${isSelected ? 'active' : ''}`}
+                                                onClick={() => setSelectedCornerId(corner.id)}
+                                            >
+                                                <span className="corner-chip-num">코너 {index + 1}</span>
+                                                <span className="corner-chip-title">{corner.title}</span>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+
+                                {/* 선택된 코너 상세 설명 카드 */}
+                                {currentCornerData && (
+                                    <div key={currentCornerData.id} className="corner-detail-card">
+                                        {/* 코너 사진 슬롯 (파일 없을 시 깔끔한 아이콘 그래픽 배너 표시) */}
+                                        <div className="corner-photo-slot">
+                                            <img
+                                                src={currentCornerData.imageSlot}
+                                                alt={currentCornerData.cleanTitle}
+                                                className={`corner-slot-img ${loadedImages[currentCornerData.imageSlot] ? 'is-loaded' : ''}`}
+                                                onLoad={() => markImageLoaded(currentCornerData.imageSlot)}
+                                                onError={() => markImageError(currentCornerData.imageSlot)}
+                                            />
+                                            <div className="corner-slot-fallback" aria-hidden={loadedImages[currentCornerData.imageSlot] ? 'true' : 'false'}>
+                                                <div className="corner-fallback-icon-badge">{currentCornerData.icon}</div>
+                                                <div className="corner-fallback-meta">
+                                                    <span className="corner-fallback-zone">
+                                                        롯데하이마트 경기광주점 · {selectedBuilding}동 {selectedFloor === '1F' ? '1층' : '2층'} 핵심 코너
+                                                    </span>
+                                                    <h4 className="corner-fallback-name">{currentCornerData.title}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="corner-detail-body">
+                                            <div className="corner-header-meta">
+                                                <span className="corner-location-tag">
+                                                    📍 {selectedBuilding}동 {selectedFloor === '1F' ? '1층' : '2층'}
+                                                </span>
+                                                <span className="corner-linked-cat-tag">
+                                                    연동 상담: {currentCornerData.linkedCategoryName}
+                                                </span>
+                                            </div>
+
+                                            <h4 className="corner-detail-title">{currentCornerData.title}</h4>
+                                            <p className="corner-detail-desc">{currentCornerData.description}</p>
+
+                                            {/* 전시 품목 태그 */}
+                                            <div className="corner-items-box">
+                                                <div className="corner-items-label">✨ 주요 전시 및 상담 품목</div>
+                                                <div className="corner-items-tags">
+                                                    {currentCornerData.items.map(item => (
+                                                        <span key={item} className="corner-item-tag">
+                                                            ✓ {item}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* 하단 원클릭 예약 연동 버튼 */}
+                                            <button
+                                                type="button"
+                                                className="corner-book-cta-btn"
+                                                onClick={() => handleCornerBooking(selectedBuilding, selectedFloor, currentCornerData)}
+                                            >
+                                                이 코너 전문 마이스터 상담 예약하기 ⤓
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </section>
+                )}
+
+                {/* ==============================================================================
+                 * [탭 1] 📋 1:1 맞춤 상담 예약 화면 (기존 6대 카테고리 + 하이프리드 + 예약 폼 100% 보존)
+                 * ============================================================================== */}
+                {activeMainTab === 'booking' && (
+                    <>
+                        {/* 6대 카테고리 바로 위 쇼룸 투어 원클릭 이동 배너 버튼 */}
+                        <div className="showroom-preview-banner-wrap">
                             <button
-                                key={cat.id}
                                 type="button"
-                                className={`clean-cat-card ${selectedServiceId === cat.id ? 'active' : ''}`}
-                                onClick={() => handleCardClick(cat)}
+                                className="showroom-preview-banner-btn"
+                                onClick={() => {
+                                    setActiveMainTab('showroom');
+                                    trackMetaEvent('ViewContent', { content_name: '카테고리상단_매장미리보기배너', content_category: 'showroom_tour' });
+                                    window.scrollTo({ top: 180, behavior: 'smooth' });
+                                }}
                             >
-                                <div className="clean-card-icon">{cat.icon}</div>
-                                <div className="clean-card-name">{cat.name}</div>
+                                🏢 경기권 최대 규모! A동·B동 층별 매장 내부 미리보기 ›
                             </button>
-                        ))}
-                    </div>
-                </section>
+                        </div>
+
+                        {/* ==============================================================================
+                         * 4. 첫 화면 6대 카테고리 카드 (깔끔한 이모티콘 + 명칭만 노출)
+                         * ============================================================================== */}
+                        <section className="clean-categories-section">
+                            <div className="clean-grid-6">
+                                {SERVICE_CATEGORIES.map(cat => (
+                                    <button
+                                        key={cat.id}
+                                        type="button"
+                                        className={`clean-cat-card ${selectedServiceId === cat.id ? 'active' : ''}`}
+                                        onClick={() => handleCardClick(cat)}
+                                    >
+                                        <div className="clean-card-icon">{cat.icon}</div>
+                                        <div className="clean-card-name">{cat.name}</div>
+                                    </button>
+                                ))}
+                            </div>
+                        </section>
+
 
                 {/* ==============================================================================
                  * 4-2. 첫 화면 '하이프리드 가전 지원 결합 혜택' 핵심 안내 섹션 전면 배치
@@ -1202,6 +1918,8 @@ export default function App() {
                             </div>
                         )}
                     </section>
+                )}
+                    </>
                 )}
             </main>
 
