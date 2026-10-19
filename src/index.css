@@ -2317,7 +2317,7 @@ body {
 
 /* 이미지 미로드 시 세련된 트윈 빌딩 그래픽 배경 */
 .twin-building-fallback {
-    padding: 30px 20px 105px;
+    padding: 28px 20px 26px;
     position: relative;
     z-index: 1;
 }
@@ -2446,7 +2446,7 @@ body {
     text-align: center;
 }
 
-/* 사진 위 왼쪽(가로 25% 지점) & 오른쪽(가로 75% 지점) 글래스모피즘 핫스팟 핀 오버레이 */
+/* 좌측 A동 건물(25%) & 우측 B동 건물(75%) 위치 위 플로팅 입체 핫스팟 오버레이 */
 .exterior-hotspots-layer {
     position: absolute;
     inset: 0;
@@ -2457,71 +2457,170 @@ body {
 .exterior-hotspot-pin {
     pointer-events: auto;
     position: absolute;
-    bottom: 16px;
-    transform: translateX(-50%);
+    top: 52%;
+    transform: translate(-50%, -50%);
     width: 44%;
-    max-width: 390px;
-    background: rgba(15, 23, 42, 0.82);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    border: 1.5px solid rgba(147, 197, 253, 0.65);
-    border-radius: 14px;
-    padding: 10px 14px;
+    max-width: 375px;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.90) 0%, rgba(30, 58, 138, 0.88) 100%);
+    backdrop-filter: saturate(190%) blur(14px);
+    -webkit-backdrop-filter: saturate(190%) blur(14px);
+    border: 1.5px solid rgba(147, 197, 253, 0.78);
+    border-radius: 18px;
+    padding: 12px 15px;
     color: #ffffff;
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 12px;
     text-align: left;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.45);
-    transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:
+        0 18px 36px -6px rgba(15, 23, 42, 0.65),
+        0 4px 14px rgba(37, 99, 235, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.32);
+    transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: hotspotFloat 3.2s ease-in-out infinite;
 }
 
-/* 왼쪽 핀: 가로 25% 지점 / 오른쪽 핀: 가로 75% 지점 */
+/* 건물 위치를 가리키는 입체 하단 포인터 꼬리 */
+.exterior-hotspot-pin::after {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: rgba(30, 58, 138, 0.94);
+    border-right: 1.5px solid rgba(147, 197, 253, 0.78);
+    border-bottom: 1.5px solid rgba(147, 197, 253, 0.78);
+    transform: translateX(-50%) rotate(45deg);
+    border-radius: 0 0 3px 0;
+}
+
+/* 왼쪽 핀: 좌측 A동 건물 위(가로 25%) / 오른쪽 핀: 우측 B동 건물 위(가로 75%) */
 .exterior-hotspot-pin.pin-left {
     left: 25%;
+    animation-delay: 0s;
 }
 
 .exterior-hotspot-pin.pin-right {
     left: 75%;
+    animation-delay: 1.6s;
+}
+
+@keyframes hotspotFloat {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(0px);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-5px);
+    }
 }
 
 .exterior-hotspot-pin:hover,
 .exterior-hotspot-pin.active {
-    background: rgba(30, 58, 138, 0.92);
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.38), 0 12px 28px rgba(15, 23, 42, 0.5);
-    transform: translateX(-50%) translateY(-2px);
+    background: linear-gradient(145deg, rgba(30, 58, 138, 0.96) 0%, rgba(37, 99, 235, 0.93) 100%);
+    border-color: #93c5fd;
+    box-shadow:
+        0 0 0 3px rgba(96, 165, 250, 0.45),
+        0 22px 42px -6px rgba(15, 23, 42, 0.72),
+        inset 0 1px 2px rgba(255, 255, 255, 0.45);
+    transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
 }
 
-.hotspot-pulse-dot {
+.exterior-hotspot-pin:hover::after,
+.exterior-hotspot-pin.active::after {
+    background: rgba(37, 99, 235, 0.95);
+    border-color: #93c5fd;
+}
+
+/* 물결처럼 퍼지는 펄스 애니메이션(Ping dot) */
+.hotspot-ping-wrap {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ping-core-dot {
+    position: relative;
+    z-index: 2;
     width: 11px;
     height: 11px;
     border-radius: 50%;
     background: #38bdf8;
-    flex-shrink: 0;
-    position: relative;
+    border: 2px solid #ffffff;
     box-shadow: 0 0 10px #38bdf8;
-    animation: hotspotPulse 1.8s infinite ease-in-out;
 }
 
-@keyframes hotspotPulse {
+.ping-wave-ring {
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.45);
+    border: 1.5px solid rgba(125, 211, 252, 0.85);
+    z-index: 1;
+    pointer-events: none;
+    animation: pingRippleWave 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.ping-wave-ring.wave-2 {
+    animation-delay: 1.1s;
+}
+
+@keyframes pingRippleWave {
     0% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.85);
+        transform: scale(0.55);
+        opacity: 0.95;
     }
-    70% {
-        box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+    80%, 100% {
+        transform: scale(2.35);
+        opacity: 0;
     }
 }
 
-.hotspot-pin-text {
-    font-size: 0.79rem;
+.hotspot-pin-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    flex: 1;
+}
+
+.hotspot-pin-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.hotspot-pin-title {
+    font-size: 0.86rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.hotspot-pin-cta {
+    background: rgba(56, 189, 248, 0.22);
+    border: 1px solid rgba(125, 211, 252, 0.55);
+    color: #e0f2fe;
+    font-size: 0.68rem;
     font-weight: 800;
-    line-height: 1.38;
-    color: #f8fafc;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.hotspot-pin-desc {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #dbeafe;
     letter-spacing: -0.015em;
 }
 
@@ -2970,33 +3069,43 @@ body {
 .corner-items-box {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 20px;
+    border-radius: 16px;
+    padding: 13px 15px;
+    margin-bottom: 18px;
 }
 
 .corner-items-label {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 10px;
+    color: #334155;
+    margin-bottom: 9px;
 }
 
 .corner-items-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 7px;
 }
 
 .corner-item-tag {
+    display: inline-flex;
+    align-items: center;
     background: #ffffff;
     border: 1.5px solid #bfdbfe;
     color: #1e3a8a;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     font-weight: 800;
-    padding: 6px 12px;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    padding: 5px 13px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.06);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.corner-item-tag .tag-hash {
+    color: #2563eb;
+    font-weight: 900;
+    margin-right: 2px;
 }
 
 .corner-book-cta-btn {
@@ -3037,26 +3146,72 @@ body {
     }
 
     .twin-building-fallback {
-        padding: 20px 12px 150px;
+        padding: 18px 10px 18px;
     }
 
     .twin-buildings-stage {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
     }
 
     .building-bridge {
         display: none;
     }
 
-    .exterior-hotspot-pin {
-        width: 46%;
-        padding: 8px 10px;
-        bottom: 12px;
+    .building-graphic {
+        padding: 10px 8px;
     }
 
-    .hotspot-pin-text {
-        font-size: 0.72rem;
+    .building-roof-sign {
+        font-size: 0.7rem;
+        padding: 5px 6px;
+    }
+
+    .building-window-floor {
+        padding: 6px 7px;
+    }
+
+    .building-window-floor .fl-txt {
+        font-size: 0.68rem;
+    }
+
+    .exterior-hotspot-pin {
+        width: 46%;
+        padding: 9px 10px;
+        gap: 8px;
+        top: 52%;
+        border-radius: 14px;
+    }
+
+    .exterior-hotspot-pin.pin-left {
+        left: 25%;
+    }
+
+    .exterior-hotspot-pin.pin-right {
+        left: 75%;
+    }
+
+    .hotspot-ping-wrap {
+        width: 20px;
+        height: 20px;
+    }
+
+    .ping-core-dot {
+        width: 9px;
+        height: 9px;
+    }
+
+    .hotspot-pin-title {
+        font-size: 0.75rem;
+    }
+
+    .hotspot-pin-cta {
+        display: none;
+    }
+
+    .hotspot-pin-desc {
+        font-size: 0.67rem;
+        line-height: 1.3;
     }
 
     .building-big-tabs-grid {
@@ -3064,9 +3219,26 @@ body {
     }
 
     .corner-detail-body {
-        padding: 18px 16px 20px;
+        padding: 16px 14px 18px;
+    }
+
+    .corner-detail-desc {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin-bottom: 13px;
+    }
+
+    .corner-items-box {
+        padding: 11px 12px;
+        margin-bottom: 14px;
+    }
+
+    .corner-items-tags {
+        gap: 6px;
+    }
+
+    .corner-item-tag {
+        font-size: 0.78rem;
+        padding: 4px 10px;
     }
 }
-
-
-
