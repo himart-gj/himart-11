@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCC INSIGHT · 국토부, 노후 신도시 재건축 절차 간소화 방안 발표 | Korea × Vietnam Intelligence Portal</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #F4F6FA;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F8FAFC;
+      --bg-muted: #EEF2F6;
+      --bg-navy: #0B1120;
+      --bg-navy-elevated: #131C31;
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --border-subtle: #F1F5F9;
+      --accent-teal: #0F766E;
+      --accent-teal-hover: #115E59;
+      --accent-teal-soft: #F0FDFA;
+      --accent-teal-border: #99F6E4;
+      --accent-amber-soft: #FFFBEB;
+      --accent-amber-border: #FCD34D;
+      --accent-amber-text: #92400E;
+      --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 14px 30px -6px rgba(13, 148, 136, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    html.dark {
+      --bg-page: #070B14;
+      --bg-surface: #0F172A;
+      --bg-subtle: #15203B;
+      --bg-muted: #1E293B;
+      --bg-navy: #04070E;
+      --bg-navy-elevated: #0F172A;
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --border-color: #1E293B;
+      --border-subtle: #15203B;
+      --accent-teal: #14B8A6;
+      --accent-teal-hover: #2DD4BF;
+      --accent-teal-soft: rgba(13, 148, 136, 0.14);
+      --accent-teal-border: rgba(45, 212, 191, 0.3);
+      --accent-amber-soft: rgba(245, 158, 11, 0.12);
+      --accent-amber-border: rgba(245, 158, 11, 0.35);
+      --accent-amber-text: #FDE68A;
+      --shadow-card: 0 6px 24px -4px rgba(0, 0, 0, 0.45);
+      --shadow-hover: 0 14px 32px -6px rgba(20, 184, 166, 0.22);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background-color: var(--bg-page); color: var(--text-primary);
+      font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      word-break: keep-all; overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden; line-height: 1.6;
+    }
+    svg { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+    button, input, select, textarea { font-family: inherit; }
+    .hidden { display: none !important; }
+    .reading-progress-wrap { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 100; background: rgba(15, 23, 42, 0.2); }
+    .reading-progress-bar { height: 100%; width: 28%; background: linear-gradient(90deg, #0D9488 0%, #10B981 55%, #38BDF8 100%); transition: width 120ms linear; }
+    .tcc-container { max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 20px; }
+    .tcc-sample-banner { background: linear-gradient(90deg, #FFFBEB 0%, #FEF3C7 50%, #FFFBEB 100%); border-bottom: 1px solid #FCD34D; color: #78350F; font-size: 13px; padding: 9px 0; }
+    html.dark .tcc-sample-banner { background: linear-gradient(90deg, #1E1607 0%, #2A1E08 50%, #1E1607 100%); border-bottom: 1px solid rgba(245, 158, 11, 0.35); color: #FDE68A; }
+    .tcc-banner-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+    .tcc-sample-pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 9px; border-radius: 999px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; background: rgba(217, 119, 6, 0.16); border: 1px solid rgba(217, 119, 6, 0.4); color: inherit; }
+    .tcc-pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: #D97706; display: inline-block; }
+    .tcc-macro-strip { background: #060A12; color: #CBD5E1; border-bottom: 1px solid rgba(255, 255, 255, 0.07); font-size: 12px; padding: 6px 0; }
+    .tcc-macro-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; overflow-x: auto; white-space: nowrap; }
+    .tcc-macro-items { display: flex; align-items: center; gap: 18px; }
+    .tcc-macro-chip { display: inline-flex; align-items: center; gap: 6px; }
+    .tcc-macro-val { color: #5EEAD4; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 700; }
+    .tcc-header { position: sticky; top: 0; z-index: 50; background: rgba(11, 17, 32, 0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); color: #FFFFFF; border-bottom: 1px solid rgba(148, 163, 184, 0.16); box-shadow: 0 8px 28px -6px rgba(2, 6, 23, 0.35); }
+    .tcc-header-row { display: flex; align-items: center; justify-content: space-between; min-height: 66px; gap: 12px; padding: 8px 0; flex-wrap: wrap; }
+    .tcc-brand-btn { background: transparent; border: 0; color: #FFFFFF; display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 4px 0; text-align: left; }
+    .tcc-logo-mark { width: 40px; height: 40px; border-radius: 11px; background: #065F46; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; letter-spacing: -0.04em; color: #FFFFFF; flex-shrink: 0; }
+    .tcc-brand-title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .tcc-brand-name { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF; }
+    .tcc-kv-badge { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: rgba(20, 184, 166, 0.18); color: #5EEAD4; border: 1px solid rgba(45, 212, 191, 0.35); }
+    .tcc-brand-sub { font-size: 12px; color: #CBD5E1; margin: 1px 0 0 0; }
+    .tcc-nav-desktop { display: flex; align-items: center; gap: 4px; background: rgba(30, 41, 59, 0.65); padding: 4px; border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.14); overflow-x: auto; max-width: 100%; }
+    .tcc-nav-btn { border: 0; background: transparent; color: #CBD5E1; font-size: 12.5px; font-weight: 600; padding: 7px 12px; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: all 160ms var(--ease-out); }
+    .tcc-nav-btn:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.07); }
+    .tcc-nav-btn.active { background: #115E59; color: #FFFFFF; font-weight: 700; }
+    .tcc-util-group { display: flex; align-items: center; gap: 7px; flex-shrink: 0; flex-wrap: wrap; }
+    .tcc-util-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; border-radius: 10px; background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(148, 163, 184, 0.22); color: #E2E8F0; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 160ms var(--ease-out); }
+    .tcc-util-btn:hover { border-color: #2DD4BF; color: #FFFFFF; background: rgba(30, 41, 59, 1); }
+    .tcc-lang-group { display: inline-flex; background: rgba(15, 23, 42, 0.9); padding: 3px; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.22); }
+    .tcc-lang-btn { border: 0; background: transparent; color: #CBD5E1; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 7px; cursor: pointer; transition: all 150ms ease; }
+    .tcc-lang-btn.active { background: #115E59; color: #FFFFFF; }
+    .tcc-main { padding: 28px 0 48px 0; flex: 1; }
+    .tcc-top-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+    .tcc-back-btn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 10px; background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary); font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-card); transition: all 160ms var(--ease-out); }
+    .tcc-back-btn:hover { border-color: var(--accent-teal); color: var(--accent-teal); transform: translateX(-2px); }
+    .tcc-grid-12 { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+    @media (min-width: 1024px) {
+      .tcc-grid-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 28px; }
+      .tcc-col-8 { grid-column: span 8 / span 8; }
+      .tcc-col-4 { grid-column: span 4 / span 4; }
+      .tcc-col-7 { grid-column: span 7 / span 7; }
+      .tcc-col-5 { grid-column: span 5 / span 5; }
+    }
+    .tcc-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: var(--shadow-card); overflow: hidden; transition: all 180ms var(--ease-out); }
+    .tcc-card-pad { padding: 24px; }
+    @media (min-width: 640px) { .tcc-card-pad { padding: 34px; } }
+    .tcc-accent-stripe { height: 5px; width: 100%; background: linear-gradient(90deg, #0F766E 0%, #10B981 45%, #0284C7 100%); }
+    .tcc-badge-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .tcc-tag { display: inline-flex; align-items: center; padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 700; background: var(--bg-muted); color: var(--text-secondary); border: 1px solid var(--border-color); }
+    .tcc-badge-primary { display: inline-flex; align-items: center; padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 800; background: #115E59; color: #FFFFFF; }
+    .tcc-badge-sample { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; background: var(--accent-amber-soft); color: var(--accent-amber-text); border: 1.5px dashed #D97706; }
+    .tcc-article-h1 { font-size: clamp(23px, 3.2vw, 33px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.32; color: var(--text-primary); margin: 14px 0 8px 0; }
+    .tcc-vi-sub { font-size: 14.5px; font-weight: 600; color: var(--accent-teal); margin: 6px 0 0 0; padding: 8px 12px; border-radius: 10px; background: var(--accent-teal-soft); border-left: 3px solid var(--accent-teal); }
+    .tcc-meta-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); margin: 18px 0; font-size: 13px; color: var(--text-secondary); }
+    .tcc-meta-items { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .tcc-action-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 700; background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color); cursor: pointer; transition: all 150ms var(--ease-out); }
+    .tcc-action-pill:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+    .tcc-action-pill.saved { background: var(--accent-amber-soft); color: var(--accent-amber-text); border-color: #D97706; }
+    .tcc-kpi-grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+    @media (min-width: 640px) { .tcc-kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .tcc-kpi-card { padding: 14px 16px; border-radius: 12px; background: var(--bg-subtle); border: 0; display: flex; flex-direction: column; gap: 4px; }
+    .tcc-kpi-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+    .tcc-kpi-val { font-size: 18px; font-weight: 800; color: var(--accent-teal); letter-spacing: -0.02em; }
+    .tcc-kpi-sub { font-size: 12px; color: var(--text-secondary); }
+    .tcc-sec-title { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 26px 0 12px 0; }
+    .tcc-sec-bar { width: 5px; height: 20px; border-radius: 999px; background: linear-gradient(180deg, #0F766E 0%, #10B981 100%); display: inline-block; }
+    .tcc-bento-3 { display: grid; grid-template-columns: 1fr; gap: 14px; list-style: none; padding: 0; margin: 0; }
+    @media (min-width: 640px) { .tcc-bento-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .tcc-bento-item { padding: 18px; border-radius: 14px; background: var(--bg-subtle); border: 0; transition: all 180ms var(--ease-out); position: relative; }
+    .tcc-bento-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .tcc-point-num { display: inline-flex; align-items: center; gap: 5px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; color: var(--accent-teal); background: var(--accent-teal-soft); padding: 2px 8px; border-radius: 6px; margin-bottom: 8px; }
+    .tcc-why-box { margin: 28px 0; padding: 24px; border-radius: 18px; background: var(--accent-teal-soft); border-left: 5px solid var(--accent-teal); }
+    .tcc-why-quote { font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 12px 0 18px 0; line-height: 1.45; }
+    .tcc-sim-bar-track { width: 100%; height: 12px; border-radius: 999px; background: var(--bg-muted); overflow: hidden; margin-top: 6px; }
+    .tcc-sim-bar-fill { height: 100%; border-radius: 999px; transition: width 350ms var(--ease-out); }
+    .tcc-table-wrap { border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; }
+    .tcc-table { width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left; }
+    .tcc-table th { background: var(--bg-subtle); color: var(--text-muted); font-weight: 700; padding: 12px 16px; border-bottom: 1px solid var(--border-color); }
+    .tcc-table td { padding: 13px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); }
+    .tcc-table tr:last-child td { border-bottom: 0; }
+    .tcc-rel-btn { width: 100%; text-align: left; padding: 14px; border-radius: 12px; background: var(--bg-subtle); border: 0; cursor: pointer; display: block; margin-bottom: 10px; transition: all 160ms var(--ease-out); }
+    .tcc-rel-btn:hover, .tcc-rel-btn.active { background: var(--accent-teal-soft); transform: translateY(-1px); }
+    .tcc-footer { background: #060A12; color: #CBD5E1; border-top: 1px solid rgba(148, 163, 184, 0.15); padding: 44px 0 36px 0; margin-top: 48px; }
+    @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <div class="reading-progress-wrap" aria-hidden="true">
+    <div id="reading-progress-bar" class="reading-progress-bar"></div>
+  </div>
+
+  <div id="sample-banner" class="tcc-sample-banner">
+    <div class="tcc-container tcc-banner-inner">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span class="tcc-sample-pill"><span class="tcc-pulse-dot"></span>SAMPLE DATA</span>
+        <span id="banner-message" style="font-weight:600;">샘플 데이터 화면입니다. 표시된 기사는 디자인 확인용 가상 데이터이며 실제 뉴스가 아닙니다. 자동 수집은 아직 연결되지 않았습니다.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+        <button id="btn-pipeline-preview" type="button" style="padding:4px 10px;border-radius:8px;font-size:12px;font-weight:700;background:rgba(120,53,15,0.12);border:1px solid rgba(217,119,6,0.35);color:inherit;cursor:pointer;">7대 공공 API 파이프라인 점검 →</button>
+        <button id="btn-dismiss-banner" type="button" aria-label="배너 닫기" style="padding:3px 8px;border-radius:6px;border:0;background:transparent;color:inherit;font-weight:800;cursor:pointer;">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tcc-macro-strip">
+    <div class="tcc-container tcc-macro-inner">
+      <div class="tcc-macro-items">
+        <span class="tcc-macro-chip"><span style="color:#F8FAFC;font-weight:700;">LIVE BRIEFING</span><span class="tcc-macro-val">2026. 11. 09. KST / ICT</span></span>
+        <span>·</span>
+        <span class="tcc-macro-chip"><span>🇰🇷 한국 핵심:</span><strong style="color:#E2E8F0;">국토부 1기 신도시 재건축 통합심의 확대</strong></span>
+        <span>·</span>
+        <span class="tcc-macro-chip"><span>🇻🇳 베트남 핵심:</span><strong style="color:#E2E8F0;">흥엔성(구 타이빈) 신도시 조정안 &amp; 하노이 2027 토지가격표</strong></span>
+      </div>
+      <div style="font-family:ui-monospace,monospace;color:#CBD5E1;">TCC / DECV · Cross-Border Desk</div>
+    </div>
+  </div>
+
+  <header class="tcc-header">
+    <div class="tcc-container">
+      <div class="tcc-header-row">
+        <button id="brand-home-btn" type="button" class="tcc-brand-btn">
+          <div class="tcc-logo-mark">TCC</div>
+          <div>
+            <div class="tcc-brand-title-row">
+              <span class="tcc-brand-name">TCC INSIGHT</span>
+              <span class="tcc-kv-badge">Korea × Vietnam</span>
+            </div>
+            <p class="tcc-brand-sub">Connecting Markets, People &amp; Perspectives · 사내 전용 정보 포털</p>
+          </div>
+        </button>
+
+        <nav aria-label="주요 메뉴" class="tcc-nav-desktop">
+          <button type="button" data-nav="article" class="nav-tab tcc-nav-btn active">정책 리포트 상세</button>
+          <button type="button" data-nav="Today" class="nav-tab tcc-nav-btn">Today</button>
+          <button type="button" data-nav="부동산·개발" class="nav-tab tcc-nav-btn">부동산·개발</button>
+          <button type="button" data-nav="법률·정책" class="nav-tab tcc-nav-btn">법률·정책</button>
+          <button type="button" data-nav="주재원 생활" class="nav-tab tcc-nav-btn">주재원 생활</button>
+          <button type="button" data-nav="Korea Briefing" class="nav-tab tcc-nav-btn">Korea Briefing</button>
+          <button type="button" data-nav="Weekly" class="nav-tab tcc-nav-btn">Weekly</button>
+        </nav>
+
+        <div class="tcc-util-group">
+          <button id="btn-open-search" type="button" aria-label="뉴스 및 법령 검색" class="tcc-util-btn">
+            <svg width="14" height="14" fill="none" stroke="#2DD4BF" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span>검색</span>
+          </button>
+          <button id="btn-open-bookmarks" type="button" class="tcc-util-btn">
+            <span style="color:#FBBF24;">★</span>
+            <span>북마크</span>
+            <span id="bookmark-count-badge" style="padding:1px 6px;border-radius:999px;background:rgba(20,184,166,0.25);color:#5EEAD4;font-family:monospace;font-size:12px;font-weight:800;">1</span>
+          </button>
+          <div class="tcc-lang-group" role="group" aria-label="언어 및 병기 모드">
+            <button id="lang-ko" type="button" class="tcc-lang-btn active">한국어</button>
+            <button id="lang-bi" type="button" class="tcc-lang-btn">한·베 대조</button>
+            <button id="lang-vi" type="button" class="tcc-lang-btn">Tiếng Việt</button>
+          </div>
+          <button id="btn-theme-toggle" type="button" aria-label="다크 모드 전환" class="tcc-util-btn" style="padding:7px 9px;">
+            <span id="theme-icon-label">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="search-drawer" class="hidden" style="background:var(--bg-surface);border-bottom:1px solid var(--border-color);padding:16px 0;box-shadow:var(--shadow-card);">
+    <div class="tcc-container">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <svg width="18" height="18" fill="none" stroke="#0F766E" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="global-search-input" type="search" placeholder="키워드 검색 (예: 노후 신도시, 통합심의, 흥엔성, 토지가격표, 반도체, 김장철, 노동허가)..." style="width:100%;border:1px solid var(--border-color);background:var(--bg-subtle);color:var(--text-primary);padding:10px 14px;border-radius:10px;font-size:16px;outline:none;" />
+        <button id="btn-close-search" type="button" class="tcc-action-pill">닫기</button>
+      </div>
+      <div id="search-results-container" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-top:12px;max-height:280px;overflow-y:auto;"></div>
+    </div>
+  </div>
+
+  <main class="tcc-main">
+    <div class="tcc-container">
+      <section id="view-article">
+        <div class="tcc-top-bar">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <button id="btn-back-to-list" type="button" class="tcc-back-btn"><span>← 목록으로</span></button>
+            <span style="color:var(--text-muted);">/</span>
+            <span id="article-breadcrumb-cat" style="font-size:13px;font-weight:700;color:var(--accent-teal);">🇰🇷 한국 · 건설·부동산 · 정책·행정</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <button id="btn-reset-main-article" type="button" class="tcc-action-pill hidden" style="border-color:var(--accent-teal);color:var(--accent-teal);">★ 국토부 재건축 대표 기사로 복귀</button>
+            <div style="display:inline-flex;align-items:center;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:10px;padding:3px;">
+              <button id="btn-font-dec" type="button" aria-label="글자 작게" style="border:0;background:transparent;color:var(--text-secondary);font-weight:700;font-size:12px;padding:4px 9px;cursor:pointer;">A-</button>
+              <span id="font-scale-label" style="font-family:monospace;font-size:12px;color:var(--text-muted);padding:0 6px;">100%</span>
+              <button id="btn-font-inc" type="button" aria-label="글자 크게" style="border:0;background:transparent;color:var(--text-secondary);font-weight:700;font-size:12px;padding:4px 9px;cursor:pointer;">A+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcc-grid-12">
+          <article class="tcc-col-8 tcc-card">
+            <div class="tcc-accent-stripe"></div>
+            <div class="tcc-card-pad">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">
+                <div id="article-tags-row" class="tcc-badge-row">
+                  <span class="tcc-tag">건설·부동산</span>
+                  <span class="tcc-tag">정책·행정</span>
+                  <span class="tcc-badge-primary">주요</span>
+                  <span class="tcc-badge-sample">샘플</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;font-family:monospace;font-size:12px;color:var(--text-muted);">
+                  <span>⏱ 열람 약 3분</span>
+                  <span>·</span>
+                  <span id="article-doc-id">ID: sample-kr-reconstruction-policy</span>
+                </div>
+              </div>
+
+              <h1 id="article-title" class="tcc-article-h1">국토부, 노후 신도시 재건축 절차 간소화 방안 발표</h1>
+              <p id="article-vi-subtitle" class="tcc-vi-sub hidden">[Tiếng Việt] Bộ Đất đai, Hạ tầng và Giao thông Hàn Quốc (MOLIT) công bố phương án đơn giản hóa thủ tục tái thiết các khu đô thị mới lão hóa</p>
+
+              <div class="tcc-meta-bar">
+                <div class="tcc-meta-items">
+                  <span style="display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--text-primary);">
+                    <span style="width:8px;height:8px;border-radius:50%;background:#0F766E;display:inline-block;"></span>
+                    <span id="article-country">한국</span>
+                  </span>
+                  <span style="color:var(--border-color);">|</span>
+                  <span>출처: <strong id="article-source" style="color:var(--text-primary);">Sample Source (KR)</strong></span>
+                  <span style="color:var(--border-color);">|</span>
+                  <span style="font-family:monospace;font-size:12px;">발행 <span id="article-pub-date">2026. 11. 03. 07:00</span></span>
+                  <span style="font-family:monospace;font-size:12px;">수집 <span id="article-col-date">2026. 11. 03. 07:00</span></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+                  <button id="btn-bookmark-article" type="button" class="tcc-action-pill saved">
+                    <span id="bookmark-icon">★</span>
+                    <span id="bookmark-label">북마크됨</span>
+                  </button>
+                  <button id="btn-share-article" type="button" class="tcc-action-pill"><span>↗ 공유</span></button>
+                </div>
+              </div>
+
+              <div id="article-sample-callout" style="display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border-radius:14px;background:var(--accent-amber-soft);border:0;border-left:4px solid #D97706;color:var(--accent-amber-text);font-size:13.5px;margin-bottom:22px;">
+                <svg width="20" height="20" fill="none" stroke="#D97706" stroke-width="2" viewBox="0 0 24 24" style="margin-top:2px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                <div>
+                  <div id="article-sample-notice-text" style="font-weight:800;">샘플 기사입니다. 실제 뉴스가 아니며 원문 링크도 가상 주소입니다.</div>
+                  <div style="font-size:12px;opacity:0.88;margin-top:2px;">사내 크로스보더 인텔리전스 포털 UI/UX 검증 및 한·베트남 도시개발 비교 브리핑을 위한 표준 샘플 리포트입니다.</div>
+                </div>
+              </div>
+
+              <div id="article-kpi-strip" class="tcc-kpi-grid">
+                <div class="tcc-kpi-card">
+                  <span class="tcc-kpi-label">적용 대상 기준</span>
+                  <span class="tcc-kpi-val" id="kpi-val-1">노후 계획도시</span>
+                  <span class="tcc-kpi-sub" id="kpi-sub-1">1기 신도시 등 택지조성 20년+</span>
+                </div>
+                <div class="tcc-kpi-card">
+                  <span class="tcc-kpi-label">핵심 제도 개선</span>
+                  <span class="tcc-kpi-val" id="kpi-val-2">통합심의 확대</span>
+                  <span class="tcc-kpi-sub" id="kpi-sub-2">건축·경관·교통·환경 원스톱 심의</span>
+                </div>
+                <div class="tcc-kpi-card">
+                  <span class="tcc-kpi-label">기대 정책 효과</span>
+                  <span class="tcc-kpi-val" id="kpi-val-3">사업기간 단축</span>
+                  <span class="tcc-kpi-sub" id="kpi-sub-3">인허가 행정 병목 대폭 해소</span>
+                </div>
+              </div>
+
+              <div id="article-body-content">
+                <section id="sec-summary">
+                  <h2 class="tcc-sec-title"><span class="tcc-sec-bar"></span><span>핵심 요약</span></h2>
+                  <div style="padding:20px 22px;border-radius:16px;background:var(--bg-subtle);">
+                    <p id="article-summary-text" style="margin:0;font-size:16.5px;font-weight:600;color:var(--text-primary);line-height:1.7;">국토교통부가 1기 신도시 등 노후 계획도시의 재건축 절차를 간소화하는 방안을 발표했다. 인허가 통합심의 범위 확대가 핵심이다.</p>
+                    <p id="article-summary-vi" class="hidden" style="margin:12px 0 0 0;padding-top:12px;border-top:1px dashed var(--border-color);font-size:14px;color:var(--accent-teal);font-weight:500;">[VI] Bộ Đất đai, Hạ tầng và Giao thông Hàn Quốc (MOLIT) đã công bố phương án đơn giản hóa thủ tục tái thiết các khu đô thị quy hoạch cũ (như Khu đô thị mới thế hệ 1). Trọng tâm là mở rộng phạm vi thẩm định tích hợp khi cấp phép.</p>
+                  </div>
+                </section>
+
+                <section id="sec-keypoints">
+                  <h2 class="tcc-sec-title"><span class="tcc-sec-bar"></span><span>주요 내용</span></h2>
+                  <ul id="article-keypoints-list" class="tcc-bento-3"></ul>
+                </section>
+
+                <section id="sec-why" class="tcc-why-box">
+                  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      <span style="padding:3px 9px;border-radius:6px;background:#115E59;color:#FFFFFF;font-family:monospace;font-size:12px;font-weight:800;">STRATEGIC INSIGHT</span>
+                      <h3 style="margin:0;font-size:17px;font-weight:800;color:var(--text-primary);">Why It Matters · 왜 중요한가</h3>
+                    </div>
+                    <span style="font-size:12px;font-weight:700;color:var(--accent-teal);">Korea × Vietnam 크로스보더 시사점</span>
+                  </div>
+
+                  <blockquote id="article-why-it-matters" class="tcc-why-quote">한국 도시재생 제도 변화는 베트남 신도시 운영·재개발 모델 참고 사례가 됩니다.</blockquote>
+                  <p id="article-why-vi" class="hidden" style="margin:-10px 0 16px 0;font-size:13.5px;color:var(--accent-teal);font-weight:600;">[VI] Những thay đổi trong cơ chế tái thiết đô thị của Hàn Quốc là hình mẫu tham khảo quan trọng cho mô hình vận hành và phát triển đô thị mới tại Việt Nam.</p>
+
+                  <div style="background:var(--bg-surface);border-radius:14px;padding:18px;margin-top:14px;">
+                    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;">
+                      <span style="font-size:13px;font-weight:800;color:var(--text-primary);">📊 인허가 패스트트랙 비교 시뮬레이터</span>
+                      <div style="display:inline-flex;gap:4px;background:var(--bg-muted);padding:4px;border-radius:10px;flex-wrap:wrap;">
+                        <button type="button" data-sim-mode="fasttrack" class="sim-mode-btn" style="border:0;padding:6px 11px;border-radius:7px;font-size:12px;font-weight:800;background:#115E59;color:#FFFFFF;cursor:pointer;">통합심의 기간 단축</button>
+                        <button type="button" data-sim-mode="standard" class="sim-mode-btn" style="border:0;padding:6px 11px;border-radius:7px;font-size:12px;font-weight:600;background:transparent;color:var(--text-secondary);cursor:pointer;">기존 개별심의 병목</button>
+                        <button type="button" data-sim-mode="vn-compare" class="sim-mode-btn" style="border:0;padding:6px 11px;border-radius:7px;font-size:12px;font-weight:600;background:transparent;color:var(--text-secondary);cursor:pointer;">베트남 흥엔성·하노이 대조</button>
+                      </div>
+                    </div>
+                    <div id="sim-panel-content"></div>
+                  </div>
+                </section>
+
+                <section id="sec-meta">
+                  <h2 class="tcc-sec-title"><span class="tcc-sec-bar"></span><span>추가 정보</span></h2>
+                  <div class="tcc-table-wrap">
+                    <table class="tcc-table">
+                      <thead>
+                        <tr><th style="width:32%;">항목</th><th>내용</th></tr>
+                      </thead>
+                      <tbody id="article-meta-table-body"></tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <section id="sec-source">
+                  <h2 class="tcc-sec-title"><span class="tcc-sec-bar"></span><span>출처</span></h2>
+                  <div style="padding:18px 22px;border-radius:16px;background:var(--bg-subtle);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+                    <div>
+                      <div id="article-source-footer" style="font-size:14.5px;font-weight:800;color:var(--text-primary);">Sample Source (KR) · 2026. 11. 03. 07:00</div>
+                      <div id="article-target-url-text" style="font-family:monospace;font-size:12px;color:var(--text-muted);margin-top:3px;word-break:break-all;">https://example.com/sample/sample-kr-reconstruction-policy</div>
+                    </div>
+                    <a id="article-original-link" href="https://tcc-insight.vercel.app/ko/news/sample-kr-reconstruction-policy" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:12px;background:#0F172A;color:#FFFFFF;font-size:13px;font-weight:800;text-decoration:none;">
+                      <span>원문 보기 ↗</span>
+                    </a>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </article>
+
+          <aside class="tcc-col-4" style="display:flex;flex-direction:column;gap:20px;">
+            <div class="tcc-card" style="padding:20px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--border-color);margin-bottom:12px;">
+                <span style="font-size:14px;font-weight:800;color:var(--text-primary);">📑 리포트 목차 바로가기</span>
+                <span style="font-family:monospace;font-size:12px;color:var(--accent-teal);">5 Sections</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+                <a href="#sec-summary" style="text-decoration:none;color:var(--text-secondary);padding:5px 8px;border-radius:8px;font-weight:600;">01 · 핵심 요약 (Executive Summary)</a>
+                <a href="#sec-keypoints" style="text-decoration:none;color:var(--text-secondary);padding:5px 8px;border-radius:8px;font-weight:600;">02 · 주요 내용 (3대 핵심 포인트)</a>
+                <a href="#sec-why" style="text-decoration:none;color:var(--accent-teal);padding:5px 8px;border-radius:8px;font-weight:800;background:var(--accent-teal-soft);">03 · Why It Matters (통합심의 시뮬레이터)</a>
+                <a href="#sec-meta" style="text-decoration:none;color:var(--text-secondary);padding:5px 8px;border-radius:8px;font-weight:600;">04 · 추가 정보 (적용 지역·부처)</a>
+                <a href="#sec-source" style="text-decoration:none;color:var(--text-secondary);padding:5px 8px;border-radius:8px;font-weight:600;">05 · 출처 및 원문 링크</a>
+              </div>
+            </div>
+
+            <div class="tcc-card" style="padding:20px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:14px;">
+                <h2 style="margin:0;font-size:15.5px;font-weight:800;color:var(--text-primary);display:flex;align-items:center;gap:8px;">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#0F766E;display:inline-block;"></span>
+                  <span>관련 뉴스</span>
+                </h2>
+                <span style="font-family:monospace;font-size:12px;color:var(--text-muted);">클릭 시 본문 열람</span>
+              </div>
+              <div id="sidebar-related-list"></div>
+            </div>
+
+            <div class="tcc-card" style="padding:20px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:14px;">
+                <h2 style="margin:0;font-size:15.5px;font-weight:800;color:var(--text-primary);display:flex;align-items:center;gap:8px;">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#F59E0B;display:inline-block;"></span>
+                  <span>주요 정책 변화 트래커</span>
+                </h2>
+                <button type="button" data-nav="법률·정책" class="nav-tab" style="border:0;background:transparent;color:var(--accent-teal);font-size:12px;font-weight:700;cursor:pointer;">전체 보기 →</button>
+              </div>
+              <div id="sidebar-policy-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+            </div>
+
+            <div style="background:linear-gradient(145deg,#0B1120 0%,#13233F 100%);color:#FFFFFF;border-radius:20px;padding:22px;border:1px solid rgba(45,212,191,0.25);box-shadow:var(--shadow-card);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <span style="padding:2px 8px;border-radius:6px;background:rgba(20,184,166,0.2);color:#5EEAD4;font-family:monospace;font-size:12px;font-weight:800;">DECV EXECUTIVE DESK</span>
+                <span style="font-size:12px;color:#CBD5E1;">원터치 사내 공유</span>
+              </div>
+              <div style="font-size:14.5px;font-weight:800;margin-bottom:10px;">실무 브리핑 코멘트 작성</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+                <button type="button" data-memo-preset="흥엔성(구 타이빈) 신도시 인허가 협의 시 한국 노후계획도시 통합심의(건축·교통·환경 일괄 심의) 모델 참고 요망." style="border:1px solid rgba(148,163,184,0.3);background:rgba(255,255,255,0.06);color:#E2E8F0;font-size:12px;padding:4px 8px;border-radius:999px;cursor:pointer;">+ 흥엔성 인허가 참고</button>
+                <button type="button" data-memo-preset="베트남 건설부(MOC) 건축허가 시행규칙(SAMPLE-02)과 한국 통합심의 절차 비교표 법무팀 검토 요청." style="border:1px solid rgba(148,163,184,0.3);background:rgba(255,255,255,0.06);color:#E2E8F0;font-size:12px;padding:4px 8px;border-radius:999px;cursor:pointer;">+ 법무·인허가팀 공유</button>
+              </div>
+              <textarea id="exec-memo-input" rows="3" placeholder="사내 공유용 실무 코멘트를 입력하거나 위 프리셋 버튼을 눌러보세요..." style="width:100%;border-radius:12px;background:rgba(2,6,23,0.65);border:1px solid rgba(148,163,184,0.3);color:#F8FAFC;padding:10px 12px;font-size:16px;outline:none;margin-bottom:10px;"></textarea>
+              <button id="btn-copy-briefing-pack" type="button" style="width:100%;padding:11px 14px;border-radius:12px;border:0;background:#115E59;color:#FFFFFF;font-size:13px;font-weight:800;cursor:pointer;">기사 요약 + 실무 코멘트 클립보드 복사</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="view-portal" class="hidden" style="display:flex;flex-direction:column;gap:28px;">
+        <div class="tcc-card" style="padding:26px 30px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+              <span id="portal-view-badge" class="tcc-badge-primary">TODAY BRIEFING</span>
+              <span style="font-family:monospace;font-size:12px;color:var(--text-muted);">Korea × Vietnam Portal</span>
+            </div>
+            <h1 id="portal-view-title" style="margin:0;font-size:24px;font-weight:800;color:var(--text-primary);">Today · 한·베트남 데일리 핵심 브리핑</h1>
+            <p id="portal-view-desc" style="margin:4px 0 0 0;font-size:13.5px;color:var(--text-secondary);">한국과 베트남의 건설·부동산, 법률·정책, 경제·투자 핵심 동향을 한눈에 비교하고 원문을 열람하세요.</p>
+          </div>
+          <div style="display:inline-flex;gap:4px;background:var(--bg-muted);padding:4px;border-radius:12px;border:1px solid var(--border-color);">
+            <button type="button" data-country-filter="ALL" class="country-filter-btn" style="border:0;padding:7px 13px;border-radius:8px;font-size:12px;font-weight:800;background:var(--bg-surface);color:var(--text-primary);cursor:pointer;">전체 (KR+VN)</button>
+            <button type="button" data-country-filter="한국" class="country-filter-btn" style="border:0;padding:7px 13px;border-radius:8px;font-size:12px;font-weight:600;background:transparent;color:var(--text-secondary);cursor:pointer;">🇰🇷 한국 (KR)</button>
+            <button type="button" data-country-filter="베트남" class="country-filter-btn" style="border:0;padding:7px 13px;border-radius:8px;font-size:12px;font-weight:600;background:transparent;color:var(--text-secondary);cursor:pointer;">🇻🇳 베트남 (VN)</button>
+          </div>
+        </div>
+
+        <div id="portal-highlights-section">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <h2 style="margin:0;font-size:19px;font-weight:800;color:var(--text-primary);display:flex;align-items:center;gap:8px;">
+              <span class="tcc-sec-bar"></span>
+              <span>오늘의 헤드라인 (Today's Highlights)</span>
+            </h2>
+            <span style="font-size:12px;color:var(--text-muted);">카드를 클릭하면 상세 리포트 화면으로 전환됩니다</span>
+          </div>
+          <div id="portal-highlights-grid" class="tcc-grid-12"></div>
+        </div>
+
+        <div class="tcc-grid-12">
+          <div class="tcc-col-7">
+            <div class="tcc-card" style="padding:24px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:12px;">
+                <h3 style="margin:0;font-size:17px;font-weight:800;color:var(--text-primary);">금주의 주요 뉴스 &amp; 분야별 브리핑 피드</h3>
+                <span id="feed-count-label" style="font-family:monospace;font-size:12px;font-weight:800;color:var(--accent-teal);">12건</span>
+              </div>
+              <div id="portal-news-feed"></div>
+            </div>
+          </div>
+
+          <div class="tcc-col-5" style="display:flex;flex-direction:column;gap:22px;">
+            <div class="tcc-card" style="padding:24px;">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:14px;">
+                <h3 style="margin:0;font-size:16.5px;font-weight:800;color:var(--text-primary);">주요 정책 변화 (Policy Tracker)</h3>
+                <select id="policy-status-filter" aria-label="정책 상태 필터" style="font-size:16px;padding:4px 10px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-subtle);color:var(--text-primary);font-weight:600;">
+                  <option value="ALL">전체 상태 (4)</option>
+                  <option value="확인 필요">확인 필요</option>
+                  <option value="입법예고">입법예고</option>
+                  <option value="시행 예정">시행 예정</option>
+                  <option value="시행 중">시행 중</option>
+                </select>
+              </div>
+              <div id="portal-policy-tracker-list" style="display:flex;flex-direction:column;gap:12px;"></div>
+            </div>
+
+            <div class="tcc-card" style="padding:24px;">
+              <div style="padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:14px;">
+                <h3 style="margin:0;font-size:16.5px;font-weight:800;color:var(--text-primary);">생활법률 가이드 (주재원 Legal Q&amp;A)</h3>
+                <p style="margin:4px 0 0 0;font-size:12px;color:var(--text-muted);">질문을 클릭하면 실무 체크포인트와 샘플 가이드를 확인할 수 있습니다.</p>
+              </div>
+              <div id="portal-legal-qa-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcc-card" style="padding:24px;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px;">
+            <div>
+              <h3 style="margin:0;font-size:17px;font-weight:800;color:var(--text-primary);">뉴스 출처 및 공공 API 파이프라인 (7개 공식 기관)</h3>
+              <p style="margin:3px 0 0 0;font-size:12.5px;color:var(--text-muted);">베트남 정부신문·정부공보·건설부 및 대한민국 정책브리핑·국가데이터처·재정경제부·법제처</p>
+            </div>
+            <span class="tcc-badge-sample">현재 상태: 샘플 데이터 프리뷰 모드</span>
+          </div>
+          <div id="portal-sources-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="bookmarks-modal" class="hidden" style="position:fixed;inset:0;z-index:80;background:rgba(2,6,23,0.65);display:flex;align-items:center;justify-content:center;padding:16px;">
+    <div class="tcc-card" style="max-width:540px;width:100%;padding:24px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:14px;">
+        <h3 style="margin:0;font-size:16px;font-weight:800;color:var(--text-primary);">★ 저장한 북마크 리포트</h3>
+        <button id="btn-close-bookmarks" type="button" class="tcc-action-pill">닫기</button>
+      </div>
+      <div id="bookmarks-modal-list" style="display:flex;flex-direction:column;gap:10px;max-height:320px;overflow-y:auto;"></div>
+    </div>
+  </div>
+
+  <div id="toast-container" style="position:fixed;bottom:20px;right:20px;z-index:90;display:flex;flex-direction:column;gap:8px;pointer-events:none;"></div>
+
+  <footer class="tcc-footer">
+    <div class="tcc-container">
+      <div class="tcc-grid-12" style="padding-bottom:28px;border-bottom:1px solid rgba(148,163,184,0.15);">
+        <div class="tcc-col-7">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span style="font-size:18px;font-weight:900;color:#FFFFFF;">TCC INSIGHT</span>
+            <span class="tcc-kv-badge">Korea × Vietnam</span>
+          </div>
+          <p style="margin:0 0 6px 0;font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:15px;color:#CBD5E1;">Connecting Markets, People &amp; Perspectives</p>
+          <p style="margin:0;font-size:12.5px;color:#CBD5E1;">TCC / DECV · 사내 전용 정보 포털</p>
+        </div>
+        <div class="tcc-col-5" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;font-size:12.5px;">
+          <div>
+            <div style="font-weight:800;color:#E2E8F0;margin-bottom:8px;text-transform:uppercase;font-size:12px;">포털 메뉴</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <button type="button" data-nav="Today" class="nav-tab" style="border:0;background:transparent;color:#CBD5E1;text-align:left;padding:0;cursor:pointer;">Today</button>
+              <button type="button" data-nav="법률·정책" class="nav-tab" style="border:0;background:transparent;color:#CBD5E1;text-align:left;padding:0;cursor:pointer;">법률·정책</button>
+              <button type="button" data-nav="Korea Briefing" class="nav-tab" style="border:0;background:transparent;color:#CBD5E1;text-align:left;padding:0;cursor:pointer;">Korea Briefing</button>
+              <button type="button" data-nav="관리자" class="nav-tab" style="border:0;background:transparent;color:#CBD5E1;text-align:left;padding:0;cursor:pointer;">관리자</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:800;color:#E2E8F0;margin-bottom:8px;text-transform:uppercase;font-size:12px;">섹션 바로가기</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <button type="button" data-nav="부동산·개발" class="nav-tab" style="border:0;background:transparent;color:#CBD5E1;text-align:left;padding:0;cursor:pointer;">부동산·개발</button>
+              <button type="button" data-nav="주재원 생활" class="nav-tab" style="border:0;background:transparent;color:#CBD5E1;text-align:left;padding:0;cursor:pointer;">주재원 생활</button>
+              <button type="button" data-nav="Weekly" class="nav-tab" style="border:0;background:transparent;color:#CBD5E1;text-align:left;padding:0;cursor:pointer;">Weekly</button>
+              <button type="button" data-nav="article" class="nav-tab" style="border:0;background:transparent;color:#5EEAD4;font-weight:700;text-align:left;padding:0;cursor:pointer;">국토부 재건축 대표 기사</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#CBD5E1;">
+        <p style="margin:0;">법률 관련 정보는 참고용이며 법률 자문을 대신하지 않습니다. 중요한 의사결정 전에는 전문가 검토를 받으세요.</p>
+        <span style="font-family:monospace;font-size:12px;">TCC INSIGHT V2 · Public Web Edition</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var ARTICLES = [
+        {
+          id: 'sample-kr-reconstruction-policy',
+          title: '국토부, 노후 신도시 재건축 절차 간소화 방안 발표',
+          viTitle: 'Bộ Đất đai Hàn Quốc (MOLIT) công bố phương án đơn giản hóa thủ tục tái thiết đô thị mới lão hóa',
+          categories: ['건설·부동산', '정책·행정'],
+          badges: ['주요', '샘플'],
+          country: '한국',
+          source: 'Sample Source (KR)',
+          pubDate: '2026. 11. 03. 07:00',
+          colDate: '2026. 11. 03. 07:00',
+          isSample: true,
+          kpis: [
+            { label: '적용 대상 기준', val: '노후 계획도시', sub: '1기 신도시 등 택지조성 20년+' },
+            { label: '핵심 제도 개선', val: '통합심의 확대', sub: '건축·경관·교통·환경 원스톱 심의' },
+            { label: '기대 정책 효과', val: '사업기간 단축', sub: '인허가 행정 병목 대폭 해소' }
+          ],
+          summary: '국토교통부가 1기 신도시 등 노후 계획도시의 재건축 절차를 간소화하는 방안을 발표했다. 인허가 통합심의 범위 확대가 핵심이다.',
+          viSummary: 'Bộ Đất đai, Hạ tầng và Giao thông Hàn Quốc (MOLIT) đã công bố phương án đơn giản hóa thủ tục tái thiết các khu đô thị quy hoạch cũ. Trọng tâm là mở rộng phạm vi thẩm định tích hợp.',
+          keyPoints: [
+            { title: '• 노후 계획도시 대상', desc: '택지조성 완료 후 20년 이상 경과한 1기 신도시 등 노후 계획도시 핵심 구역 적용' },
+            { title: '• 통합심의 범위 확대', desc: '건축·경관·교통·교육·환경 등 개별 심의를 통합심의위원회로 일원화하여 행정 병목 해소' },
+            { title: '• 사업기간 단축 기대', desc: '인허가 절차 간소화를 통해 지구 지정부터 사업시행인가·착공까지 기간 대폭 단축' }
+          ],
+          whyItMatters: '한국 도시재생 제도 변화는 베트남 신도시 운영·재개발 모델 참고 사례가 됩니다.',
+          viWhy: 'Những thay đổi trong cơ chế tái thiết đô thị của Hàn Quốc là hình mẫu tham khảo quan trọng cho mô hình vận hành và phát triển đô thị mới tại Việt Nam.',
+          region: '대한민국',
+          department: '대한민국 국토교통부 (MOLIT)',
+          vnReference: '베트남 건설부(Bộ Xây dựng) 및 흥엔성·하노이 신도시 개발 인허가 모델 참고',
+          originalUrlText: 'https://example.com/sample/sample-kr-reconstruction-policy',
+          portalUrl: 'https://tcc-insight.vercel.app/ko/news/sample-kr-reconstruction-policy'
+        },
+        {
+          id: 'vn-hung-yen-new-city-plan',
+          title: '흥엔성, 구 타이빈 지역 신도시 개발계획 조정안 공개',
+          viTitle: 'Tỉnh Hưng Yên công bố dự thảo điều chỉnh quy hoạch phát triển đô thị mới khu vực Thái Bình cũ',
+          categories: ['건설·부동산'],
+          badges: ['주요', '샘플'],
+          country: '베트남',
+          source: 'Sample Source (VN)',
+          pubDate: '2026. 11. 03. 07:40',
+          colDate: '2026. 11. 03. 07:40',
+          isSample: true,
+          kpis: [
+            { label: '대상 권역', val: '흥엔성·구 타이빈', sub: '성 통합 이후 광역 개발축' },
+            { label: '핵심 계획', val: '토지·인프라 연계', sub: '간선도로·기반시설 동시 확충' },
+            { label: '현재 단계', val: '의견수렴 착수', sub: '마스터플랜 조정안 공람 중' }
+          ],
+          summary: '흥엔성 인민위원회가 성 통합 이후 구 타이빈 지역의 신도시 개발계획 조정안을 공개하고 의견수렴에 들어갔다. 토지이용계획과 기반시설 연결 계획을 함께 다룬다.',
+          viSummary: 'Ủy ban Nhân dân tỉnh Hưng Yên đã công bố phương án điều chỉnh quy hoạch khu đô thị mới và lấy ý kiến đóng góp về quy hoạch sử dụng đất và kết nối hạ tầng.',
+          keyPoints: [
+            { title: '• 구 타이빈 지역 신도시 조정안 공개', desc: '성 통합 이후 광역 생활권에 맞춘 신도시 공간 배치 및 용도지역 재조정' },
+            { title: '• 토지이용계획·기반시설 통합 연계', desc: '간선도로망, 산업단지 배후 주거지, 상하수도·전력 인프라 동시 확충' },
+            { title: '• 민간 의견수렴 및 인허가 일정 점검', desc: '이해관계자 의견수렴 후 마스터플랜 승인 및 투자자 선정 절차 진행 예정' }
+          ],
+          whyItMatters: '회사 사업지역과 직접 관련된 계획 변경으로, 인허가 일정과 사업성 검토에 영향을 줄 수 있습니다.',
+          viWhy: 'Thay đổi quy hoạch liên quan trực tiếp đến khu vực dự án của công ty, ảnh hưởng đến tiến độ cấp phép và tính khả thi.',
+          region: '베트남 흥엔성 (Hưng Yên)',
+          department: '흥엔성 인민위원회 · 베트남 건설부 (MOC)',
+          vnReference: 'DECV / TCC 핵심 개발 검토 권역 (인허가 일정 및 토지이용계획 직접 연관)',
+          originalUrlText: 'https://example.com/sample/vn-hung-yen-new-city-plan',
+          portalUrl: 'https://tcc-insight.vercel.app/ko'
+        },
+        {
+          id: 'kr-mfds-kimchi-safety',
+          title: '식약처, 김장철 수입식품 안전관리 강화…배추·고춧가루 등 집중 검사',
+          viTitle: 'Bộ An toàn Thực phẩm và Dược phẩm Hàn Quốc tăng cường kiểm tra thực phẩm nhập khẩu mùa Kim장',
+          categories: ['정책·행정', '주재원 생활'],
+          badges: ['실시간 API'],
+          country: '한국',
+          source: '대한민국 정책브리핑 (정책뉴스 API)',
+          pubDate: '2026. 11. 09. 13:37',
+          colDate: '2026. 11. 09. 13:37',
+          isSample: false,
+          kpis: [
+            { label: '집중 점검 품목', val: '배추·고춧가루', sub: '김장철 성수기 수입 식재료' },
+            { label: '검사 단계', val: '통관·유통 병행', sub: '잔류농약·중금속 정밀검사' },
+            { label: '소관 기관', val: '식품의약품안전처', sub: '대한민국 정책브리핑 공식 API' }
+          ],
+          summary: '식품의약품안전처가 김장철을 맞아 수입 배추, 무, 고춧가루, 마늘, 젓갈류 등 김장용 식재료의 통관 단계 정밀검사를 강화한다.',
+          viSummary: 'Cơ quan An toàn Thực phẩm và Dược phẩm Hàn Quốc (MFDS) tăng cường kiểm tra thông quan đối với nguyên liệu muối kim chi nhập khẩu.',
+          keyPoints: [
+            { title: '• 통관 단계 정밀검사 확대', desc: '배추·고춧가루·다진마늘 등 김장 성수기 수입 농수산물 집중 잔류농약·중금속 검사' },
+            { title: '• 유통 단계 수거·검사 병행', desc: '국내 도매시장 및 대형 유통망 내 원산지 둔갑 및 위생 기준 위반 단속' },
+            { title: '• 한·베 식품 교역 통관 유의', desc: '베트남산 농산물·가공식품 한국 수출입 시 검역 서류 및 잔류기준 사전 점검 필요' }
+          ],
+          whyItMatters: '한국-베트남 간 농수산·식자재 교역 및 주재원 생활 물가·통관 일정 참고 지표입니다.',
+          viWhy: 'Chỉ số tham khảo quan trọng cho giao thương nông sản Hàn - Việt và thủ tục thông quan.',
+          region: '대한민국 전국 공항만 통관지',
+          department: '식품의약품안전처 · 대한민국 정책브리핑',
+          vnReference: '베트남산 고추·마늘·수산물 대한국 수출 통관 검역 강화 대상 포함',
+          originalUrlText: 'https://www.korea.kr/news/policyNewsView.do',
+          portalUrl: 'https://tcc-insight.vercel.app/ko'
+        },
+        {
+          id: 'kr-moef-semiconductor-meeting',
+          title: '반도체 전문가 간담회 개최',
+          viTitle: 'Tổ chức hội thảo chuyên gia bán dẫn Hàn Quốc về chuỗi cung ứng và đầu tư',
+          categories: ['경제·투자'],
+          badges: ['중요'],
+          country: '한국',
+          source: '재정경제부 (보도자료 API)',
+          pubDate: '2026. 11. 06. 13:14',
+          colDate: '2026. 11. 06. 13:14',
+          isSample: false,
+          kpis: [
+            { label: '핵심 의제', val: '반도체 공급망', sub: '인프라·세제·금융 패키지' },
+            { label: '동남아 연계', val: '후공정(OSAT)', sub: '베트남 북부 하이테크 산단 연계' },
+            { label: '발표 부처', val: '재정경제부', sub: '보도자료 공식 API 연동' }
+          ],
+          summary: '재정경제부가 반도체 산업 경쟁력 강화 및 글로벌 공급망 재편 대응을 위한 전문가 간담회를 개최하고 인프라·세제 지원 방안을 논의했다.',
+          viSummary: 'Bộ Kinh tế và Tài chính Hàn Quốc tổ chức hội nghị chuyên gia nhằm củng cố chuỗi cung ứng bán dẫn và hạ tầng công nghiệp.',
+          keyPoints: [
+            { title: '• 첨단 클러스터 전력·용수 인프라 지원', desc: '반도체 메가 클러스터 적기 준공을 위한 도로·용수·전력망 공공 지원 점검' },
+            { title: '• 글로벌 공급망 및 동남아 후공정(OSAT) 연계', desc: '베트남 북부(박닌·타이응우옌·흥엔 인근) 하이테크 산업단지와의 공급망 시너지 논의' },
+            { title: '• 설비투자 세제 및 금융 지원', desc: '소부장 기업 R&D 및 해외 거점 협력 지원책 검토' }
+          ],
+          whyItMatters: '한국 첨단 제조·반도체 기업의 베트남 북부 산업단지 추가 진출 및 인프라 수요를 가늠하는 선행 지표입니다.',
+          viWhy: 'Chỉ báo sớm về nhu cầu mở rộng hạ tầng khu công nghiệp công nghệ cao tại miền Bắc Việt Nam.',
+          region: '대한민국 · 글로벌 공급망',
+          department: '재정경제부 (보도자료 API)',
+          vnReference: '베트남 북부 산업단지(흥엔·박닌·하이퐁 축) 한국계 하이테크 유치 동향과 직결',
+          originalUrlText: 'https://www.moef.go.kr/',
+          portalUrl: 'https://tcc-insight.vercel.app/ko'
+        },
+        {
+          id: 'sample-kr-overseas-construction-sea',
+          title: '한국 건설사 해외수주, 동남아 비중 확대',
+          viTitle: 'Các công ty xây dựng Hàn Quốc mở rộng tỷ trọng trúng thầu tại Đông Nam Á',
+          categories: ['경제·투자', '건설·부동산'],
+          badges: ['중요', '샘플'],
+          country: '한국',
+          source: 'Sample Source (KR)',
+          pubDate: '2026. 11. 02. 12:00',
+          colDate: '2026. 11. 02. 12:00',
+          isSample: true,
+          kpis: [
+            { label: '수주 권역 변화', val: '동남아 비중 확대', sub: '베트남 신도시·인프라 중심' },
+            { label: '사업 모델', val: '투자개발형(PPP)', sub: '단순 도급에서 디벨로퍼 전환' },
+            { label: '핵심 리스크 관리', val: '개정 토지법 대응', sub: '인허가·토지보상 구조화' }
+          ],
+          summary: '국내 주요 건설사들의 해외수주 포트폴리오에서 베트남을 비롯한 동남아 신도시·인프라·산업단지 개발 비중이 뚜렷하게 확대되고 있다.',
+          viSummary: 'Tỷ trọng các dự án đô thị mới, hạ tầng và khu công nghiệp tại Việt Nam và Đông Nam Á trong danh mục trúng thầu nước ngoài của các nhà thầu Hàn Quốc tăng mạnh.',
+          keyPoints: [
+            { title: '• 단순 도급에서 투자개발형(PPP·신도시) 전환', desc: '한국형 스마트시티 및 복합 신도시 마스터플랜 수출 비중 증가' },
+            { title: '• 베트남 고속도로·산업단지·주거 복합 개발', desc: '하노이 수도권(흥엔성 등) 및 남부 광역 교통망 프로젝트 참여 활발' },
+            { title: '• 현지 법규·토지보상 리스크 관리 중요성 대두', desc: '개정 토지법·주택법·부동산사업법 시행에 맞춘 인허가 구조화 필수' }
+          ],
+          whyItMatters: 'TCC / DECV의 베트남 현지 디벨로퍼 및 시공 파트너십 전략 수립에 직접적인 비교 벤치마크를 제공합니다.',
+          viWhy: 'Cung cấp chuẩn đối sánh trực tiếp cho chiến lược hợp tác phát triển dự án tại Việt Nam.',
+          region: '대한민국 · 베트남 · 동남아시아',
+          department: '해외건설협회 · 국토교통부 참고 샘플',
+          vnReference: '베트남 신도시 및 인프라 PPP 사업 수주 확대',
+          originalUrlText: 'https://example.com/sample/kr-overseas-construction-sea',
+          portalUrl: 'https://tcc-insight.vercel.app/ko'
+        },
+        {
+          id: 'vn-hanoi-2027-land-price-table',
+          title: '하노이, 2027년 토지가격표 초안 발표…일부 지역 상향 조정',
+          viTitle: 'Hà Nội công bố dự thảo Bảng giá đất năm 2027, điều chỉnh tăng tại một số khu vực',
+          categories: ['건설·부동산', '법률·정책'],
+          badges: ['주요', '샘플'],
+          country: '베트남',
+          source: 'Sample Source (VN)',
+          pubDate: '2026. 11. 03. 08:00',
+          colDate: '2026. 11. 03. 08:00',
+          isSample: true,
+          kpis: [
+            { label: '적용 연도', val: '2027년 기준', sub: '연례 토지가격표(Bảng giá đất)' },
+            { label: '조정 방향', val: '실거래 시세 반영', sub: '주요 개발축 기준가 상향' },
+            { label: '파급 영향', val: '토지사용료(LUR)', sub: '보상비·분양가 산정 직결' }
+          ],
+          summary: '하노이 인민위원회가 개정 토지법 원칙에 따라 실거래 시세를 반영한 2027년 토지가격표(Bảng giá đất) 초안을 발표했으며, 주요 개발 축의 기준가가 상향 조정되었다.',
+          viSummary: 'UBND TP Hà Nội công bố dự thảo bảng giá đất năm 2027 tiệm cận giá thị trường theo Luật Đất đai sửa đổi.',
+          keyPoints: [
+            { title: '• 시세 반영률 현실화', desc: '기존 토지가격표 프레임 폐지 이후 매년 시세를 반영하는 연차별 산정 체계 적용' },
+            { title: '• 토지사용료(LUR) 및 보상비 산정 영향', desc: '신규 디벨로퍼의 토지보상비 및 토지사용료 납부 부담 상승 가능성' },
+            { title: '• 하노이 인접 위성도시(흥엔성 등) 반사이익 분석', desc: '하노이 도심 지가 상승에 따른 인접 광역 신도시 수요 이동 주목' }
+          ],
+          whyItMatters: '베트남 부동산 개발 원가(토지사용료·보상비)와 분양가 산정 모델에 즉각적인 영향을 미치는 핵심 변수입니다.',
+          viWhy: 'Biến số cốt lõi tác động trực tiếp đến chi phí tiền sử dụng đất và giải phóng mặt bằng.',
+          region: '베트남 하노이 (Hà Nội)',
+          department: '하노이 인민위원회 · 천연자원환경국',
+          vnReference: '2024 개정 토지법 후속 연례 토지가격표(Bảng giá đất) 적용',
+          originalUrlText: 'https://example.com/sample/vn-hanoi-2027-land-price-table',
+          portalUrl: 'https://tcc-insight.vercel.app/ko'
+        }
+      ];
+
+      var SIDEBAR_RELATED_IDS = [
+        'kr-mfds-kimchi-safety',
+        'kr-moef-semiconductor-meeting',
+        'sample-kr-overseas-construction-sea'
+      ];
+
+      var POLICY_TRACKERS = [
+        { code: 'SAMPLE-04', status: '확인 필요', badgeBg: 'rgba(225,29,72,0.12)', badgeText: '#BE123C', title: '외국인 노동허가 관련 개정 보도', agency: '베트남 노동보훈사회부 관련 보도', date: '2026. 11. 03.', detail: '베트남 내 외국인 전문가·기술자 노동허가(Work Permit) 발급 요건 및 성급 인민위원회 승인 절차 관련 보도 내용의 공식 관보 등재 여부를 확인 중입니다.' },
+        { code: 'SAMPLE-01', status: '입법예고', badgeBg: 'rgba(217,119,6,0.14)', badgeText: '#B45309', title: '토지가격표 산정 관련 시행령 개정안', agency: '베트남 정부', date: '2026. 11. 02.', detail: '개정 토지법에 따른 지방성별 연례 토지가격표(Bảng giá đất) 산정 방법론과 감정평가 데이터 반영 기준을 구체화하는 시행령 초안입니다.' },
+        { code: 'SAMPLE-02', status: '시행 예정', badgeBg: 'rgba(2,132,199,0.14)', badgeText: '#0369A1', title: '건축허가 절차 관련 시행규칙', agency: '건설부 (Bộ Xây dựng)', date: '시행 2026. 12. 05.', detail: '1/500 상세기획 승인 구역 내 건축허가 면제 대상 확인 및 전자 설계도서 제출 간소화를 담은 베트남 건설부 시행규칙(Thông tư)입니다.' },
+        { code: 'SAMPLE-03', status: '시행 중', badgeBg: 'rgba(5,150,105,0.14)', badgeText: '#047857', title: '부동산 양도 절차 결정', agency: '흥엔성 인민위원회', date: '시행 2026. 10. 01.', detail: '흥엔성 내 신도시·택지개발 프로젝트의 토지사용권 및 주택 양도 행정 절차와 관할 세무·등기 연동 기준을 규정한 지방성 결정문(Quyết định)입니다.' }
+      ];
+
+      var LEGAL_QA = [
+        { q: 'Q. 베트남에서 임대인이 임대차계약을 일방적으로 파기하면 어떻게 되나요?', status: '법률 검수 후 답변 공개 예정 [샘플]', preview: '[실무 참고 체크포인트] 계약서 내 중도해지 위약금(보증금 배액 상환 또는 잔여기간 위약벌) 조항 및 사전 통지 기한(통상 30~90일) 명시 여부를 최우선 확인해야 하며, 공증 여부와 임대 목적물 인도 상태 기록이 중요합니다.' },
+        { q: 'Q. 한국 운전면허를 베트남 운전면허로 교환할 수 있나요?', status: '법률 검수 후 답변 공개 예정 [샘플]', preview: '[실무 참고 체크포인트] 유효한 한국 운전면허증, 베트남 거주증(TRC) 또는 3개월 이상 비자, 여권, 번역공증본을 구비하여 관할 교통운송국(Sở GTVT)에 신청하면 필기·실기 시험 면제로 거주기간에 맞춘 베트남 면허 교환이 가능합니다.' },
+        { q: 'Q. 외국인이 베트남 아파트를 구매할 때 주의할 점은 무엇인가요?', status: '법률 검수 후 답변 공개 예정 [샘플]', preview: '[실무 참고 체크포인트] ① 외국인 소유 허용 프로젝트인지(국방·안보 제한 구역 제외), ② 단지 내 외국인 쿼터(아파트 30% 한도)가 남아 있는지, ③ 베트남 내 본인 명의 은행 계좌를 통한 적법한 분양대금 송금 증빙이 갖추어졌는지 확인해야 핑크북(Sổ hồng) 발급이 가능합니다.' }
+      ];
+
+      var OFFICIAL_SOURCES = [
+        { name: 'Báo Chính phủ', country: '베트남', desc: '베트남 정부 공식 뉴스 포털', url: 'https://baochinhphu.vn/' },
+        { name: 'Công báo Chính phủ (정부공보)', country: '베트남', desc: '베트남 법령·시행령·결정문 관보', url: 'https://congbao.chinhphu.vn/' },
+        { name: 'Bộ Xây dựng (MOC)', country: '베트남', desc: '베트남 건설부 도시계획·인허가 보도', url: 'https://moc.gov.vn/' },
+        { name: '대한민국 정책브리핑', country: '한국', desc: '문화체육관광부 정책뉴스 공식 API', url: 'https://www.korea.kr/' },
+        { name: '국가데이터처 (구 통계청)', country: '한국', desc: '물가·인구·건설 경기 거시 통계 API', url: 'https://kostat.go.kr/' },
+        { name: '재정경제부 (보도자료 API)', country: '한국', desc: '거시경제·세제·대외경제 보도자료', url: 'https://www.moef.go.kr/' },
+        { name: '법제처 · 재정경제부 법령해석', country: '한국', desc: '정부 유권해석 및 법령 경과조치 DB', url: 'https://www.moleg.go.kr/' }
+      ];
+
+      var state = {
+        currentView: 'article',
+        currentArticleId: 'sample-kr-reconstruction-policy',
+        currentPortalTab: 'Today',
+        countryFilter: 'ALL',
+        policyStatusFilter: 'ALL',
+        simMode: 'fasttrack',
+        lang: 'ko',
+        fontScale: 100,
+        bookmarks: { 'sample-kr-reconstruction-policy': true }
+      };
+
+      try {
+        var savedBm = localStorage.getItem('tcc_insight_v2_bookmarks');
+        if (savedBm) state.bookmarks = JSON.parse(savedBm);
+      } catch (e) {}
+
+      function saveBookmarks() {
+        try { localStorage.setItem('tcc_insight_v2_bookmarks', JSON.stringify(state.bookmarks)); } catch (e) {}
+      }
+
+      function showToast(msg) {
+        var container = document.getElementById('toast-container');
+        if (!container) return;
+        var el = document.createElement('div');
+        el.style.cssText = 'padding:11px 16px;border-radius:12px;background:#0F172A;color:#FFFFFF;font-size:13px;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,0.3);border:1px solid #0F766E;';
+        el.textContent = msg;
+        container.appendChild(el);
+        setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 2600);
+      }
+
+      function getArticleById(id) {
+        for (var i = 0; i < ARTICLES.length; i++) {
+          if (ARTICLES[i].id === id) return ARTICLES[i];
+        }
+        return ARTICLES[0];
+      }
+
+      function renderSimulator() {
+        var container = document.getElementById('sim-panel-content');
+        if (!container) return;
+        var btns = document.querySelectorAll('.sim-mode-btn');
+        for (var i = 0; i < btns.length; i++) {
+          var m = btns[i].getAttribute('data-sim-mode');
+          btns[i].style.cssText = m === state.simMode
+            ? 'border:0;padding:6px 11px;border-radius:7px;font-size:12px;font-weight:800;background:#115E59;color:#FFFFFF;cursor:pointer;'
+            : 'border:0;padding:6px 11px;border-radius:7px;font-size:12px;font-weight:600;background:transparent;color:var(--text-secondary);cursor:pointer;';
+        }
+
+        if (state.simMode === 'fasttrack') {
+          container.innerHTML =
+            '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-bottom:12px;">' +
+              '<span style="font-size:13.5px;font-weight:800;color:var(--accent-teal);">통합심의 범위 확대 적용 시 (5대 심의 일괄 원스톱 처리)</span>' +
+              '<span style="font-family:monospace;font-size:12px;font-weight:800;color:#115E59;background:var(--accent-teal-soft);padding:2px 8px;border-radius:6px;">소요 기간 약 6~9개월 (기존 대비 -73% 단축)</span>' +
+            '</div>' +
+            '<div style="margin-bottom:12px;">' +
+              '<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);"><span>기존 개별심의 (순차 진행 · 평균 30개월)</span><span style="font-family:monospace;font-weight:700;">100%</span></div>' +
+              '<div class="tcc-sim-bar-track"><div class="tcc-sim-bar-fill" style="width:100%;background:#94A3B8;"></div></div>' +
+            '</div>' +
+            '<div style="margin-bottom:14px;">' +
+              '<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--accent-teal);font-weight:700;"><span>국토부 통합심의 패스트트랙 (건축+경관+교통+교육+환경 일괄 · 약 8개월)</span><span style="font-family:monospace;font-weight:800;">27%</span></div>' +
+              '<div class="tcc-sim-bar-track"><div class="tcc-sim-bar-fill" style="width:27%;background:linear-gradient(90deg,#0F766E,#10B981);"></div></div>' +
+            '</div>' +
+            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;font-size:12.5px;">' +
+              '<div style="padding:10px 12px;border-radius:10px;background:var(--bg-subtle);"><strong>1. 단일 위원회 통합 상정</strong><div style="color:var(--text-muted);font-size:12px;margin-top:3px;">건축·경관·교통·교육·환경 동시 심의</div></div>' +
+              '<div style="padding:10px 12px;border-radius:10px;background:var(--bg-subtle);"><strong>2. 재심의 루프 원천 차단</strong><div style="color:var(--text-muted);font-size:12px;margin-top:3px;">부처 간 상충 의견을 한 자리에서 조율</div></div>' +
+              '<div style="padding:10px 12px;border-radius:10px;background:var(--bg-subtle);"><strong>3. 금융비용(PF) 절감</strong><div style="color:var(--text-muted);font-size:12px;margin-top:3px;">사업시행인가 앞당겨 초기 이자 부담 축소</div></div>' +
+            '</div>';
+        } else if (state.simMode === 'standard') {
+          container.innerHTML =
+            '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-bottom:12px;">' +
+              '<span style="font-size:13.5px;font-weight:800;color:#BE123C;">기존 개별 인허가 심의 방식 (단계별 순차 진행)</span>' +
+              '<span style="font-family:monospace;font-size:12px;font-weight:800;color:#BE123C;background:rgba(225,29,72,0.1);padding:2px 8px;border-radius:6px;">평균 24~36개월 소요</span>' +
+            '</div>' +
+            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;font-size:12px;margin-bottom:10px;">' +
+              '<div style="padding:10px;border-radius:10px;background:var(--bg-subtle);"><strong>① 건축심의</strong><div style="color:var(--text-muted);">4~6개월</div></div>' +
+              '<div style="padding:10px;border-radius:10px;background:var(--bg-subtle);"><strong>② 경관·교통</strong><div style="color:var(--text-muted);">5~7개월</div></div>' +
+              '<div style="padding:10px;border-radius:10px;background:var(--bg-subtle);"><strong>③ 교육환경</strong><div style="color:var(--text-muted);">4~6개월</div></div>' +
+              '<div style="padding:10px;border-radius:10px;background:var(--bg-subtle);"><strong>④ 환경·재해</strong><div style="color:var(--text-muted);">6~9개월</div></div>' +
+              '<div style="padding:10px;border-radius:10px;background:var(--bg-subtle);"><strong>⑤ 사업시행인가</strong><div style="color:var(--text-muted);">5~8개월</div></div>' +
+            '</div>' +
+            '<p style="margin:0;font-size:12px;color:var(--text-muted);">개별 심의위원회마다 설계 변경 요구가 다를 경우 앞 단계 심의를 다시 받아야 하는 행정 병목이 발생했습니다.</p>';
+        } else {
+          container.innerHTML =
+            '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-bottom:12px;">' +
+              '<span style="font-size:13.5px;font-weight:800;color:var(--text-primary);">한·베트남 신도시 개발 인허가 모델 비교 (DECV 실무 적용)</span>' +
+              '<span style="font-family:monospace;font-size:12px;font-weight:800;color:var(--accent-teal);">Korea × Vietnam Benchmark</span>' +
+            '</div>' +
+            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;font-size:12.5px;">' +
+              '<div style="padding:12px;border-radius:12px;background:var(--bg-subtle);">' +
+                '<div style="font-weight:800;color:var(--text-primary);margin-bottom:4px;">🇰🇷 한국: 노후계획도시 통합심의</div>' +
+                '<p style="margin:0;color:var(--text-secondary);">기본계획 승인 후 건축·교통·환경·교육 심의를 단일 위원회로 통합해 인허가 기간을 1.5~2년 이상 단축</p>' +
+              '</div>' +
+              '<div style="padding:12px;border-radius:12px;background:var(--bg-subtle);">' +
+                '<div style="font-weight:800;color:var(--text-primary);margin-bottom:4px;">🇻🇳 베트남: 흥엔성 1/500 &amp; 건축허가(SAMPLE-02)</div>' +
+                '<p style="margin:0;color:var(--text-secondary);">흥엔성 구 타이빈 신도시 개발계획 조정안 의견수렴 및 베트남 건설부 건축허가 시행규칙(12/05 시행 예정)과 연계해 동시 인허가 트랙 설계 가능</p>' +
+              '</div>' +
+            '</div>';
+        }
+      }
+
+      function renderArticleDetail() {
+        var art = getArticleById(state.currentArticleId);
+        var flag = art.country === '한국' ? '🇰🇷 ' : '🇻🇳 ';
+        document.getElementById('article-breadcrumb-cat').textContent = flag + art.country + ' · ' + art.categories.join(' · ');
+        document.getElementById('article-doc-id').textContent = 'ID: ' + art.id;
+        document.getElementById('article-title').textContent = art.title;
+
+        var viSub = document.getElementById('article-vi-subtitle');
+        var viSum = document.getElementById('article-summary-vi');
+        var viWhy = document.getElementById('article-why-vi');
+        if (state.lang === 'bi' || state.lang === 'vi') {
+          viSub.textContent = '[Tiếng Việt] ' + art.viTitle;
+          viSub.classList.remove('hidden');
+          viSum.textContent = '[Tiếng Việt] ' + art.viSummary;
+          viSum.classList.remove('hidden');
+          viWhy.textContent = '[Tiếng Việt] ' + (art.viWhy || '');
+          viWhy.classList.remove('hidden');
+        } else {
+          viSub.classList.add('hidden');
+          viSum.classList.add('hidden');
+          viWhy.classList.add('hidden');
+        }
+
+        var resetBtn = document.getElementById('btn-reset-main-article');
+        if (art.id !== 'sample-kr-reconstruction-policy') {
+          resetBtn.classList.remove('hidden');
+        } else {
+          resetBtn.classList.add('hidden');
+        }
+
+        var tagsHtml = '';
+        for (var i = 0; i < art.categories.length; i++) {
+          tagsHtml += '<span class="tcc-tag">' + art.categories[i] + '</span>';
+        }
+        for (var j = 0; j < art.badges.length; j++) {
+          var b = art.badges[j];
+          if (b === '주요' || b === '중요') {
+            tagsHtml += '<span class="tcc-badge-primary">' + b + '</span>';
+          } else if (b === '샘플') {
+            tagsHtml += '<span class="tcc-badge-sample">샘플</span>';
+          } else {
+            tagsHtml += '<span class="tcc-tag" style="color:var(--accent-teal);">' + b + '</span>';
+          }
+        }
+        document.getElementById('article-tags-row').innerHTML = tagsHtml;
+
+        document.getElementById('article-country').textContent = art.country;
+        document.getElementById('article-source').textContent = art.source;
+        document.getElementById('article-pub-date').textContent = art.pubDate;
+        document.getElementById('article-col-date').textContent = art.colDate;
+
+        var sampleCallout = document.getElementById('article-sample-callout');
+        if (art.isSample) {
+          sampleCallout.classList.remove('hidden');
+        } else {
+          sampleCallout.classList.add('hidden');
+        }
+
+        if (art.kpis && art.kpis.length === 3) {
+          for (var idx = 0; idx < 3; idx++) {
+            document.getElementById('kpi-val-' + (idx + 1)).textContent = art.kpis[idx].val;
+            document.getElementById('kpi-sub-' + (idx + 1)).textContent = art.kpis[idx].sub;
+          }
+        }
+
+        document.getElementById('article-summary-text').textContent = art.summary;
+
+        var kpHtml = '';
+        for (var k = 0; k < art.keyPoints.length; k++) {
+          var kp = art.keyPoints[k];
+          kpHtml +=
+            '<li class="tcc-bento-item">' +
+              '<div class="tcc-point-num">POINT 0' + (k + 1) + '</div>' +
+              '<div style="font-size:15.5px;font-weight:800;color:var(--text-primary);margin-bottom:6px;">' + kp.title + '</div>' +
+              '<p style="margin:0;font-size:13px;color:var(--text-secondary);line-height:1.55;">' + kp.desc + '</p>' +
+            '</li>';
+        }
+        document.getElementById('article-keypoints-list').innerHTML = kpHtml;
+
+        document.getElementById('article-why-it-matters').textContent = art.whyItMatters;
+
+        document.getElementById('article-meta-table-body').innerHTML =
+          '<tr><td style="font-weight:700;color:var(--text-secondary);">적용 지역</td><td style="font-weight:800;">' + art.region + '</td></tr>' +
+          '<tr><td style="font-weight:700;color:var(--text-secondary);">소관 기관 / 출처</td><td>' + art.department + '</td></tr>' +
+          '<tr><td style="font-weight:700;color:var(--text-secondary);">크로스보더 참고 포인트</td><td>' + art.vnReference + '</td></tr>';
+
+        document.getElementById('article-source-footer').textContent = art.source + ' · ' + art.pubDate;
+        document.getElementById('article-target-url-text').textContent = art.originalUrlText;
+        document.getElementById('article-original-link').setAttribute('href', art.portalUrl);
+
+        updateBookmarkUI();
+        renderSidebarWidgets();
+        renderSimulator();
+      }
+
+      function updateBookmarkUI() {
+        var isSaved = !!state.bookmarks[state.currentArticleId];
+        var icon = document.getElementById('bookmark-icon');
+        var label = document.getElementById('bookmark-label');
+        var btn = document.getElementById('btn-bookmark-article');
+        if (isSaved) {
+          icon.textContent = '★';
+          label.textContent = '북마크됨';
+          btn.className = 'tcc-action-pill saved';
+        } else {
+          icon.textContent = '☆';
+          label.textContent = '북마크';
+          btn.className = 'tcc-action-pill';
+        }
+        var count = 0;
+        for (var k in state.bookmarks) { if (state.bookmarks[k]) count++; }
+        document.getElementById('bookmark-count-badge').textContent = String(count);
+      }
+
+      function renderSidebarWidgets() {
+        var relContainer = document.getElementById('sidebar-related-list');
+        var html = '';
+        for (var i = 0; i < SIDEBAR_RELATED_IDS.length; i++) {
+          var item = getArticleById(SIDEBAR_RELATED_IDS[i]);
+          var isCurrent = item.id === state.currentArticleId;
+          var badges = '';
+          for (var c = 0; c < item.categories.length; c++) {
+            badges += '<span class="tcc-tag" style="font-size:12px;padding:2px 8px;">' + item.categories[c] + '</span>';
+          }
+          for (var b = 0; b < item.badges.length; b++) {
+            if (item.badges[b] === '중요' || item.badges[b] === '주요') {
+              badges += '<span class="tcc-badge-primary" style="font-size:12px;padding:2px 8px;">' + item.badges[b] + '</span>';
+            } else if (item.badges[b] === '샘플') {
+              badges += '<span class="tcc-badge-sample" style="font-size:12px;padding:1px 7px;">샘플</span>';
+            }
+          }
+          html +=
+            '<button type="button" data-open-article="' + item.id + '" class="tcc-rel-btn ' + (isCurrent ? 'active' : '') + '">' +
+              '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;">' + badges + '</div>' +
+              '<div style="font-size:14px;font-weight:800;color:var(--text-primary);line-height:1.4;margin-bottom:6px;">' + item.title + '</div>' +
+              '<div style="font-family:monospace;font-size:12px;color:var(--text-muted);">' + item.country + ' | ' + item.source + ' | ' + item.pubDate + '</div>' +
+            '</button>';
+        }
+        relContainer.innerHTML = html;
+
+        var polContainer = document.getElementById('sidebar-policy-list');
+        var polHtml = '';
+        for (var p = 0; p < POLICY_TRACKERS.length; p++) {
+          var pt = POLICY_TRACKERS[p];
+          polHtml +=
+            '<div style="padding:12px 14px;border-radius:12px;background:var(--bg-subtle);">' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;">' +
+                '<span style="font-size:12px;font-weight:800;padding:2px 7px;border-radius:6px;background:' + pt.badgeBg + ';color:' + pt.badgeText + ';">[' + pt.status + ']</span>' +
+                '<span style="font-family:monospace;font-size:12px;color:var(--text-muted);">' + pt.code + ' · ' + pt.date + '</span>' +
+              '</div>' +
+              '<div style="font-size:13px;font-weight:800;color:var(--text-primary);">' + pt.title + '</div>' +
+              '<div style="font-size:12px;color:var(--text-muted);margin-top:2px;">' + pt.agency + '</div>' +
+            '</div>';
+        }
+        polContainer.innerHTML = polHtml;
+      }
+
+      function renderPortalView() {
+        var tab = state.currentPortalTab;
+        var tabMeta = {
+          'Today': { badge: 'TODAY BRIEFING', title: 'Today · 한·베트남 데일리 핵심 브리핑', desc: '흥엔성 신도시 개발계획 조정안, 국토부 노후 신도시 재건축 절차 간소화 등 양국 주요 현안을 통합 브리핑합니다.' },
+          '부동산·개발': { badge: 'REAL ESTATE & INFRA', title: '부동산·개발 · 신도시 인허가 및 인프라 동향', desc: '한국 노후 계획도시 재건축 통합심의와 베트남 흥엔성·하노이 토지가격표·고속도로 개발 소식을 다룹니다.' },
+          '법률·정책': { badge: 'LAW & POLICY TRACKER', title: '법률·정책 · 입법예고 및 시행령 모니터링', desc: '베트남 토지가격표 산정 시행령, 건축허가 시행규칙, 한국 법제처 유권해석 및 정책 변화를 추적합니다.' },
+          '주재원 생활': { badge: 'EXPAT LIFE & LEGAL GUIDE', title: '주재원 생활 · 현지 생활법률 Q&A 및 물가·안전', desc: '베트남 주택 임대차·아파트 구매·운전면허 교환 가이드와 유가·수입식품 안전관리 소식을 안내합니다.' },
+          'Korea Briefing': { badge: 'KOREA BRIEFING', title: 'Korea Briefing · 대한민국 주요 정책 및 거시경제', desc: '국토교통부, 재정경제부, 식약처 등 한국 정부 공식 발표 핵심 요약입니다.' },
+          'Weekly': { badge: 'WEEKLY DIGEST', title: 'Weekly · 금주의 주요 뉴스 종합 리포트', desc: '이번 주 수집된 한국·베트남 주요 기사와 정책 변화 4건을 주간 단위로 집약했습니다.' },
+          '관리자': { badge: 'ADMIN & PIPELINE', title: '관리자 · 뉴스 수집 파이프라인 및 샘플 데이터 점검', desc: '7개 한·베트남 공공 API 연동 상태 및 샘플 데이터(SAMPLE DATA) 스키마를 점검하는 관리자 화면입니다.' }
+        };
+        var meta = tabMeta[tab] || tabMeta['Today'];
+        document.getElementById('portal-view-badge').textContent = meta.badge;
+        document.getElementById('portal-view-title').textContent = meta.title;
+        document.getElementById('portal-view-desc').textContent = meta.desc;
+
+        var mainFeat = getArticleById('vn-hung-yen-new-city-plan');
+        var subIds = ['sample-kr-reconstruction-policy', 'vn-hanoi-2027-land-price-table', 'kr-mfds-kimchi-safety'];
+        var subHtml = '';
+        for (var i = 0; i < subIds.length; i++) {
+          var sArt = getArticleById(subIds[i]);
+          subHtml +=
+            '<button type="button" data-open-article="' + sArt.id + '" class="tcc-card" style="width:100%;text-align:left;padding:16px 18px;cursor:pointer;display:block;margin-bottom:10px;">' +
+              '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;">' +
+                '<span style="font-weight:800;color:var(--accent-teal);">' + sArt.country + ' · ' + sArt.categories[0] + '</span>' +
+                '<span style="font-family:monospace;color:var(--text-muted);">' + sArt.pubDate.slice(0, 12) + '</span>' +
+              '</div>' +
+              '<div style="font-size:15px;font-weight:800;color:var(--text-primary);margin-bottom:4px;">' + sArt.title + '</div>' +
+              '<div style="font-size:12.5px;color:var(--text-secondary);">' + sArt.summary + '</div>' +
+            '</button>';
+        }
+
+        document.getElementById('portal-highlights-grid').innerHTML =
+          '<div class="tcc-col-7">' +
+            '<button type="button" data-open-article="' + mainFeat.id + '" style="width:100%;height:100%;text-align:left;padding:28px;border-radius:20px;background:linear-gradient(145deg,#0B1120 0%,#0F293A 100%);color:#FFFFFF;border:1px solid rgba(45,212,191,0.3);cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;gap:18px;">' +
+              '<div>' +
+                '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;">' +
+                  '<span class="tcc-badge-primary">주요 헤드라인</span>' +
+                  '<span class="tcc-badge-sample">샘플</span>' +
+                  '<span style="font-family:monospace;font-size:12px;color:#CBD5E1;margin-left:auto;">' + mainFeat.country + ' | ' + mainFeat.source + ' | ' + mainFeat.pubDate + '</span>' +
+                '</div>' +
+                '<h3 style="margin:0 0 10px 0;font-size:22px;font-weight:800;line-height:1.35;color:#FFFFFF;">' + mainFeat.title + '</h3>' +
+                '<p style="margin:0;font-size:14px;color:#CBD5E1;line-height:1.65;">' + mainFeat.summary + '</p>' +
+              '</div>' +
+              '<div style="padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.06);border-left:4px solid #2DD4BF;">' +
+                '<div style="font-family:monospace;font-size:12px;font-weight:800;color:#5EEAD4;margin-bottom:4px;">WHY IT MATTERS · 왜 중요한가</div>' +
+                '<div style="font-size:13.5px;font-weight:700;color:#FFFFFF;">' + mainFeat.whyItMatters + '</div>' +
+              '</div>' +
+            '</button>' +
+          '</div>' +
+          '<div class="tcc-col-5">' + subHtml + '</div>';
+
+        var filtered = [];
+        for (var a = 0; a < ARTICLES.length; a++) {
+          var item = ARTICLES[a];
+          if (state.countryFilter !== 'ALL' && item.country !== state.countryFilter) continue;
+          if (tab === '부동산·개발' && item.categories.indexOf('건설·부동산') === -1) continue;
+          if (tab === '법률·정책' && item.categories.indexOf('법률·정책') === -1 && item.categories.indexOf('정책·행정') === -1) continue;
+          if (tab === '주재원 생활' && item.categories.indexOf('주재원 생활') === -1 && item.categories.indexOf('법률·정책') === -1) continue;
+          if (tab === 'Korea Briefing' && item.country !== '한국') continue;
+          filtered.push(item);
+        }
+        document.getElementById('feed-count-label').textContent = filtered.length + '건';
+        var feedHtml = '';
+        for (var f = 0; f < filtered.length; f++) {
+          var fa = filtered[f];
+          feedHtml +=
+            '<button type="button" data-open-article="' + fa.id + '" style="width:100%;text-align:left;padding:14px 10px;border:0;border-bottom:1px solid var(--border-color);background:transparent;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;">' +
+              '<div>' +
+                '<div style="display:flex;gap:8px;align-items:center;margin-bottom:4px;">' +
+                  '<span style="font-size:12px;font-weight:800;color:var(--accent-teal);">' + (fa.country === '한국' ? '🇰🇷 한국' : '🇻🇳 베트남') + ' · ' + fa.categories.join('·') + '</span>' +
+                  (fa.isSample ? '<span class="tcc-badge-sample" style="font-size:12px;padding:1px 6px;">샘플</span>' : '') +
+                '</div>' +
+                '<div style="font-size:15px;font-weight:800;color:var(--text-primary);margin-bottom:3px;">' + fa.title + '</div>' +
+                '<div style="font-size:12.5px;color:var(--text-secondary);">' + fa.summary + '</div>' +
+              '</div>' +
+              '<span style="font-family:monospace;font-size:12px;color:var(--text-muted);flex-shrink:0;">열람 →</span>' +
+            '</button>';
+        }
+        document.getElementById('portal-news-feed').innerHTML = feedHtml;
+
+        var polHtml = '';
+        for (var p = 0; p < POLICY_TRACKERS.length; p++) {
+          var pt = POLICY_TRACKERS[p];
+          if (state.policyStatusFilter !== 'ALL' && pt.status !== state.policyStatusFilter) continue;
+          polHtml +=
+            '<div style="padding:14px;border-radius:14px;background:var(--bg-subtle);">' +
+              '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">' +
+                '<span style="font-size:12px;font-weight:800;padding:2px 8px;border-radius:6px;background:' + pt.badgeBg + ';color:' + pt.badgeText + ';">[' + pt.status + '] [샘플]</span>' +
+                '<span style="font-family:monospace;font-size:12px;color:var(--text-muted);">' + pt.code + ' · ' + pt.date + '</span>' +
+              '</div>' +
+              '<div style="font-size:14px;font-weight:800;color:var(--text-primary);">' + pt.title + '</div>' +
+              '<div style="font-size:12px;color:var(--accent-teal);font-weight:700;margin:2px 0 6px 0;">' + pt.agency + '</div>' +
+              '<p style="margin:0;font-size:12.5px;color:var(--text-secondary);line-height:1.5;">' + pt.detail + '</p>' +
+            '</div>';
+        }
+        document.getElementById('portal-policy-tracker-list').innerHTML = polHtml;
+
+        var qaHtml = '';
+        for (var q = 0; q < LEGAL_QA.length; q++) {
+          var itemQa = LEGAL_QA[q];
+          qaHtml +=
+            '<details style="padding:13px 15px;border-radius:12px;background:var(--bg-subtle);">' +
+              '<summary style="cursor:pointer;font-size:13.5px;font-weight:800;color:var(--text-primary);">' + itemQa.q + '</summary>' +
+              '<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border-color);font-size:12.5px;color:var(--text-secondary);">' +
+                '<div style="font-weight:700;color:#B45309;margin-bottom:4px;">' + itemQa.status + '</div>' +
+                '<p style="margin:0;">' + itemQa.preview + '</p>' +
+              '</div>' +
+            '</details>';
+        }
+        document.getElementById('portal-legal-qa-list').innerHTML = qaHtml;
+
+        var srcHtml = '';
+        for (var s = 0; s < OFFICIAL_SOURCES.length; s++) {
+          var src = OFFICIAL_SOURCES[s];
+          srcHtml +=
+            '<a href="' + src.url + '" target="_blank" rel="noopener noreferrer" style="padding:14px;border-radius:14px;background:var(--bg-subtle);text-decoration:none;display:block;">' +
+              '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">' +
+                '<span style="font-weight:800;color:var(--accent-teal);">' + (src.country === '한국' ? '🇰🇷 한국' : '🇻🇳 베트남') + '</span>' +
+                '<span style="font-family:monospace;color:var(--text-muted);">공식 출처 ↗</span>' +
+              '</div>' +
+              '<div style="font-size:14px;font-weight:800;color:var(--text-primary);margin-bottom:3px;">' + src.name + '</div>' +
+              '<div style="font-size:12px;color:var(--text-secondary);">' + src.desc + '</div>' +
+            '</a>';
+        }
+        document.getElementById('portal-sources-grid').innerHTML = srcHtml;
+      }
+
+      function switchNav(target) {
+        var viewArticle = document.getElementById('view-article');
+        var viewPortal = document.getElementById('view-portal');
+        var navBtns = document.querySelectorAll('.nav-tab');
+        if (target === 'article') {
+          state.currentView = 'article';
+          viewArticle.classList.remove('hidden');
+          viewPortal.classList.add('hidden');
+          renderArticleDetail();
+        } else {
+          state.currentView = 'portal';
+          state.currentPortalTab = target;
+          viewArticle.classList.add('hidden');
+          viewPortal.classList.remove('hidden');
+          renderPortalView();
+        }
+        for (var i = 0; i < navBtns.length; i++) {
+          var navVal = navBtns[i].getAttribute('data-nav');
+          if (navBtns[i].classList.contains('tcc-nav-btn')) {
+            var isActive = (state.currentView === 'article' && navVal === 'article') ||
+                           (state.currentView === 'portal' && navVal === state.currentPortalTab);
+            navBtns[i].className = 'nav-tab tcc-nav-btn' + (isActive ? ' active' : '');
+          }
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function renderBookmarksModal() {
+        var listEl = document.getElementById('bookmarks-modal-list');
+        var html = '';
+        for (var id in state.bookmarks) {
+          if (!state.bookmarks[id]) continue;
+          var art = getArticleById(id);
+          html +=
+            '<div style="padding:12px;border-radius:12px;background:var(--bg-subtle);display:flex;justify-content:space-between;align-items:center;gap:10px;">' +
+              '<button type="button" data-open-article="' + art.id + '" style="border:0;background:transparent;text-align:left;cursor:pointer;flex:1;">' +
+                '<div style="font-size:12px;font-weight:700;color:var(--accent-teal);">' + art.country + ' · ' + art.categories.join(' · ') + '</div>' +
+                '<div style="font-size:14px;font-weight:800;color:var(--text-primary);">' + art.title + '</div>' +
+              '</button>' +
+              '<button type="button" data-remove-bm="' + art.id + '" class="tcc-action-pill" style="font-size:12px;padding:4px 10px;">삭제</button>' +
+            '</div>';
+        }
+        listEl.innerHTML = html || '<p style="text-align:center;color:var(--text-muted);font-size:13px;">저장된 북마크가 없습니다.</p>';
+      }
+
+      function renderSearchResults(q) {
+        var container = document.getElementById('search-results-container');
+        var query = (q || '').trim().toLowerCase();
+        var matches = [];
+        for (var i = 0; i < ARTICLES.length; i++) {
+          var a = ARTICLES[i];
+          var hay = (a.title + ' ' + a.summary + ' ' + a.categories.join(' ') + ' ' + a.country + ' ' + a.whyItMatters).toLowerCase();
+          if (!query || hay.indexOf(query) !== -1) matches.push(a);
+        }
+        var html = '';
+        for (var m = 0; m < matches.length; m++) {
+          var ma = matches[m];
+          html +=
+            '<button type="button" data-open-article="' + ma.id + '" style="text-align:left;padding:12px;border-radius:12px;background:var(--bg-subtle);border:0;cursor:pointer;">' +
+              '<div style="font-size:12px;font-weight:800;color:var(--accent-teal);margin-bottom:3px;">' + ma.country + ' · ' + ma.categories[0] + '</div>' +
+              '<div style="font-size:13.5px;font-weight:800;color:var(--text-primary);margin-bottom:3px;">' + ma.title + '</div>' +
+              '<div style="font-size:12px;color:var(--text-muted);">' + ma.summary + '</div>' +
+            '</button>';
+        }
+        container.innerHTML = html || '<div style="font-size:13px;color:var(--text-muted);">검색 결과가 없습니다.</div>';
+      }
+
+      function copyTextFallback(text, successMsg) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { showToast(successMsg); }).catch(function () { fallbackExecCopy(text, successMsg); });
+        } else {
+          fallbackExecCopy(text, successMsg);
+        }
+      }
+
+      function fallbackExecCopy(text, successMsg) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); showToast(successMsg); } catch (e) { showToast(successMsg); }
+        document.body.removeChild(ta);
+      }
+
+      document.addEventListener('click', function (e) {
+        var navBtn = e.target.closest('.nav-tab');
+        if (navBtn) {
+          var targetNav = navBtn.getAttribute('data-nav');
+          if (targetNav) switchNav(targetNav);
+          return;
+        }
+        var openArtBtn = e.target.closest('[data-open-article]');
+        if (openArtBtn) {
+          state.currentArticleId = openArtBtn.getAttribute('data-open-article');
+          document.getElementById('bookmarks-modal').classList.add('hidden');
+          document.getElementById('search-drawer').classList.add('hidden');
+          switchNav('article');
+          showToast('리포트 상세 화면으로 전환되었습니다.');
+          return;
+        }
+        var presetBtn = e.target.closest('[data-memo-preset]');
+        if (presetBtn) {
+          document.getElementById('exec-memo-input').value = presetBtn.getAttribute('data-memo-preset');
+          showToast('실무 코멘트 템플릿이 입력되었습니다.');
+          return;
+        }
+        var rmBmBtn = e.target.closest('[data-remove-bm]');
+        if (rmBmBtn) {
+          delete state.bookmarks[rmBmBtn.getAttribute('data-remove-bm')];
+          saveBookmarks();
+          updateBookmarkUI();
+          renderBookmarksModal();
+          showToast('북마크에서 삭제되었습니다.');
+          return;
+        }
+        var simBtn = e.target.closest('.sim-mode-btn');
+        if (simBtn) {
+          state.simMode = simBtn.getAttribute('data-sim-mode');
+          renderSimulator();
+          return;
+        }
+        var cfBtn = e.target.closest('.country-filter-btn');
+        if (cfBtn) {
+          state.countryFilter = cfBtn.getAttribute('data-country-filter');
+          var allCf = document.querySelectorAll('.country-filter-btn');
+          for (var i = 0; i < allCf.length; i++) {
+            var active = allCf[i].getAttribute('data-country-filter') === state.countryFilter;
+            allCf[i].style.background = active ? 'var(--bg-surface)' : 'transparent';
+            allCf[i].style.fontWeight = active ? '800' : '600';
+          }
+          renderPortalView();
+          return;
+        }
+      });
+
+      document.getElementById('brand-home-btn').addEventListener('click', function () { switchNav('Today'); });
+      document.getElementById('btn-back-to-list').addEventListener('click', function () { switchNav('Today'); });
+      document.getElementById('btn-reset-main-article').addEventListener('click', function () {
+        state.currentArticleId = 'sample-kr-reconstruction-policy';
+        renderArticleDetail();
+        showToast('국토부 재건축 대표 기사로 복귀했습니다.');
+      });
+      document.getElementById('btn-pipeline-preview').addEventListener('click', function () { switchNav('관리자'); });
+      document.getElementById('btn-dismiss-banner').addEventListener('click', function () { document.getElementById('sample-banner').classList.add('hidden'); });
+      document.getElementById('btn-bookmark-article').addEventListener('click', function () {
+        var id = state.currentArticleId;
+        if (state.bookmarks[id]) { delete state.bookmarks[id]; showToast('북마크가 해제되었습니다.'); }
+        else { state.bookmarks[id] = true; showToast('북마크에 저장되었습니다.'); }
+        saveBookmarks();
+        updateBookmarkUI();
+      });
+      document.getElementById('btn-share-article').addEventListener('click', function () {
+        var art = getArticleById(state.currentArticleId);
+        var shareText = '[TCC INSIGHT 브리핑] ' + art.title + '\n- 핵심 요약: ' + art.summary + '\n- Why It Matters: ' + art.whyItMatters + '\n- 원문: ' + art.portalUrl;
+        copyTextFallback(shareText, '기사 요약 및 공유 링크가 복사되었습니다.');
+      });
+      document.getElementById('btn-copy-briefing-pack').addEventListener('click', function () {
+        var art = getArticleById(state.currentArticleId);
+        var memo = document.getElementById('exec-memo-input').value.trim();
+        var pack = '[TCC INSIGHT 사내 브리핑 공유]\n■ 제목: ' + art.title + '\n■ 분류: ' + art.country + ' | ' + art.categories.join('·') + ' (' + art.pubDate + ')\n■ 핵심 요약: ' + art.summary + '\n■ Why It Matters: ' + art.whyItMatters + (memo ? '\n■ 실무 코멘트: ' + memo : '');
+        copyTextFallback(pack, '사내 브리핑 패키지가 클립보드에 복사되었습니다.');
+      });
+
+      function applyFontScale() {
+        var bodyEl = document.getElementById('article-body-content');
+        document.getElementById('font-scale-label').textContent = state.fontScale + '%';
+        bodyEl.style.zoom = (state.fontScale / 100);
+      }
+      document.getElementById('btn-font-dec').addEventListener('click', function () { if (state.fontScale > 85) { state.fontScale -= 10; applyFontScale(); } });
+      document.getElementById('btn-font-inc').addEventListener('click', function () { if (state.fontScale < 125) { state.fontScale += 10; applyFontScale(); } });
+
+      function setLangMode(mode) {
+        state.lang = mode;
+        var map = { 'ko': 'lang-ko', 'bi': 'lang-bi', 'vi': 'lang-vi' };
+        for (var k in map) { document.getElementById(map[k]).className = 'tcc-lang-btn' + (k === mode ? ' active' : ''); }
+        renderArticleDetail();
+      }
+      document.getElementById('lang-ko').addEventListener('click', function () { setLangMode('ko'); showToast('한국어 기본 모드로 전환되었습니다.'); });
+      document.getElementById('lang-bi').addEventListener('click', function () { setLangMode('bi'); showToast('한국어 + 베트남어(Tiếng Việt) 병기 대조 모드가 켜졌습니다.'); });
+      document.getElementById('lang-vi').addEventListener('click', function () { setLangMode('vi'); showToast('Đã bật chế độ phụ đề Tiếng Việt.'); });
+
+      document.getElementById('btn-theme-toggle').addEventListener('click', function () {
+        var root = document.documentElement;
+        var isDark = root.classList.toggle('dark');
+        document.getElementById('theme-icon-label').textContent = isDark ? '☀️' : '🌙';
+      });
+      document.getElementById('btn-open-search').addEventListener('click', function () {
+        var drawer = document.getElementById('search-drawer');
+        drawer.classList.toggle('hidden');
+        if (!drawer.classList.contains('hidden')) {
+          renderSearchResults(document.getElementById('global-search-input').value);
+          document.getElementById('global-search-input').focus();
+        }
+      });
+      document.getElementById('btn-close-search').addEventListener('click', function () { document.getElementById('search-drawer').classList.add('hidden'); });
+      document.getElementById('global-search-input').addEventListener('input', function (e) { renderSearchResults(e.target.value); });
+      document.getElementById('btn-open-bookmarks').addEventListener('click', function () { renderBookmarksModal(); document.getElementById('bookmarks-modal').classList.remove('hidden'); });
+      document.getElementById('btn-close-bookmarks').addEventListener('click', function () { document.getElementById('bookmarks-modal').classList.add('hidden'); });
+      document.getElementById('policy-status-filter').addEventListener('change', function (e) { state.policyStatusFilter = e.target.value; renderPortalView(); });
+      window.addEventListener('scroll', function () {
+        var doc = document.documentElement;
+        var total = doc.scrollHeight - doc.clientHeight;
+        var pct = total > 0 ? Math.min(100, Math.max(15, (window.scrollY / total) * 100)) : 28;
+        var bar = document.getElementById('reading-progress-bar');
+        if (bar) bar.style.width = pct + '%';
+      });
+
+      renderArticleDetail();
+    })();
+  </script>
+</body>
+</html>
