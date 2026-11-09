@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>롯데하이마트 경기광주점 | 가전 패키지 POP-UP 타운 · 3D 쇼룸 &amp; 최대 10만원 상품권 게임</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-paper: #F5F2EC;
+      --bg-surface: #FFFFFF;
+      --bg-elevated: #FAF8F4;
+      --ink-primary: #0F172A;
+      --ink-secondary: #334155;
+      --ink-muted: #64748B;
+      --navy-cta: #1D2B64;
+      --navy-cta-hover: #15204B;
+      --crimson-badge: #DC2626;
+      --emerald-benefit: #059669;
+      --amber-gold: #D97706;
+      --border-hair: rgba(15, 23, 42, 0.09);
+      --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-family: "Inter", "Noto Sans KR", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background-color: var(--bg-paper);
+      color: var(--ink-primary);
+      scroll-behavior: smooth;
+      scroll-padding-block-start: 84px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-paper);
+      color: var(--ink-primary);
+      overflow-x: hidden;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    .stage-card {
+      border-radius: 26px;
+      border: 1px solid var(--border-hair);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04), 0 14px 32px -8px rgba(15, 23, 42, 0.07);
+    }
+
+    .hall-card {
+      border-radius: 22px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hair);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 10px 24px -6px rgba(15, 23, 42, 0.06);
+      transition: transform 180ms var(--ease-out-strong), box-shadow 180ms var(--ease-out-strong);
+    }
+
+    .hall-inner {
+      border-radius: 12px;
+    }
+
+    .btn-press {
+      transition: transform 140ms var(--ease-out-strong), background-color 140ms ease-out, opacity 140ms ease-out;
+    }
+    .btn-press:not(:disabled):active {
+      transform: scale(0.96);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .hall-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06), 0 20px 38px -10px rgba(15, 23, 42, 0.11);
+      }
+      .btn-navy:hover {
+        background-color: var(--navy-cta-hover);
+      }
+    }
+
+    .modal-backdrop {
+      background: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(6px);
+      overscroll-behavior: contain;
+    }
+
+    .modal-sheet {
+      max-height: 92dvh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .safe-bottom-bar {
+      padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-28">
+
+  <header class="sticky top-0 z-40 border-b border-slate-900/10 bg-[#F5F2EC]/95 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-3">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#1D2B64] text-xs font-extrabold tracking-tight text-white shadow-sm">
+          HI
+        </span>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs font-bold text-[#DC2626]">가전 패키지 POP UP</span>
+            <span class="text-xs text-slate-400">·</span>
+            <span id="header-mode-label" class="text-xs font-semibold text-slate-600">3D 타운 &amp; 가벼운 화면 겸용</span>
+          </div>
+          <p class="text-sm font-extrabold tracking-tight text-slate-900 sm:text-base">
+            롯데하이마트 경기광주점 메가 타운
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="inline-flex rounded-xl border border-slate-900/10 bg-white p-1 shadow-xs" role="group" aria-label="화면 모드 전환">
+          <button
+            id="btn-mode-hybrid"
+            type="button"
+            class="btn-press rounded-lg bg-[#1D2B64] px-2.5 py-1.5 text-xs font-bold text-white"
+            aria-pressed="true"
+          >
+            3D 타운 맵
+          </button>
+          <button
+            id="btn-mode-light"
+            type="button"
+            class="btn-press rounded-lg px-2.5 py-1.5 text-xs font-bold text-slate-600"
+            aria-pressed="false"
+          >
+            가벼운 화면
+          </button>
+        </div>
+
+        <button
+          id="btn-open-wallet"
+          type="button"
+          class="btn-press flex items-center gap-1.5 rounded-xl border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-extrabold text-red-700 shadow-xs"
+          aria-label="적립 상품권 확인 및 미니게임 열기"
+        >
+          <span>상품권</span>
+          <span id="wallet-amount-badge" class="tabular-nums rounded-md bg-[#DC2626] px-1.5 py-0.5 text-[11px] font-extrabold text-white">0원</span>
+        </button>
+
+        <button
+          id="btn-sound-toggle"
+          type="button"
+          class="btn-press flex h-9 w-9 items-center justify-center rounded-xl border border-slate-900/10 bg-white text-slate-700"
+          aria-label="효과음 켜기 또는 끄기"
+          title="게임 효과음 토글"
+        >
+          <svg id="icon-sound-on" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          <svg id="icon-sound-off" class="hidden h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 pt-5">
+
+    <section class="mb-6">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="inline-flex items-center gap-2 rounded-full border border-red-200 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-800 shadow-2xs">
+          <span class="inline-block h-2 w-2 rounded-full bg-[#DC2626]"></span>
+          <span>게임을 깨면 상품권을 받아요 · 게임 4종 최대 <strong class="text-[#DC2626] tabular-nums">100,000원</strong> 즉시 차감</span>
+        </div>
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600">
+          <span>경기도 광주시 이배재로 337-22 (A·B동 1·2층)</span>
+          <span class="text-slate-300">|</span>
+          <a href="tel:031-767-1044" class="font-bold text-[#1D2B64] underline underline-offset-2">031-767-1044</a>
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+        <div>
+          <p class="text-xs font-bold tracking-wide text-[#1D2B64]">LOTTE HIMART GYEONGGI GWANGJU POP-UP TOWN</p>
+          <h1 class="mt-1 text-2xl font-extrabold tracking-tight text-slate-950 sm:text-4xl" style="text-wrap: balance;">
+            경기광주 A·B동 가전 패키지 타운
+          </h1>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+            4대 특별 전시관의 삼성·LG 베스트 패키지를 한눈에 비교하고, 미니게임으로 획득한 상품권(최대 10만원)과 결제 방식별 체감가를 실시간으로 계산해 보세요.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-900/10 bg-white p-2 shadow-xs">
+          <p class="mb-1.5 px-1 text-[11px] font-bold text-slate-500">실시간 가격 비교 기준 (전 전시관 즉시 반영)</p>
+          <div class="grid grid-cols-3 gap-1" role="group" aria-label="결제 조건 기준 선택">
+            <button
+              type="button"
+              data-pay-mode="lump"
+              class="pay-mode-btn btn-press rounded-xl bg-[#1D2B64] px-3 py-2 text-xs font-bold text-white"
+            >
+              일시불 특가
+            </button>
+            <button
+              type="button"
+              data-pay-mode="sub"
+              class="pay-mode-btn btn-press rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700"
+            >
+              가전구독 (월납)
+            </button>
+            <button
+              type="button"
+              data-pay-mode="freed"
+              class="pay-mode-btn btn-press rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700"
+            >
+              하이프리드 결합
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-3d-stage" class="stage-card relative mb-8 overflow-hidden bg-slate-950 p-3 text-white sm:p-4">
+      <div class="mb-3 flex flex-wrap items-center justify-between gap-2 px-1">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center rounded-lg bg-emerald-500/20 px-2.5 py-1 text-xs font-bold text-emerald-300">
+            60FPS 3D 인터랙티브 맵
+          </span>
+          <p class="text-xs text-slate-300">
+            건물을 클릭하거나 드래그해 회전해 보세요. 저사양 기기에서도 끊김 없이 작동합니다.
+          </p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button
+            id="btn-3d-reset"
+            type="button"
+            class="btn-press rounded-lg border border-white/15 bg-white/10 px-2.5 py-1 text-xs font-semibold text-white"
+          >
+            시점 초기화
+          </button>
+          <button
+            id="btn-3d-rotate"
+            type="button"
+            class="btn-press rounded-lg border border-amber-400/30 bg-amber-500/20 px-2.5 py-1 text-xs font-semibold text-amber-200"
+          >
+            자동 회전 켜짐
+          </button>
+        </div>
+      </div>
+
+      <div class="relative h-[320px] w-full overflow-hidden rounded-[16px] bg-gradient-to-b from-[#0F172A] via-[#1E293B] to-[#0F172A] sm:h-[380px]">
+        <canvas id="town-3d-canvas" class="h-full w-full cursor-grab active:cursor-grabbing" aria-label="롯데하이마트 경기광주점 3D 가상 팝업 타운 맵"></canvas>
+
+        <div class="pointer-events-none absolute inset-x-3 bottom-3 flex flex-wrap items-center justify-between gap-2">
+          <div class="pointer-events-auto flex flex-wrap gap-1.5">
+            <button type="button" data-jump-hall="samsung" class="hall-jump-chip btn-press rounded-full bg-white/95 px-3 py-1.5 text-xs font-extrabold text-slate-900 shadow-md">
+              1. A동 삼성 TV관 (10종)
+            </button>
+            <button type="button" data-jump-hall="lg" class="hall-jump-chip btn-press rounded-full bg-white/95 px-3 py-1.5 text-xs font-extrabold text-slate-900 shadow-md">
+              2. B동 LG TV관 (5종)
+            </button>
+            <button type="button" data-jump-hall="openrun" class="hall-jump-chip btn-press rounded-full bg-white/95 px-3 py-1.5 text-xs font-extrabold text-slate-900 shadow-md">
+              3. 오픈런 대란관 (23종)
+            </button>
+            <button type="button" data-jump-hall="sysac" class="hall-jump-chip btn-press rounded-full bg-white/95 px-3 py-1.5 text-xs font-extrabold text-slate-900 shadow-md">
+              4. 시스템에어컨관 (12종)
+            </button>
+          </div>
+          <button
+            id="btn-stage-games"
+            type="button"
+            class="pointer-events-auto btn-press rounded-full bg-[#DC2626] px-3.5 py-1.5 text-xs font-extrabold text-white shadow-lg"
+          >
+            게임존 입장 · 최대 10만원 상품권
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-light-notice" class="mb-6 hidden rounded-2xl border border-amber-300/80 bg-amber-50/90 px-4 py-3 text-xs font-semibold text-amber-950">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span>가벼운 화면(빠른 카드 보기) 모드입니다. 언제든 상단 [3D 타운 맵] 버튼을 누르면 입체 쇼룸으로 전환됩니다.</span>
+        <button id="btn-restore-3d" type="button" class="font-extrabold text-[#1D2B64] underline underline-offset-2">
+          3D 타운 맵 다시 열기
+        </button>
+      </div>
+    </section>
+
+    <section aria-labelledby="halls-heading" class="mb-8">
+      <div class="mb-4 flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <h2 id="halls-heading" class="text-lg font-extrabold text-slate-950 sm:text-xl">
+            4대 특별 전시관 &amp; 상품권 미니게임
+          </h2>
+          <p class="text-xs text-slate-600 sm:text-sm">
+            원하시는 전시관을 선택하면 모델별 상세 스펙과 품목 가감 시뮬레이터가 아래에 바로 펼쳐집니다.
+          </p>
+        </div>
+        <span class="text-xs font-bold text-[#059669]">
+          게임 적립 상품권이 모든 전시관 혜택가에 실시간 추가 반영됩니다
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <article class="hall-card flex flex-col justify-between p-5" data-hall-card="samsung">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center rounded-md bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-800">
+                A동 그랜드 쇼룸 (구 롯데호텔 월드관)
+              </span>
+              <span class="tabular-nums text-xs font-bold text-slate-500">대표 패키지 10종</span>
+            </div>
+            <h3 class="mt-2.5 text-xl font-extrabold text-slate-950">삼성 TV 패키지관</h3>
+            <p class="mt-1 text-sm text-slate-600">
+              그랜드 볼룸 한 층에 삼성 OLED·Neo QLED·QLED TV와 비스포크 패키지를 모두 펼쳤어요.
+            </p>
+            <div class="hall-inner mt-3.5 bg-[#FAF8F4] p-3 text-xs text-slate-700">
+              <div class="flex items-center justify-between font-bold">
+                <span>대표: 삼성 OLED 77형 SD85 5종 패키지</span>
+                <span class="tabular-nums text-sm font-extrabold text-[#1D2B64]" data-card-preview-price="3993000">3,993,000원</span>
+              </div>
+              <p class="mt-1 text-[11px] text-slate-500">
+                KQ77SD85AFXKR + 사운드바 HW-Q600C + 비스포크 제트 + 식기세척기 + 무풍 타워 에어컨
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2.5">
+            <button
+              type="button"
+              data-select-hall="samsung"
+              class="btn-select-hall btn-press btn-navy rounded-xl bg-[#1D2B64] px-4 py-2.5 text-xs font-extrabold text-white sm:text-sm"
+            >
+              전시관 보기
+            </button>
+            <button
+              type="button"
+              data-open-game="sniper"
+              class="btn-open-game btn-press rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-xs font-extrabold text-[#DC2626] sm:text-sm"
+            >
+              특가 스나이퍼 (+3만원)
+            </button>
+          </div>
+        </article>
+
+        <article class="hall-card flex flex-col justify-between p-5" data-hall-card="lg">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center rounded-md bg-rose-50 px-2.5 py-1 text-xs font-bold text-rose-800">
+                B동 오브제 갤러리 (구 매직아일랜드 성관)
+              </span>
+              <span class="tabular-nums text-xs font-bold text-slate-500">대표 패키지 5종</span>
+            </div>
+            <h3 class="mt-2.5 text-xl font-extrabold text-slate-950">LG TV 패키지관</h3>
+            <p class="mt-1 text-sm text-slate-600">
+              갤러리 벽면에 LG OLED evo(B6·C6·G6)와 Mini RGB 86형·스탠바이미 패키지를 작품처럼 걸었어요.
+            </p>
+            <div class="hall-inner mt-3.5 bg-[#FAF8F4] p-3 text-xs text-slate-700">
+              <div class="flex items-center justify-between font-bold">
+                <span>대표: LG OLED 77형 B6 5종 패키지</span>
+                <span class="tabular-nums text-sm font-extrabold text-[#1D2B64]" data-card-preview-price="4790500">4,790,500원</span>
+              </div>
+              <p class="mt-1 text-[11px] text-slate-500">
+                OLED77B6 + 사운드바 S60TR + 코드제로 AS520WA + 광파오븐 MLJ32ERS + 식기세척기
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2.5">
+            <button
+              type="button"
+              data-select-hall="lg"
+              class="btn-select-hall btn-press btn-navy rounded-xl bg-[#1D2B64] px-4 py-2.5 text-xs font-extrabold text-white sm:text-sm"
+            >
+              전시관 보기
+            </button>
+            <button
+              type="button"
+              data-open-game="mole"
+              class="btn-open-game btn-press rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-xs font-extrabold text-[#DC2626] sm:text-sm"
+            >
+              사은품 스피드 캐치 (+2만원)
+            </button>
+          </div>
+        </article>
+
+        <article class="hall-card flex flex-col justify-between p-5" data-hall-card="openrun">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center rounded-md bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-900">
+                메가 타워 (구 롯데월드타워관)
+              </span>
+              <span class="tabular-nums text-xs font-bold text-slate-500">대형 패키지 23종</span>
+            </div>
+            <h3 class="mt-2.5 text-xl font-extrabold text-slate-950">삼성·LG 오픈런 대란 패키지관</h3>
+            <p class="mt-1 text-sm text-slate-600">
+              집 전체를 한 번에 채우는 삼성 비스포크 AI 콤보·LG 오브제 워시타워 대형 패키지를 금액대별로 마주 세웠어요.
+            </p>
+            <div class="hall-inner mt-3.5 bg-[#FAF8F4] p-3 text-xs text-slate-700">
+              <div class="flex items-center justify-between font-bold">
+                <span>대표: 삼성 오픈런 500 올인원 패키지</span>
+                <span class="tabular-nums text-sm font-extrabold text-[#1D2B64]" data-card-preview-price="5490000">5,490,000원</span>
+              </div>
+              <p class="mt-1 text-[11px] text-slate-500">
+                올인원 세탁건조기 WH90F2522BBHY + 4도어 냉장고 RM70F91R1A + 비스포크 제트 VS28D950ACB
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2.5">
+            <button
+              type="button"
+              data-select-hall="openrun"
+              class="btn-select-hall btn-press btn-navy rounded-xl bg-[#1D2B64] px-4 py-2.5 text-xs font-extrabold text-white sm:text-sm"
+            >
+              전시관 보기
+            </button>
+            <button
+              type="button"
+              data-open-game="shell"
+              class="btn-open-game btn-press rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-xs font-extrabold text-[#DC2626] sm:text-sm"
+            >
+              골든 야바위 게임 (+2만원)
+            </button>
+          </div>
+        </article>
+
+        <article class="hall-card flex flex-col justify-between p-5" data-hall-card="sysac">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-900">
+                B동 2층 인테리어 몰 (구 롯데월드몰관)
+              </span>
+              <span class="tabular-nums text-xs font-bold text-slate-500">결합 패키지 12종</span>
+            </div>
+            <h3 class="mt-2.5 text-xl font-extrabold text-slate-950">시스템 에어컨 &amp; 홈인테리어 패키지관</h3>
+            <p class="mt-1 text-sm text-slate-600">
+              삼성 무풍 시스템에어컨 4실에 로보락·인덕션·공기청정기·맞춤 장리폼을 더한 패키지 12가지를 펼쳤어요.
+            </p>
+            <div class="hall-inner mt-3.5 bg-[#FAF8F4] p-3 text-xs text-slate-700">
+              <div class="flex items-center justify-between font-bold">
+                <span>대표: 무풍 시스템에어컨 4실 + 공기청정기</span>
+                <span class="tabular-nums text-sm font-extrabold text-[#1D2B64]" data-card-preview-price="5990000">5,990,000원</span>
+              </div>
+              <p class="mt-1 text-[11px] text-slate-500">
+                삼성 무풍 4실 AS30BSS4P36SSY + 인피니트 라인 공기청정기 AP90H10198MDD (인덕션·로봇청소기 변경 가능)
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2.5">
+            <button
+              type="button"
+              data-select-hall="sysac"
+              class="btn-select-hall btn-press btn-navy rounded-xl bg-[#1D2B64] px-4 py-2.5 text-xs font-extrabold text-white sm:text-sm"
+            >
+              전시관 보기
+            </button>
+            <button
+              type="button"
+              data-open-game="bazooka"
+              class="btn-open-game btn-press rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-xs font-extrabold text-[#DC2626] sm:text-sm"
+            >
+              가격 격파 바주카 (+3만원)
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="section-hall-detail" class="stage-card mb-8 bg-white p-5 sm:p-7">
+      <div class="flex flex-col justify-between gap-3 border-b border-slate-900/10 pb-4 sm:flex-row sm:items-center">
+        <div>
+          <div class="flex items-center gap-2">
+            <span id="active-hall-badge" class="rounded-md bg-[#1D2B64] px-2.5 py-1 text-xs font-bold text-white">
+              전시관 1 · A동 그랜드 쇼룸
+            </span>
+            <span id="active-hall-count" class="text-xs font-bold text-slate-500">패키지 4종 전시 중</span>
+          </div>
+          <h2 id="active-hall-title" class="mt-1.5 text-xl font-extrabold text-slate-950 sm:text-2xl">
+            삼성 TV 패키지관 상세 견적 &amp; 품목 커스텀
+          </h2>
+          <p id="active-hall-desc" class="mt-0.5 text-xs text-slate-600 sm:text-sm">
+            패키지 내 원치 않는 부가 품목은 체크를 해제해 나만의 맞춤 체감가를 즉시 계산해 보세요.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5" role="tablist" aria-label="전시관 빠른 이동">
+          <button type="button" data-tab-hall="samsung" class="hall-tab-btn btn-press rounded-xl bg-[#1D2B64] px-3 py-2 text-xs font-extrabold text-white">
+            삼성 TV관
+          </button>
+          <button type="button" data-tab-hall="lg" class="hall-tab-btn btn-press rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700">
+            LG TV관
+          </button>
+          <button type="button" data-tab-hall="openrun" class="hall-tab-btn btn-press rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700">
+            오픈런 대란관
+          </button>
+          <button type="button" data-tab-hall="sysac" class="hall-tab-btn btn-press rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700">
+            시스템에어컨관
+          </button>
+        </div>
+      </div>
+
+      <div id="package-list-container" class="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2"></div>
+    </section>
+
+    <section id="section-games-hub" class="stage-card mb-8 bg-[#1D2B64] p-5 text-white sm:p-7">
+      <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+        <div>
+          <span class="inline-flex items-center rounded-full bg-[#DC2626] px-3 py-1 text-xs font-extrabold text-white">
+            추가혜택 미니게임 4종 · 최대 10만원 상품권
+          </span>
+          <h2 class="mt-2 text-xl font-extrabold sm:text-2xl">
+            게임을 깨면 내 상품권 지갑에 즉시 적립돼요
+          </h2>
+          <p class="mt-1 text-xs text-slate-200 sm:text-sm">
+            획득한 상품권은 위 4대 전시관의 모든 패키지 체감가에서 즉시 자동 차감되며, 구매 신청서에 쿠폰 번호가 함께 전달됩니다.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-white/10 px-4 py-3 text-right backdrop-blur-xs">
+          <p class="text-[11px] font-semibold text-slate-300">현재 적립된 내 상품권 혜택</p>
+          <p id="hub-wallet-total" class="tabular-nums text-2xl font-extrabold text-amber-300">0원 / 100,000원</p>
+        </div>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-white/15 bg-white/10 p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="rounded-md bg-amber-400/20 px-2 py-0.5 text-xs font-extrabold text-amber-300">3만원 상품권</span>
+              <span id="status-game-sniper" class="text-xs font-bold text-slate-300">미획득</span>
+            </div>
+            <h3 class="mt-2 text-base font-extrabold">1. 특가 타겟 스나이퍼</h3>
+            <p class="mt-1 text-xs text-slate-200">5발 중 3발 이상 움직이는 특가 과녁을 명중시키세요.</p>
+          </div>
+          <button type="button" data-open-game="sniper" class="btn-open-game btn-press mt-4 w-full rounded-xl bg-white px-3 py-2.5 text-xs font-extrabold text-[#1D2B64]">
+            스나이퍼 도전하기
+          </button>
+        </div>
+
+        <div class="rounded-2xl border border-white/15 bg-white/10 p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="rounded-md bg-amber-400/20 px-2 py-0.5 text-xs font-extrabold text-amber-300">3만원 상품권</span>
+              <span id="status-game-bazooka" class="text-xs font-bold text-slate-300">미획득</span>
+            </div>
+            <h3 class="mt-2 text-base font-extrabold">2. 벽 뒤 가격 격파 바주카</h3>
+            <p class="mt-1 text-xs text-slate-200">포물선 게이지를 맞춰 세 번 안에 벽 뒤의 높은 가격표를 무너뜨리세요.</p>
+          </div>
+          <button type="button" data-open-game="bazooka" class="btn-open-game btn-press mt-4 w-full rounded-xl bg-white px-3 py-2.5 text-xs font-extrabold text-[#1D2B64]">
+            바주카 도전하기
+          </button>
+        </div>
+
+        <div class="rounded-2xl border border-white/15 bg-white/10 p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="rounded-md bg-emerald-400/20 px-2 py-0.5 text-xs font-extrabold text-emerald-300">2만원 상품권</span>
+              <span id="status-game-mole" class="text-xs font-bold text-slate-300">미획득</span>
+            </div>
+            <h3 class="mt-2 text-base font-extrabold">3. 30초 사은품 스피드 캐치</h3>
+            <p class="mt-1 text-xs text-slate-200">제한시간 내에 솟아오르는 황금 선물상자 10개를 빠르게 터치하세요.</p>
+          </div>
+          <button type="button" data-open-game="mole" class="btn-open-game btn-press mt-4 w-full rounded-xl bg-white px-3 py-2.5 text-xs font-extrabold text-[#1D2B64]">
+            스피드 캐치 도전하기
+          </button>
+        </div>
+
+        <div class="rounded-2xl border border-white/15 bg-white/10 p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="rounded-md bg-emerald-400/20 px-2 py-0.5 text-xs font-extrabold text-emerald-300">2만원 상품권</span>
+              <span id="status-game-shell" class="text-xs font-bold text-slate-300">미획득</span>
+            </div>
+            <h3 class="mt-2 text-base font-extrabold">4. 골든 야바위 챌린지</h3>
+            <p class="mt-1 text-xs text-slate-200">빠르게 섞이는 3개의 가전 박스 중 상품권 상자를 두 번 맞히세요.</p>
+          </div>
+          <button type="button" data-open-game="shell" class="btn-open-game btn-press mt-4 w-full rounded-xl bg-white px-3 py-2.5 text-xs font-extrabold text-[#1D2B64]">
+            야바위 도전하기
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mb-10 rounded-2xl border border-slate-900/10 bg-white p-5 text-xs text-slate-600">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+        <div>
+          <p class="text-sm font-extrabold text-slate-900">롯데하이마트 경기광주점 (A동 · B동 프리미엄 메가스토어)</p>
+          <p class="mt-1">주소: 경기도 광주시 이배재로 337-22 (탄벌동, 밀목사거리 인근 · 대형 무료 주차장 완비)</p>
+          <p class="mt-0.5">영업시간: 매일 10:00 ~ 20:00 · 대표 상담전화: <a href="tel:031-767-1044" class="font-bold text-slate-900 underline">031-767-1044</a></p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a
+            href="http://pf.kakao.com/_hnxcxexl/chat"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-press rounded-xl bg-[#FEE500] px-3.5 py-2.5 text-xs font-extrabold text-slate-950"
+          >
+            카카오톡 1:1 실시간 상담
+          </a>
+          <a
+            href="https://talk.naver.com/ct/wd21jdv"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-press rounded-xl bg-[#03C75A] px-3.5 py-2.5 text-xs font-extrabold text-white"
+          >
+            네이버 톡톡 문의하기
+          </a>
+          <a
+            href="https://himart-gj.github.io/himart-11/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-press rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-xs font-extrabold text-slate-800"
+          >
+            A·B동 실사 쇼룸 투어 열기
+          </a>
+        </div>
+      </div>
+      <p class="mt-3 border-t border-slate-100 pt-3 text-[11px] text-slate-500">
+        안내: 본 팝업 페이지의 패키지 혜택가는 견적서 기준 금액이며, 제휴카드·가전구독·결제 조건에 따라 실제 상담 시 달라질 수 있습니다. 온라인 구매 신청만으로 결제가 진행되지 않으며 전문 상담원이 재고 및 설치 일정을 확인해 안내해 드립니다.
+      </p>
+    </footer>
+  </main>
+
+  <div id="floating-bottom-bar" class="safe-bottom-bar fixed inset-x-0 bottom-0 z-30 border-t border-slate-900/10 bg-white/95 px-4 pt-2.5 shadow-2xl backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-[11px] font-bold text-white tabular-nums">
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          <span id="visitor-counter-text">오늘 492명 방문 · 누적 1,052명</span>
+        </span>
+        <span id="sticky-selected-summary" class="hidden text-xs font-bold text-slate-700 md:inline">
+          선택됨: 삼성 OLED 77형 SD85 패키지
+        </span>
+      </div>
+
+      <div class="flex flex-1 items-center justify-end gap-2 sm:flex-none">
+        <button
+          id="btn-sticky-game"
+          type="button"
+          class="btn-press rounded-xl bg-[#DC2626] px-3.5 py-2.5 text-xs font-extrabold text-white shadow-sm"
+        >
+          게임하고 최대 10만원 받기
+        </button>
+        <button
+          id="btn-sticky-apply"
+          type="button"
+          class="btn-press btn-navy flex-1 rounded-xl bg-[#1D2B64] px-4 py-2.5 text-xs font-extrabold text-white shadow-sm sm:flex-none sm:text-sm"
+        >
+          선택 패키지 구매·상담 신청하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="modal-game"
+    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="game-modal-title"
+  >
+    <div class="modal-sheet w-full max-w-xl rounded-[24px] bg-slate-900 p-5 text-white shadow-2xl border border-white/15">
+      <div class="flex items-center justify-between gap-2 border-b border-white/10 pb-3">
+        <div>
+          <span id="game-modal-reward-badge" class="rounded-md bg-[#DC2626] px-2 py-0.5 text-xs font-extrabold text-white">
+            성공 시 30,000원 상품권 즉시 적립
+          </span>
+          <h3 id="game-modal-title" class="mt-1 text-lg font-extrabold">특가 타겟 스나이퍼</h3>
+        </div>
+        <button
+          id="btn-close-game"
+          type="button"
+          class="btn-press rounded-xl bg-white/10 px-3 py-1.5 text-xs font-bold text-slate-200"
+          aria-label="게임 창 닫기"
+        >
+          닫기 ✕
+        </button>
+      </div>
+
+      <div class="mt-3 grid grid-cols-4 gap-1.5">
+        <button type="button" data-switch-game="sniper" class="game-switch-btn rounded-lg bg-white px-2 py-1.5 text-[11px] font-extrabold text-slate-900">
+          1. 스나이퍼(3만)
+        </button>
+        <button type="button" data-switch-game="bazooka" class="game-switch-btn rounded-lg bg-white/10 px-2 py-1.5 text-[11px] font-bold text-slate-200">
+          2. 바주카(3만)
+        </button>
+        <button type="button" data-switch-game="mole" class="game-switch-btn rounded-lg bg-white/10 px-2 py-1.5 text-[11px] font-bold text-slate-200">
+          3. 스피드캐치(2만)
+        </button>
+        <button type="button" data-switch-game="shell" class="game-switch-btn rounded-lg bg-white/10 px-2 py-1.5 text-[11px] font-bold text-slate-200">
+          4. 야바위(2만)
+        </button>
+      </div>
+
+      <p id="game-modal-rule" class="mt-2.5 text-xs text-slate-300">
+        화면에 나타나는 과녁을 클릭(터치)해 5발 중 3발 이상 명중시키면 3만원 상품권이 즉시 지급됩니다!
+      </p>
+
+      <div class="relative mt-3 h-[260px] w-full overflow-hidden rounded-2xl border border-white/15 bg-slate-950">
+        <canvas id="arcade-game-canvas" class="h-full w-full cursor-pointer"></canvas>
+        <div id="game-overlay-result" class="absolute inset-0 hidden flex-col items-center justify-center bg-slate-950/90 p-4 text-center">
+          <p id="game-result-badge" class="rounded-full bg-amber-400/20 px-3 py-1 text-xs font-extrabold text-amber-300">MISSION COMPLETE</p>
+          <h4 id="game-result-title" class="mt-2 text-xl font-extrabold text-white">축하합니다! 상품권 획득 성공!</h4>
+          <p id="game-result-desc" class="mt-1 text-xs text-slate-300">내 상품권 지갑에 금액이 즉시 적립되어 모든 패키지 견적에 자동 반영되었습니다.</p>
+          <div class="mt-4 flex gap-2">
+            <button id="btn-game-retry" type="button" class="btn-press rounded-xl bg-white/15 px-4 py-2 text-xs font-bold text-white">
+              다시 플레이
+            </button>
+            <button id="btn-game-use-now" type="button" class="btn-press rounded-xl bg-[#DC2626] px-4 py-2 text-xs font-extrabold text-white">
+              할인 적용된 패키지 보러가기
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3 flex items-center justify-between text-xs text-slate-300">
+        <span id="game-hud-left" class="font-bold tabular-nums">남은 기회: 5발 · 명중: 0발</span>
+        <button id="btn-game-fire" type="button" class="btn-press rounded-xl bg-amber-500 px-4 py-2 text-xs font-extrabold text-slate-950">
+          게임 새로 시작
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="modal-apply"
+    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="apply-modal-title"
+  >
+    <div class="modal-sheet w-full max-w-lg rounded-[24px] bg-white p-5 text-slate-900 shadow-2xl sm:p-6">
+      <div id="apply-form-view">
+        <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-3.5">
+          <div>
+            <span class="inline-flex items-center rounded-md bg-blue-50 px-2.5 py-0.5 text-xs font-bold text-[#1D2B64]">
+              롯데하이마트 경기광주점 공식 사전신청
+            </span>
+            <h3 id="apply-modal-title" class="mt-1 text-lg font-extrabold text-slate-950 sm:text-xl">
+              [삼성 OLED 77형 SD85 패키지] 구매 신청
+            </h3>
+          </div>
+          <button
+            id="btn-close-apply"
+            type="button"
+            class="btn-press rounded-xl bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-600"
+            aria-label="구매 신청 창 닫기"
+          >
+            닫기 ✕
+          </button>
+        </div>
+
+        <p class="mt-2.5 text-xs leading-relaxed text-slate-600">
+          신청만 남겨 주시면 담당 직원이 재고·설치 일정·결제 조건을 확인해 연락드려요. <strong class="text-slate-900">신청만으로 결제되지 않아요.</strong>
+        </p>
+
+        <div class="mt-3.5 rounded-2xl border border-slate-200 bg-[#FAF8F4] p-3.5">
+          <div class="flex items-center justify-between gap-2">
+            <span id="apply-pkg-name" class="text-xs font-extrabold text-slate-900">삼성 OLED 77형 SD85 5종 패키지</span>
+            <span id="apply-pay-mode-tag" class="rounded-md bg-[#1D2B64] px-2 py-0.5 text-[11px] font-bold text-white">일시불 특가</span>
+          </div>
+          <p id="apply-pkg-models" class="mt-1 text-[11px] text-slate-600">
+            포함 모델: KQ77SD85AFXKR, HW-Q600C, VS28C9651QK, DW60BB800AP, AF17C7970WFR
+          </p>
+          <div class="mt-2.5 flex items-baseline justify-between border-t border-slate-200/80 pt-2.5">
+            <span id="apply-coupon-note" class="text-xs font-bold text-[#DC2626]">게임 상품권 0원 적용</span>
+            <div class="text-right">
+              <span class="text-[11px] text-slate-500">예상 체감 혜택가</span>
+              <p id="apply-final-price" class="tabular-nums text-lg font-extrabold text-[#1D2B64]">3,993,000원</p>
+            </div>
+          </div>
+          <p class="mt-1 text-[11px] text-slate-500">
+            견적서 기준 금액이에요. 카드·결제 조건에 따라 상담 때 달라질 수 있어요.
+          </p>
+        </div>
+
+        <form id="purchase-apply-form" class="mt-4 space-y-3.5" novalidate>
+          <div>
+            <label for="input-cust-name" class="block text-xs font-extrabold text-slate-800">
+              이름 <span class="text-[#DC2626]">*</span>
+            </label>
+            <input
+              id="input-cust-name"
+              name="customerName"
+              type="text"
+              required
+              autocomplete="name"
+              placeholder="예: 홍길동"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-base font-medium text-slate-900 focus:border-[#1D2B64] focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label for="input-cust-phone" class="block text-xs font-extrabold text-slate-800">
+              휴대폰 번호 <span class="text-[#DC2626]">*</span>
+            </label>
+            <input
+              id="input-cust-phone"
+              name="customerPhone"
+              type="tel"
+              inputmode="numeric"
+              required
+              autocomplete="tel"
+              placeholder="010-0000-0000"
+              maxlength="13"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-base font-medium text-slate-900 tabular-nums focus:border-[#1D2B64] focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <span class="block text-xs font-extrabold text-slate-800">연락받기 편한 시간</span>
+            <div class="mt-1.5 grid grid-cols-4 gap-1.5" role="radiogroup" aria-label="연락받기 편한 시간">
+              <label class="cursor-pointer">
+                <input type="radio" name="contactTime" value="오전" class="peer sr-only" />
+                <span class="block rounded-xl border border-slate-200 bg-slate-50 py-2 text-center text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">오전</span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="contactTime" value="오후" class="peer sr-only" />
+                <span class="block rounded-xl border border-slate-200 bg-slate-50 py-2 text-center text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">오후</span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="contactTime" value="저녁" class="peer sr-only" />
+                <span class="block rounded-xl border border-slate-200 bg-slate-50 py-2 text-center text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">저녁</span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="contactTime" value="언제든" checked class="peer sr-only" />
+                <span class="block rounded-xl border border-slate-200 bg-slate-50 py-2 text-center text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">언제든</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <span class="block text-xs font-extrabold text-slate-800">설치 희망 시기</span>
+            <div class="mt-1.5 flex flex-wrap gap-1.5" role="radiogroup" aria-label="설치 희망 시기">
+              <label class="cursor-pointer">
+                <input type="radio" name="installPeriod" value="2주 안" class="peer sr-only" />
+                <span class="inline-block rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">2주 안</span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="installPeriod" value="한 달 안" checked class="peer sr-only" />
+                <span class="inline-block rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">한 달 안</span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="installPeriod" value="2~3개월 뒤" class="peer sr-only" />
+                <span class="inline-block rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">2~3개월 뒤</span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="installPeriod" value="이사·입주 날짜에 맞춰" class="peer sr-only" />
+                <span class="inline-block rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">이사·입주 날짜에 맞춰</span>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="installPeriod" value="아직 미정" class="peer sr-only" />
+                <span class="inline-block rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 peer-checked:border-[#1D2B64] peer-checked:bg-[#1D2B64] peer-checked:text-white">아직 미정</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label for="input-cust-memo" class="block text-xs font-extrabold text-slate-800">
+              메모 (선택)
+            </label>
+            <textarea
+              id="input-cust-memo"
+              name="customerMemo"
+              rows="2"
+              placeholder="예: 기존 가전 수거도 필요해요 / 냉장고장 리폼 상담도 함께 원해요"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-base text-slate-900 focus:border-[#1D2B64] focus:outline-none"
+            ></textarea>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <div class="flex items-center justify-between gap-2">
+              <label class="flex cursor-pointer items-center gap-2 text-xs font-bold text-slate-800">
+                <input
+                  id="input-privacy-agree"
+                  type="checkbox"
+                  checked
+                  class="h-4 w-4 rounded border-slate-300 text-[#1D2B64] focus:ring-[#1D2B64]"
+                />
+                <span>개인정보 수집·이용에 동의합니다. (필수)</span>
+              </label>
+              <button
+                id="btn-toggle-privacy"
+                type="button"
+                class="text-xs font-bold text-[#1D2B64] underline underline-offset-2"
+              >
+                내용 보기
+              </button>
+            </div>
+            <div id="privacy-detail-box" class="mt-2 hidden border-t border-slate-200 pt-2 text-[11px] leading-relaxed text-slate-600">
+              <p>• <strong>수집 항목</strong>: 이름, 휴대폰 번호, 희망 연락 시간, 설치 희망 시기, 메모, 신청한 패키지 구성 및 적립 상품권 정보</p>
+              <p>• <strong>수집 목적</strong>: 패키지 구매 상담·견적 안내·설치 일정 조율을 위한 연락</p>
+              <p>• <strong>보유 기간</strong>: 신청일로부터 3개월 또는 동의를 철회하실 때까지 (상담 종료 시 지체 없이 파기)</p>
+              <p>• 동의를 거부하실 수 있으며, 거부 시 온라인 신청은 제한되나 매장 방문 및 전화(031-767-1044) 상담은 가능합니다.</p>
+            </div>
+          </div>
+
+          <p id="apply-form-error" class="hidden rounded-xl bg-red-50 px-3 py-2 text-xs font-bold text-[#DC2626]" role="alert"></p>
+
+          <button
+            type="submit"
+            class="btn-press btn-navy w-full rounded-xl bg-[#1D2B64] py-3.5 text-base font-extrabold text-white shadow-md"
+          >
+            내 맞춤 혜택가로 구매·상담 신청하기
+          </button>
+        </form>
+      </div>
+
+      <div id="apply-ticket-view" class="hidden">
+        <div class="text-center">
+          <span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-800">
+            사전예약 바우처 발급 완료
+          </span>
+          <h3 class="mt-2 text-xl font-extrabold text-slate-950">
+            신청이 접수되었습니다!
+          </h3>
+          <p class="mt-1 text-xs text-slate-600">
+            담당 마이스터가 재고와 추가 카드·구독 할인 조건을 확인해 빠르게 연락드리겠습니다.
+          </p>
+        </div>
+
+        <div class="mt-4 rounded-2xl border-2 border-dashed border-[#1D2B64] bg-[#FAF8F4] p-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <span class="text-xs font-extrabold text-[#1D2B64]">롯데하이마트 경기광주점 VIP 바우처</span>
+            <span id="ticket-serial" class="tabular-nums text-xs font-bold text-slate-500">GJ-2026-8491</span>
+          </div>
+          <dl class="mt-3 space-y-1.5 text-xs">
+            <div class="flex justify-between">
+              <dt class="text-slate-500">신청 고객님</dt>
+              <dd id="ticket-cust-info" class="font-bold text-slate-900">-</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-slate-500">선택 패키지</dt>
+              <dd id="ticket-pkg-name" class="font-bold text-slate-900">-</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-slate-500">적립 게임 상품권</dt>
+              <dd id="ticket-coupon-amt" class="font-extrabold text-[#DC2626] tabular-nums">-</dd>
+            </div>
+            <div class="flex justify-between border-t border-slate-200 pt-2">
+              <dt class="font-bold text-slate-800">예상 체감 혜택가</dt>
+              <dd id="ticket-final-price" class="text-base font-extrabold text-[#1D2B64] tabular-nums">-</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <button
+            id="btn-copy-ticket"
+            type="button"
+            class="btn-press rounded-xl border border-slate-300 bg-white py-3 text-xs font-extrabold text-slate-800"
+          >
+            신청 내역 복사하기
+          </button>
+          <a
+            href="http://pf.kakao.com/_hnxcxexl/chat"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-press flex items-center justify-center rounded-xl bg-[#FEE500] py-3 text-xs font-extrabold text-slate-950"
+          >
+            카카오톡으로 내 바우처 전송
+          </a>
+        </div>
+
+        <button
+          id="btn-done-ticket"
+          type="button"
+          class="btn-press mt-2.5 w-full rounded-xl bg-slate-900 py-3 text-xs font-bold text-white"
+        >
+          팝업 타운 계속 둘러보기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="toast-banner"
+    class="pointer-events-none fixed top-16 left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-slate-900/95 px-4 py-2 text-xs font-bold text-white shadow-xl"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var HALLS = {
+        samsung: {
+          id: "samsung",
+          badge: "전시관 1 · A동 그랜드 쇼룸 (구 롯데호텔 월드관)",
+          title: "삼성 TV 패키지관",
+          desc: "그랜드 볼룸 한 층에 삼성 OLED·Neo QLED·QLED TV와 비스포크 가전 패키지를 모두 펼쳤어요.",
+          totalCountLabel: "대표 패키지 10종 큐레이션",
+          packages: [
+            {
+              id: "sam-oled77-sd85",
+              name: "삼성 OLED 77형 SH85/SD85 5종 풀패키지",
+              tag: "베스트 1위 · 5종 풀세트",
+              baseListPrice: 6850000,
+              baseBenefitPrice: 3993000,
+              freedSupport: 700000,
+              subMonths: 60,
+              items: [
+                { code: "KQ77SD85AFXKR", label: "삼성 OLED 77형 4K TV", deduct: 0, required: true },
+                { code: "HW-Q600C", label: "삼성 Q시리즈 사운드바", deduct: 290000, required: false },
+                { code: "VS28C9651QK", label: "비스포크 제트 무선청소기", deduct: 420000, required: false },
+                { code: "DW60BB800AP", label: "비스포크 식기세척기 12인용", deduct: 590000, required: false },
+                { code: "AF17C7970WFR", label: "무풍 타워 에어컨", deduct: 850000, required: false }
+              ]
+            },
+            {
+              id: "sam-qled85-kitchen",
+              name: "삼성 QLED 85형 + 비스포크 키친핏 4종 패키지",
+              tag: "거실+주방 동시 졸업",
+              baseListPrice: 7490000,
+              baseBenefitPrice: 4490000,
+              freedSupport: 750000,
+              subMonths: 60,
+              items: [
+                { code: "KQ85QD70AFXKR", label: "삼성 QLED 85형 초대형 TV", deduct: 0, required: true },
+                { code: "RF60B91C3AP", label: "비스포크 키친핏 4도어 냉장고", deduct: 1150000, required: false },
+                { code: "HW-S60D", label: "올인원 사운드바", deduct: 240000, required: false },
+                { code: "VR7MD96516G", label: "비스포크 AI 스팀 로봇청소기", deduct: 680000, required: false }
+              ]
+            },
+            {
+              id: "sam-neo75-living",
+              name: "삼성 Neo QLED 75형 + 무풍갤러리 거실 패키지",
+              tag: "밝은 거실 맞춤",
+              baseListPrice: 7900000,
+              baseBenefitPrice: 4890000,
+              freedSupport: 800000,
+              subMonths: 60,
+              items: [
+                { code: "KQ75QND85BFXKR", label: "삼성 Neo QLED 75형 4K TV", deduct: 0, required: true },
+                { code: "AF19DX838WSR", label: "비스포크 무풍갤러리 2in1 에어컨", deduct: 1350000, required: false },
+                { code: "VR30T85513W", label: "비스포크 제트봇 로봇청소기", deduct: 390000, required: false }
+              ]
+            },
+            {
+              id: "sam-oled83-cinema",
+              name: "삼성 OLED 83형 홈시네마 마스터 패키지",
+              tag: "초대형 프리미엄",
+              baseListPrice: 9600000,
+              baseBenefitPrice: 5890000,
+              freedSupport: 1000000,
+              subMonths: 60,
+              items: [
+                { code: "KQ83SD90AFXKR", label: "삼성 OLED 83형 4K TV", deduct: 0, required: true },
+                { code: "HW-Q930D", label: "돌비 애트모스 사운드바", deduct: 590000, required: false },
+                { code: "DF10A9500CG", label: "비스포크 에어드레서 대용량", deduct: 650000, required: false }
+              ]
+            }
+          ]
+        },
+        lg: {
+          id: "lg",
+          badge: "전시관 2 · B동 오브제 갤러리 (구 매직아일랜드 성관)",
+          title: "LG TV 패키지관",
+          desc: "성 안 갤러리에 LG OLED evo(B6·C6·G6)와 Mini RGB 86형·스탠바이미 패키지를 작품처럼 걸었어요.",
+          totalCountLabel: "대표 패키지 5종 큐레이션",
+          packages: [
+            {
+              id: "lg-oled77-b6",
+              name: "LG OLED 77형 B6 TV 5종 패키지",
+              tag: "오브제 베스트셀러",
+              baseListPrice: 7850000,
+              baseBenefitPrice: 4790500,
+              freedSupport: 750000,
+              subMonths: 60,
+              items: [
+                { code: "OLED77B6", label: "LG 올레드 77형 4K TV", deduct: 0, required: true },
+                { code: "S60TR", label: "LG 돌비 오디오 사운드바", deduct: 280000, required: false },
+                { code: "AS520WA", label: "코드제로 오브제 무선청소기", deduct: 430000, required: false },
+                { code: "MLJ32ERS", label: "디오스 오브제 광파오븐", deduct: 390000, required: false },
+                { code: "DUBJ4ES", label: "디오스 오브제 식기세척기", deduct: 690000, required: false }
+              ]
+            },
+            {
+              id: "lg-minirgb-86",
+              name: "LG Mini RGB evo 86형 + 스탠바이미 6종 패키지",
+              tag: "스탠바이미 포함 6종",
+              baseListPrice: 8290000,
+              baseBenefitPrice: 4890500,
+              freedSupport: 800000,
+              subMonths: 60,
+              items: [
+                { code: "86MRGB85BMC", label: "LG Mini RGB evo 86형 TV", deduct: 0, required: true },
+                { code: "27LX6TKGA", label: "LG 스탠바이미 포터블 스크린", deduct: 690000, required: false },
+                { code: "S60TR", label: "LG 사운드바", deduct: 260000, required: false },
+                { code: "MLJ32ERS", label: "디오스 광파오븐", deduct: 380000, required: false },
+                { code: "AS520WA", label: "코드제로 무선청소기", deduct: 410000, required: false },
+                { code: "NEO-CAFFEWHITE", label: "네오 카페 캡슐 커피머신", deduct: 120000, required: false }
+              ]
+            },
+            {
+              id: "lg-oled77-c6",
+              name: "LG OLED evo 77형 C6 + 워시타워 패키지",
+              tag: "화질+세탁 동시 해결",
+              baseListPrice: 8950000,
+              baseBenefitPrice: 5296900,
+              freedSupport: 850000,
+              subMonths: 60,
+              items: [
+                { code: "OLED77C6", label: "LG 올레드 evo 77형 C6 TV", deduct: 0, required: true },
+                { code: "W2520WHM2", label: "트롬 오브제컬렉션 워시타워", deduct: 1450000, required: false },
+                { code: "AS520WA", label: "코드제로 오브제 청소기", deduct: 420000, required: false }
+              ]
+            },
+            {
+              id: "lg-oled83-g6",
+              name: "LG OLED 83형 / 77형 G6 갤러리 플래그십 패키지",
+              tag: "밀착 갤러리 디자인",
+              baseListPrice: 10900000,
+              baseBenefitPrice: 6990000,
+              freedSupport: 1100000,
+              subMonths: 60,
+              items: [
+                { code: "OLED83G6", label: "LG 올레드 evo 83형 G6 갤러리 TV", deduct: 0, required: true },
+                { code: "SG10TY", label: "갤러리 밀착형 무선 사운드바", deduct: 550000, required: false },
+                { code: "27LX6TKGA", label: "LG 스탠바이미", deduct: 690000, required: false }
+              ]
+            }
+          ]
+        },
+        openrun: {
+          id: "openrun",
+          badge: "전시관 3 · 메가 타워 (구 롯데월드타워관)",
+          title: "삼성·LG 오픈런 대란 패키지관",
+          desc: "집 전체를 한 번에 채우는 삼성·LG 대형 신혼·입주 패키지를 금액대별로 마주 세웠어요.",
+          totalCountLabel: "대형 패키지 23종 큐레이션",
+          packages: [
+            {
+              id: "open-sam-500",
+              name: "삼성 오픈런 500 올인원 세탁건조 패키지",
+              tag: "500만원대 신혼 올킬",
+              baseListPrice: 8800000,
+              baseBenefitPrice: 5490000,
+              freedSupport: 900000,
+              subMonths: 60,
+              items: [
+                { code: "WH90F2522BBHY", label: "비스포크 AI 콤보 올인원 세탁건조기", deduct: 0, required: true },
+                { code: "RM70F91R1A", label: "비스포크 4도어 프리스탠딩 냉장고", deduct: 1350000, required: false },
+                { code: "VS28D950ACB", label: "비스포크 AI 제트 무선청소기", deduct: 450000, required: false }
+              ]
+            },
+            {
+              id: "open-sam-airdresser-500",
+              name: "삼성 오픈런 에어드레서 & 로봇청소기 500 패키지",
+              tag: "의류+바닥 의식주 케어",
+              baseListPrice: 9300000,
+              baseBenefitPrice: 5900000,
+              freedSupport: 950000,
+              subMonths: 60,
+              items: [
+                { code: "WH90F2522AAHS", label: "비스포크 AI 콤보 세탁건조기", deduct: 0, required: true },
+                { code: "DF80H24R1C", label: "비스포크 에어드레서 대용량", deduct: 720000, required: false },
+                { code: "VR90F01AAG", label: "비스포크 AI 스팀 로봇청소기", deduct: 780000, required: false }
+              ]
+            },
+            {
+              id: "open-lg-500",
+              name: "LG 오픈런 500 오브제컬렉션 신혼 패키지",
+              tag: "LG 오브제 3대장",
+              baseListPrice: 9400000,
+              baseBenefitPrice: 5900000,
+              freedSupport: 950000,
+              subMonths: 60,
+              items: [
+                { code: "M876GBB231", label: "디오스 오브제컬렉션 4도어 냉장고", deduct: 0, required: true },
+                { code: "W2520WHM2", label: "트롬 오브제컬렉션 워시타워", deduct: 1550000, required: false },
+                { code: "AS520WA", label: "코드제로 오브제 무선청소기", deduct: 420000, required: false }
+              ]
+            },
+            {
+              id: "open-wedding-full",
+              name: "경기광주점 단독 키친핏+김치냉장고+워시타워 5종",
+              tag: "입주·웨딩 풀패키지",
+              baseListPrice: 12400000,
+              baseBenefitPrice: 7690000,
+              freedSupport: 1300000,
+              subMonths: 60,
+              items: [
+                { code: "RF60B91C3AP", label: "키친핏 4도어 냉장고", deduct: 0, required: true },
+                { code: "RQ42B94C1AP", label: "키친핏 3도어 김치냉장고", deduct: 1150000, required: false },
+                { code: "WH90F2522BBHY", label: "비스포크 AI 콤보 세탁건조기", deduct: 1650000, required: false },
+                { code: "DW60BB800AP", label: "비스포크 식기세척기", deduct: 580000, required: false },
+                { code: "NZ63B6527XK", label: "비스포크 빌트인 3구 인덕션", deduct: 490000, required: false }
+              ]
+            }
+          ]
+        },
+        sysac: {
+          id: "sysac",
+          badge: "전시관 4 · B동 2층 인테리어 몰 (구 롯데월드몰관)",
+          title: "시스템 에어컨 & 홈인테리어 패키지관",
+          desc: "삼성 무풍 시스템에어컨 4실에 함께 사는 필수가전을 더한 패키지 12가지를 펼쳤어요.",
+          totalCountLabel: "시스템에어컨 결합 12종",
+          packages: [
+            {
+              id: "sysac-4room-air",
+              name: "삼성 무풍 시스템에어컨 4실 + 공기청정기 패키지",
+              tag: "아파트 30~40평형 표준",
+              baseListPrice: 8900000,
+              baseBenefitPrice: 5990000,
+              freedSupport: 950000,
+              subMonths: 60,
+              items: [
+                { code: "AS30BSS4P36SSY", label: "삼성 무풍 시스템에어컨 4실 (거실+방3)", deduct: 0, required: true },
+                { code: "AP90H10198MDD", label: "비스포크 큐브 인피니트 공기청정기", deduct: 490000, required: false }
+              ]
+            },
+            {
+              id: "sysac-4room-induction",
+              name: "삼성 무풍 시스템에어컨 4실 + 빌트인 인덕션",
+              tag: "입주 전 사전시공 베스트",
+              baseListPrice: 9350000,
+              baseBenefitPrice: 6290000,
+              freedSupport: 1000000,
+              subMonths: 60,
+              items: [
+                { code: "AS30BSS4P36SSY", label: "삼성 무풍 시스템에어컨 4실 (시공비 포함)", deduct: 0, required: true },
+                { code: "CC80H63U1HS", label: "비스포크 3구 화이트 인덕션", deduct: 590000, required: false }
+              ]
+            },
+            {
+              id: "sysac-4room-robot",
+              name: "삼성 무풍 시스템에어컨 4실 + AI 스팀 로봇청소기",
+              tag: "인기 1위 입주 결합",
+              baseListPrice: 9800000,
+              baseBenefitPrice: 6590000,
+              freedSupport: 1050000,
+              subMonths: 60,
+              items: [
+                { code: "AS30BSS4P36SSY", label: "삼성 무풍 시스템에어컨 4실", deduct: 0, required: true },
+                { code: "VR90F01AAG", label: "비스포크 AI 스팀 로봇청소기", deduct: 780000, required: false }
+              ]
+            },
+            {
+              id: "sysac-interior-pack",
+              name: "무풍 시스템에어컨 4실 + 냉장고장 리폼 & 휴젠뜨 패키지",
+              tag: "경기광주점 인테리어 특화",
+              baseListPrice: 10500000,
+              baseBenefitPrice: 6890000,
+              freedSupport: 1100000,
+              subMonths: 60,
+              items: [
+                { code: "AS30BSS4P36SSY", label: "삼성 무풍 시스템에어컨 4실", deduct: 0, required: true },
+                { code: "REFORM-KIT-FIT", label: "키친핏 맞춤 냉장고장 + 로봇청소기장 리폼", deduct: 650000, required: false },
+                { code: "HIMPEL-HUGENT3", label: "힘펠 휴젠뜨 3 욕실 온풍·제습 환풍기", deduct: 350000, required: false }
+              ]
+            }
+          ]
+        }
+      };
+
+      var GAME_META = {
+        sniper: {
+          id: "sniper",
+          title: "특가 타겟 스나이퍼 (점장을 잡아라 업그레이드)",
+          reward: 30000,
+          rule: "좌우로 빠르게 움직이는 황금 특가 타겟을 터치해 5발 중 3발 이상 명중시키세요! (보상: 30,000원 상품권)"
+        },
+        bazooka: {
+          id: "bazooka",
+          title: "벽 뒤 가격 격파 바주카",
+          reward: 30000,
+          rule: "움직이는 파워 게이지가 초록색(성공 구간)에 왔을 때 캔버스를 터치해 3발 중 2발 이상 벽 뒤 가격표를 격파하세요! (보상: 30,000원 상품권)"
+        },
+        mole: {
+          id: "mole",
+          title: "30초 사은품 스피드 캐치",
+          reward: 20000,
+          rule: "9개 홀에서 솟아오르는 황금 상품권 박스를 빠르게 터치해 8개 이상 획득하세요! (보상: 20,000원 상품권)"
+        },
+        shell: {
+          id: "shell",
+          title: "골든 야바위 챌린지",
+          reward: 20000,
+          rule: "상품권이 들어간 박스를 눈으로 따라간 뒤 섞기가 멈추면 해당 박스를 클릭하세요! 2번 성공 시 클리어! (보상: 20,000원 상품권)"
+        }
+      };
+
+      var state = {
+        viewMode: "hybrid",
+        activeHall: "samsung",
+        payMode: "lump",
+        soundEnabled: true,
+        excludedItemsByPkg: {},
+        clearedGames: { sniper: false, bazooka: false, mole: false, shell: false },
+        selectedPkgId: "sam-oled77-sd85",
+        autoRotate3D: true,
+        activeGameId: "sniper"
+      };
+
+      try {
+        var saved = localStorage.getItem("himart_gj_popup_wallet_v1");
+        if (saved) {
+          var parsed = JSON.parse(saved);
+          if (parsed && typeof parsed === "object") {
+            state.clearedGames = Object.assign(state.clearedGames, parsed);
+          }
+        }
+      } catch (e) {}
+
+      function saveWallet() {
+        try {
+          localStorage.setItem("himart_gj_popup_wallet_v1", JSON.stringify(state.clearedGames));
+        } catch (e) {}
+      }
+
+      function getEarnedVoucherTotal() {
+        var sum = 0;
+        if (state.clearedGames.sniper) sum += 30000;
+        if (state.clearedGames.bazooka) sum += 30000;
+        if (state.clearedGames.mole) sum += 20000;
+        if (state.clearedGames.shell) sum += 20000;
+        return sum;
+      }
+
+      function formatKRW(num) {
+        return Math.max(0, Math.round(num)).toLocaleString("ko-KR") + "원";
+      }
+
+      var audioCtx = null;
+      function playTone(type) {
+        if (!state.soundEnabled) return;
+        try {
+          if (!audioCtx) {
+            var Ctx = window.AudioContext || window.webkitAudioContext;
+            if (!Ctx) return;
+            audioCtx = new Ctx();
+          }
+          if (audioCtx.state === "suspended") audioCtx.resume();
+          var now = audioCtx.currentTime;
+          var osc = audioCtx.createOscillator();
+          var gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          if (type === "hit") {
+            osc.type = "triangle";
+            osc.frequency.setValueAtTime(520, now);
+            osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+            gain.gain.setValueAtTime(0.16, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+            osc.start(now);
+            osc.stop(now + 0.14);
+          } else if (type === "miss") {
+            osc.type = "sawtooth";
+            osc.frequency.setValueAtTime(200, now);
+            osc.frequency.linearRampToValueAtTime(110, now + 0.15);
+            gain.gain.setValueAtTime(0.1, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+            osc.start(now);
+            osc.stop(now + 0.16);
+          } else if (type === "win") {
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(523.25, now);
+            osc.frequency.setValueAtTime(659.25, now + 0.09);
+            osc.frequency.setValueAtTime(783.99, now + 0.18);
+            osc.frequency.setValueAtTime(1046.5, now + 0.27);
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+            osc.start(now);
+            osc.stop(now + 0.45);
+          }
+        } catch (e) {}
+      }
+
+      function showToast(msg) {
+        var el = document.getElementById("toast-banner");
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.remove("hidden");
+        clearTimeout(el._timer);
+        el._timer = setTimeout(function () {
+          el.classList.add("hidden");
+        }, 2800);
+      }
+
+      function findPackageById(pkgId) {
+        var keys = Object.keys(HALLS);
+        for (var i = 0; i < keys.length; i++) {
+          var list = HALLS[keys[i]].packages;
+          for (var j = 0; j < list.length; j++) {
+            if (list[j].id === pkgId) return list[j];
+          }
+        }
+        return HALLS.samsung.packages[0];
+      }
+
+      function computePackageMetrics(pkg) {
+        var excludedMap = state.excludedItemsByPkg[pkg.id] || {};
+        var deductSum = 0;
+        var activeModels = [];
+        for (var i = 0; i < pkg.items.length; i++) {
+          var it = pkg.items[i];
+          if (!it.required && excludedMap[it.code]) {
+            deductSum += it.deduct;
+          } else {
+            activeModels.push(it.code);
+          }
+        }
+        var coupon = getEarnedVoucherTotal();
+        var lumpPrice = Math.max(990000, pkg.baseBenefitPrice - deductSum - coupon);
+        var freedNetPrice = Math.max(590000, lumpPrice - pkg.freedSupport);
+        var subMonthly = Math.max(29900, Math.round((lumpPrice * 0.92) / pkg.subMonths / 100) * 100);
+
+        return {
+          lumpPrice: lumpPrice,
+          freedNetPrice: freedNetPrice,
+          subMonthly: subMonthly,
+          deductSum: deductSum,
+          coupon: coupon,
+          activeModels: activeModels
+        };
+      }
+
+      function renderAllUI() {
+        var coupon = getEarnedVoucherTotal();
+        var walletBadge = document.getElementById("wallet-amount-badge");
+        if (walletBadge) walletBadge.textContent = formatKRW(coupon);
+
+        var hubTotal = document.getElementById("hub-wallet-total");
+        if (hubTotal) hubTotal.textContent = formatKRW(coupon) + " / 100,000원";
+
+        ["sniper", "bazooka", "mole", "shell"].forEach(function (gid) {
+          var stEl = document.getElementById("status-game-" + gid);
+          if (stEl) {
+            if (state.clearedGames[gid]) {
+              stEl.textContent = "✓ 적립 완료";
+              stEl.className = "text-xs font-extrabold text-amber-300";
+            } else {
+              stEl.textContent = "미획득";
+              stEl.className = "text-xs font-bold text-slate-300";
+            }
+          }
+        });
+
+        document.querySelectorAll("[data-card-preview-price]").forEach(function (el) {
+          var base = parseInt(el.getAttribute("data-card-preview-price"), 10) || 0;
+          var adjusted = Math.max(0, base - coupon);
+          if (state.payMode === "sub") {
+            el.textContent = "월 " + formatKRW(Math.round((adjusted * 0.92) / 60 / 100) * 100);
+          } else if (state.payMode === "freed") {
+            el.textContent = formatKRW(Math.max(0, adjusted - 750000)) + " (결합체감)";
+          } else {
+            el.textContent = formatKRW(adjusted);
+          }
+        });
+
+        document.querySelectorAll(".pay-mode-btn").forEach(function (btn) {
+          var m = btn.getAttribute("data-pay-mode");
+          if (m === state.payMode) {
+            btn.className = "pay-mode-btn btn-press rounded-xl bg-[#1D2B64] px-3 py-2 text-xs font-bold text-white";
+          } else {
+            btn.className = "pay-mode-btn btn-press rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700";
+          }
+        });
+
+        var hall = HALLS[state.activeHall] || HALLS.samsung;
+        document.getElementById("active-hall-badge").textContent = hall.badge;
+        document.getElementById("active-hall-count").textContent = hall.totalCountLabel;
+        document.getElementById("active-hall-title").textContent = hall.title + " 상세 견적 & 품목 커스텀";
+        document.getElementById("active-hall-desc").textContent = hall.desc;
+
+        document.querySelectorAll(".hall-tab-btn").forEach(function (btn) {
+          var h = btn.getAttribute("data-tab-hall");
+          if (h === state.activeHall) {
+            btn.className = "hall-tab-btn btn-press rounded-xl bg-[#1D2B64] px-3 py-2 text-xs font-extrabold text-white";
+          } else {
+            btn.className = "hall-tab-btn btn-press rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700";
+          }
+        });
+
+        var container = document.getElementById("package-list-container");
+        var html = "";
+        hall.packages.forEach(function (pkg) {
+          var metrics = computePackageMetrics(pkg);
+          var excludedMap = state.excludedItemsByPkg[pkg.id] || {};
+          var priceHeadline = "";
+          var priceSubline = "";
+
+          if (state.payMode === "sub") {
+            priceHeadline = "월 " + formatKRW(metrics.subMonthly);
+            priceSubline = "60개월 케어십 구독 기준 (일시불 체감가 " + formatKRW(metrics.lumpPrice) + ")";
+          } else if (state.payMode === "freed") {
+            priceHeadline = formatKRW(metrics.freedNetPrice);
+            priceSubline = "하이프리드 지원금 -" + formatKRW(pkg.freedSupport) + " 반영 체감가";
+          } else {
+            priceHeadline = formatKRW(metrics.lumpPrice);
+            priceSubline = "정상가 합계 " + formatKRW(pkg.baseListPrice) + " 대비 특별 할인가";
+          }
+
+          var itemsHtml = "";
+          pkg.items.forEach(function (it) {
+            var isExcluded = !it.required && !!excludedMap[it.code];
+            itemsHtml +=
+              '<label class="flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-3 py-2 text-xs ' +
+              (isExcluded
+                ? "border-slate-200 bg-slate-100/70 text-slate-400 line-through"
+                : "border-slate-200 bg-white text-slate-800") +
+              '">' +
+              '<span class="flex items-center gap-2">' +
+              '<input type="checkbox" class="pkg-item-check h-4 w-4 rounded border-slate-300 text-[#1D2B64]" data-pkg-id="' +
+              pkg.id +
+              '" data-item-code="' +
+              it.code +
+              '" ' +
+              (it.required ? "checked disabled" : isExcluded ? "" : "checked") +
+              " />" +
+              '<span><strong class="font-bold">' +
+              it.label +
+              '</strong> <span class="text-[11px] text-slate-500">(' +
+              it.code +
+              ")</span></span>" +
+              "</span>" +
+              '<span class="tabular-nums text-[11px] font-bold ' +
+              (it.required ? "text-[#1D2B64]" : "text-slate-500") +
+              '">' +
+              (it.required ? "필수 주력" : "-" + formatKRW(it.deduct) + " 가감") +
+              "</span>" +
+              "</label>";
+          });
+
+          html +=
+            '<article class="flex flex-col justify-between rounded-2xl border border-slate-200 bg-[#FAF8F4] p-4 sm:p-5">' +
+            "<div>" +
+            '<div class="flex flex-wrap items-center justify-between gap-2">' +
+            '<span class="rounded-md bg-white px-2.5 py-1 text-xs font-extrabold text-[#1D2B64] shadow-2xs">' +
+            pkg.tag +
+            "</span>" +
+            (metrics.coupon > 0
+              ? '<span class="rounded-md bg-red-100 px-2 py-0.5 text-[11px] font-extrabold text-[#DC2626]">게임 상품권 -' +
+                formatKRW(metrics.coupon) +
+                " 적용됨</span>"
+              : '<span class="text-[11px] font-semibold text-slate-500">미니게임 달성 시 최대 10만원 추가 차감</span>') +
+            "</div>" +
+            '<h3 class="mt-2.5 text-lg font-extrabold text-slate-950">' +
+            pkg.name +
+            "</h3>" +
+            '<div class="mt-3 space-y-1.5">' +
+            itemsHtml +
+            "</div>" +
+            "</div>" +
+            '<div class="mt-4 border-t border-slate-200/80 pt-3.5">' +
+            '<div class="flex items-end justify-between gap-2">' +
+            "<div>" +
+            '<p class="text-[11px] font-bold text-slate-500">' +
+            priceSubline +
+            "</p>" +
+            '<p class="mt-0.5 text-xs font-bold text-[#059669]">선택 구성 모델 ' +
+            metrics.activeModels.length +
+            "종 포함</p>" +
+            "</div>" +
+            '<div class="text-right">' +
+            '<span class="text-[11px] font-bold text-slate-500">최종 혜택가</span>' +
+            '<p class="tabular-nums text-2xl font-extrabold text-[#1D2B64]">' +
+            priceHeadline +
+            "</p>" +
+            "</div>" +
+            "</div>" +
+            '<button type="button" data-apply-pkg="' +
+            pkg.id +
+            '" class="btn-apply-pkg btn-press btn-navy mt-3 w-full rounded-xl bg-[#1D2B64] py-3 text-sm font-extrabold text-white shadow-sm">' +
+            "이 패키지 구성으로 구매·상담 신청하기" +
+            "</button>" +
+            "</div>" +
+            "</article>";
+        });
+        container.innerHTML = html;
+
+        container.querySelectorAll(".pkg-item-check").forEach(function (chk) {
+          chk.addEventListener("change", function () {
+            var pid = chk.getAttribute("data-pkg-id");
+            var code = chk.getAttribute("data-item-code");
+            if (!state.excludedItemsByPkg[pid]) state.excludedItemsByPkg[pid] = {};
+            state.excludedItemsByPkg[pid][code] = !chk.checked;
+            state.selectedPkgId = pid;
+            renderAllUI();
+          });
+        });
+
+        container.querySelectorAll(".btn-apply-pkg").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var pid = btn.getAttribute("data-apply-pkg");
+            openApplyModal(pid);
+          });
+        });
+
+        var selPkg = findPackageById(state.selectedPkgId);
+        var stickySum = document.getElementById("sticky-selected-summary");
+        if (stickySum && selPkg) {
+          stickySum.textContent = "선택됨: " + selPkg.name;
+        }
+      }
+
+      var townCanvas = document.getElementById("town-3d-canvas");
+      var townCtx = townCanvas ? townCanvas.getContext("2d") : null;
+      var townAngle = 0.62;
+      var isDraggingTown = false;
+      var dragStartX = 0;
+      var townBuildings = [
+        { id: "samsung", name: "1. A동 삼성 TV관", sub: "10종 패키지", x: -120, z: -85, w: 86, d: 74, h: 105, colorTop: "#3B82F6", colorLeft: "#1D4ED8", colorRight: "#1E3A8A" },
+        { id: "lg", name: "2. B동 LG TV관", sub: "5종 갤러리", x: 120, z: -85, w: 86, d: 74, h: 98, colorTop: "#F43F5E", colorLeft: "#BE123C", colorRight: "#881337" },
+        { id: "openrun", name: "3. 오픈런 대란 타워", sub: "23종 대형세트", x: -120, z: 90, w: 82, d: 72, h: 132, colorTop: "#F59E0B", colorLeft: "#B45309", colorRight: "#78350F" },
+        { id: "sysac", name: "4. 시스템에어컨 몰", sub: "12종 무풍결합", x: 120, z: 90, w: 92, d: 76, h: 86, colorTop: "#10B981", colorLeft: "#047857", colorRight: "#064E3B" },
+        { id: "games", name: "게임 아케이드 광장", sub: "최대 10만원 쿠폰", x: 0, z: 4, w: 72, d: 72, h: 64, colorTop: "#EF4444", colorLeft: "#B91C1C", colorRight: "#7F1D1D" }
+      ];
+      var buildingScreenBoxes = [];
+
+      function resizeTownCanvas() {
+        if (!townCanvas) return;
+        var rect = townCanvas.parentElement.getBoundingClientRect();
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        townCanvas.width = Math.max(300, Math.floor(rect.width * dpr));
+        townCanvas.height = Math.max(240, Math.floor(rect.height * dpr));
+      }
+
+      function projectIso(x, y, z, cx, cy, scale) {
+        var cosA = Math.cos(townAngle);
+        var sinA = Math.sin(townAngle);
+        var rx = x * cosA - z * sinA;
+        var rz = x * sinA + z * cosA;
+        var sx = cx + rx * scale;
+        var sy = cy + rz * 0.52 * scale - y * scale;
+        return { x: sx, y: sy, depth: rz };
+      }
+
+      function drawIsoBox(ctx, b, cx, cy, scale, tick) {
+        var hw = b.w / 2;
+        var hd = b.d / 2;
+        var isSelected = b.id === state.activeHall;
+        var bounceY = isSelected ? Math.sin(tick * 0.06) * 5 : 0;
+
+        var p000 = projectIso(b.x - hw, bounceY, b.z - hd, cx, cy, scale);
+        var p100 = projectIso(b.x + hw, bounceY, b.z - hd, cx, cy, scale);
+        var p101 = projectIso(b.x + hw, bounceY, b.z + hd, cx, cy, scale);
+        var p001 = projectIso(b.x - hw, bounceY, b.z + hd, cx, cy, scale);
+
+        var p010 = projectIso(b.x - hw, b.h + bounceY, b.z - hd, cx, cy, scale);
+        var p110 = projectIso(b.x + hw, b.h + bounceY, b.z - hd, cx, cy, scale);
+        var p111 = projectIso(b.x + hw, b.h + bounceY, b.z + hd, cx, cy, scale);
+        var p011 = projectIso(b.x - hw, b.h + bounceY, b.z + hd, cx, cy, scale);
+
+        var faces = [
+          { pts: [p001, p101, p111, p011], fill: b.colorLeft },
+          { pts: [p100, p101, p111, p110], fill: b.colorRight },
+          { pts: [p000, p001, p011, p010], fill: b.colorRight },
+          { pts: [p000, p100, p110, p010], fill: b.colorLeft }
+        ];
+        faces.sort(function (a, c) {
+          var da = (a.pts[0].depth + a.pts[1].depth) * 0.5;
+          var dc = (c.pts[0].depth + c.pts[1].depth) * 0.5;
+          return da - dc;
+        });
+
+        for (var i = 1; i < faces.length; i++) {
+          var f = faces[i];
+          ctx.beginPath();
+          ctx.moveTo(f.pts[0].x, f.pts[0].y);
+          ctx.lineTo(f.pts[1].x, f.pts[1].y);
+          ctx.lineTo(f.pts[2].x, f.pts[2].y);
+          ctx.lineTo(f.pts[3].x, f.pts[3].y);
+          ctx.closePath();
+          ctx.fillStyle = f.fill;
+          ctx.fill();
+          ctx.strokeStyle = "rgba(255,255,255,0.22)";
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(p010.x, p010.y);
+        ctx.lineTo(p110.x, p110.y);
+        ctx.lineTo(p111.x, p111.y);
+        ctx.lineTo(p011.x, p011.y);
+        ctx.closePath();
+        ctx.fillStyle = b.colorTop;
+        ctx.fill();
+        ctx.strokeStyle = isSelected ? "#FDE047" : "rgba(255,255,255,0.45)";
+        ctx.lineWidth = isSelected ? 2.5 : 1.2;
+        ctx.stroke();
+
+        var topCenter = projectIso(b.x, b.h + 24 + bounceY, b.z, cx, cy, scale);
+        var labelW = 128 * scale;
+        var labelH = 34 * scale;
+        var lx = topCenter.x - labelW / 2;
+        var ly = topCenter.y - labelH / 2;
+
+        ctx.fillStyle = isSelected ? "#FEF08A" : "rgba(15, 23, 42, 0.88)";
+        ctx.beginPath();
+        ctx.roundRect(lx, ly, labelW, labelH, 8 * scale);
+        ctx.fill();
+        ctx.strokeStyle = isSelected ? "#CA8A04" : "rgba(255,255,255,0.28)";
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        ctx.fillStyle = isSelected ? "#0F172A" : "#FFFFFF";
+        ctx.font = "800 " + Math.max(10, Math.round(11 * scale)) + "px 'Noto Sans KR', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(b.name, topCenter.x, topCenter.y - 2 * scale);
+
+        ctx.fillStyle = isSelected ? "#B91C1C" : "#94A3B8";
+        ctx.font = "700 " + Math.max(9, Math.round(9.5 * scale)) + "px 'Noto Sans KR', sans-serif";
+        ctx.fillText(b.sub, topCenter.x, topCenter.y + 11 * scale);
+
+        var minX = Math.min(p000.x, p100.x, p101.x, p001.x, lx);
+        var maxX = Math.max(p000.x, p100.x, p101.x, p001.x, lx + labelW);
+        var minY = Math.min(p010.y, p110.y, p111.y, p011.y, ly);
+        var maxY = Math.max(p000.y, p100.y, p101.y, p001.y);
+
+        buildingScreenBoxes.push({
+          id: b.id,
+          minX: minX,
+          maxX: maxX,
+          minY: minY,
+          maxY: maxY
+        });
+      }
+
+      var townTick = 0;
+      function renderTownFrame() {
+        if (state.viewMode === "hybrid" && townCanvas && townCtx) {
+          var w = townCanvas.width;
+          var h = townCanvas.height;
+          var scale = Math.min(w / 520, h / 360);
+          var cx = w * 0.5;
+          var cy = h * 0.62;
+
+          townCtx.clearRect(0, 0, w, h);
+
+          for (var gx = -200; gx <= 200; gx += 40) {
+            var a1 = projectIso(gx, 0, -200, cx, cy, scale);
+            var a2 = projectIso(gx, 0, 200, cx, cy, scale);
+            townCtx.beginPath();
+            townCtx.moveTo(a1.x, a1.y);
+            townCtx.lineTo(a2.x, a2.y);
+            townCtx.strokeStyle = "rgba(148, 163, 184, 0.14)";
+            townCtx.lineWidth = 1;
+            townCtx.stroke();
+
+            var b1 = projectIso(-200, 0, gx, cx, cy, scale);
+            var b2 = projectIso(200, 0, gx, cx, cy, scale);
+            townCtx.beginPath();
+            townCtx.moveTo(b1.x, b1.y);
+            townCtx.lineTo(b2.x, b2.y);
+            townCtx.stroke();
+          }
+
+          var r1 = projectIso(-200, 1, -18, cx, cy, scale);
+          var r2 = projectIso(200, 1, -18, cx, cy, scale);
+          var r3 = projectIso(200, 1, 18, cx, cy, scale);
+          var r4 = projectIso(-200, 1, 18, cx, cy, scale);
+          townCtx.beginPath();
+          townCtx.moveTo(r1.x, r1.y);
+          townCtx.lineTo(r2.x, r2.y);
+          townCtx.lineTo(r3.x, r3.y);
+          townCtx.lineTo(r4.x, r4.y);
+          townCtx.closePath();
+          townCtx.fillStyle = "rgba(30, 41, 59, 0.75)";
+          townCtx.fill();
+
+          var sorted = townBuildings.slice().sort(function (a, b) {
+            var da = projectIso(a.x, 0, a.z, cx, cy, scale).depth;
+            var db = projectIso(b.x, 0, b.z, cx, cy, scale).depth;
+            return da - db;
+          });
+
+          buildingScreenBoxes = [];
+          for (var i = 0; i < sorted.length; i++) {
+            drawIsoBox(townCtx, sorted[i], cx, cy, scale, townTick);
+          }
+
+          if (state.autoRotate3D && !isDraggingTown) {
+            townAngle += 0.0028;
+          }
+          townTick++;
+        }
+        requestAnimationFrame(renderTownFrame);
+      }
+
+      if (townCanvas) {
+        resizeTownCanvas();
+        window.addEventListener("resize", resizeTownCanvas);
+
+        townCanvas.addEventListener("pointerdown", function (e) {
+          isDraggingTown = true;
+          dragStartX = e.clientX;
+        });
+
+        window.addEventListener("pointermove", function (e) {
+          if (!isDraggingTown) return;
+          var dx = e.clientX - dragStartX;
+          dragStartX = e.clientX;
+          townAngle += dx * 0.007;
+        });
+
+        window.addEventListener("pointerup", function () {
+          isDraggingTown = false;
+        });
+
+        townCanvas.addEventListener("click", function (e) {
+          var rect = townCanvas.getBoundingClientRect();
+          var dpr = townCanvas.width / rect.width;
+          var px = (e.clientX - rect.left) * dpr;
+          var py = (e.clientY - rect.top) * dpr;
+
+          for (var i = buildingScreenBoxes.length - 1; i >= 0; i--) {
+            var box = buildingScreenBoxes[i];
+            if (px >= box.minX && px <= box.maxX && py >= box.minY && py <= box.maxY) {
+              if (box.id === "games") {
+                openGameModal("sniper");
+              } else {
+                selectHallAndScroll(box.id);
+              }
+              break;
+            }
+          }
+        });
+      }
+
+      function selectHallAndScroll(hallId) {
+        if (!HALLS[hallId]) return;
+        state.activeHall = hallId;
+        state.selectedPkgId = HALLS[hallId].packages[0].id;
+        renderAllUI();
+        var sec = document.getElementById("section-hall-detail");
+        if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      var gameCanvas = document.getElementById("arcade-game-canvas");
+      var gameCtx = gameCanvas ? gameCanvas.getContext("2d") : null;
+      var gameLoopId = null;
+      var gameState = {
+        shotsLeft: 5,
+        hits: 0,
+        targetX: 160,
+        targetY: 110,
+        targetVX: 3.6,
+        powerPos: 0,
+        powerDir: 1,
+        moleHole: 4,
+        moleTimer: 0,
+        shellAnswer: 1,
+        shellPhase: "ready"
+      };
+
+      function resizeGameCanvas() {
+        if (!gameCanvas) return;
+        var rect = gameCanvas.parentElement.getBoundingClientRect();
+        gameCanvas.width = Math.max(280, Math.floor(rect.width));
+        gameCanvas.height = Math.max(220, Math.floor(rect.height));
+      }
+
+      function startMiniGame(gameId) {
+        state.activeGameId = gameId;
+        var meta = GAME_META[gameId] || GAME_META.sniper;
+        document.getElementById("game-modal-title").textContent = meta.title;
+        document.getElementById("game-modal-reward-badge").textContent =
+          "성공 시 " + formatKRW(meta.reward) + " 상품권 즉시 적립";
+        document.getElementById("game-modal-rule").textContent = meta.rule;
+        document.getElementById("game-overlay-result").classList.add("hidden");
+        document.getElementById("game-overlay-result").classList.remove("flex");
+
+        document.querySelectorAll(".game-switch-btn").forEach(function (b) {
+          if (b.getAttribute("data-switch-game") === gameId) {
+            b.className = "game-switch-btn rounded-lg bg-white px-2 py-1.5 text-[11px] font-extrabold text-slate-900";
+          } else {
+            b.className = "game-switch-btn rounded-lg bg-white/10 px-2 py-1.5 text-[11px] font-bold text-slate-200";
+          }
+        });
+
+        resizeGameCanvas();
+        gameState.shotsLeft = gameId === "mole" ? 12 : gameId === "bazooka" ? 3 : gameId === "shell" ? 3 : 5;
+        gameState.hits = 0;
+        gameState.targetX = 120;
+        gameState.targetY = 110;
+        gameState.targetVX = 3.8;
+        gameState.powerPos = 0.2;
+        gameState.powerDir = 1;
+        gameState.moleHole = Math.floor(Math.random() * 9);
+        gameState.moleTimer = 0;
+        gameState.shellAnswer = Math.floor(Math.random() * 3);
+        updateGameHud();
+
+        if (gameLoopId) cancelAnimationFrame(gameLoopId);
+        runGameLoop();
+      }
+
+      function updateGameHud() {
+        var hud = document.getElementById("game-hud-left");
+        if (!hud) return;
+        var goal = state.activeGameId === "mole" ? 6 : state.activeGameId === "bazooka" ? 2 : state.activeGameId === "shell" ? 2 : 3;
+        hud.textContent = "남은 기회: " + gameState.shotsLeft + "회 · 성공: " + gameState.hits + " / 목표 " + goal + "회";
+      }
+
+      function finishMiniGame(won) {
+        if (gameLoopId) cancelAnimationFrame(gameLoopId);
+        var overlay = document.getElementById("game-overlay-result");
+        var titleEl = document.getElementById("game-result-title");
+        var descEl = document.getElementById("game-result-desc");
+        var badgeEl = document.getElementById("game-result-badge");
+        var meta = GAME_META[state.activeGameId];
+
+        if (won) {
+          state.clearedGames[state.activeGameId] = true;
+          saveWallet();
+          playTone("win");
+          badgeEl.textContent = "MISSION COMPLETE · +" + formatKRW(meta.reward);
+          titleEl.textContent = meta.title + " 클리어!";
+          descEl.textContent =
+            "현재 총 적립 상품권: " +
+            formatKRW(getEarnedVoucherTotal()) +
+            " (전 전시관 패키지 혜택가에 즉시 반영 완료)";
+          renderAllUI();
+        } else {
+          playTone("miss");
+          badgeEl.textContent = "TRY AGAIN";
+          titleEl.textContent = "아쉽게 실패했어요! 다시 도전해 보세요";
+          descEl.textContent = "제한 횟수 제한 없이 언제든 다시 도전해 상품권을 획득하실 수 있습니다.";
+        }
+        overlay.classList.remove("hidden");
+        overlay.classList.add("flex");
+      }
+
+      function runGameLoop() {
+        if (!gameCanvas || !gameCtx) return;
+        var w = gameCanvas.width;
+        var h = gameCanvas.height;
+        gameCtx.clearRect(0, 0, w, h);
+
+        if (state.activeGameId === "sniper") {
+          gameState.targetX += gameState.targetVX;
+          if (gameState.targetX > w - 45 || gameState.targetX < 45) {
+            gameState.targetVX *= -1;
+          }
+          gameState.targetY = h * 0.5 + Math.sin(gameState.targetX * 0.04) * 32;
+
+          gameCtx.beginPath();
+          gameCtx.arc(gameState.targetX, gameState.targetY, 34, 0, Math.PI * 2);
+          gameCtx.fillStyle = "#DC2626";
+          gameCtx.fill();
+
+          gameCtx.beginPath();
+          gameCtx.arc(gameState.targetX, gameState.targetY, 22, 0, Math.PI * 2);
+          gameCtx.fillStyle = "#FFFFFF";
+          gameCtx.fill();
+
+          gameCtx.beginPath();
+          gameCtx.arc(gameState.targetX, gameState.targetY, 11, 0, Math.PI * 2);
+          gameCtx.fillStyle = "#F59E0B";
+          gameCtx.fill();
+
+          gameCtx.fillStyle = "#FFFFFF";
+          gameCtx.font = "700 12px 'Noto Sans KR', sans-serif";
+          gameCtx.textAlign = "center";
+          gameCtx.fillText("황금 과녁을 터치하세요!", w * 0.5, 28);
+        } else if (state.activeGameId === "bazooka") {
+          gameState.powerPos += 0.022 * gameState.powerDir;
+          if (gameState.powerPos >= 1) {
+            gameState.powerPos = 1;
+            gameState.powerDir = -1;
+          } else if (gameState.powerPos <= 0) {
+            gameState.powerPos = 0;
+            gameState.powerDir = 1;
+          }
+
+          gameCtx.fillStyle = "#334155";
+          gameCtx.fillRect(w * 0.48, h * 0.35, 18, h * 0.5);
+          gameCtx.fillStyle = "#EF4444";
+          gameCtx.fillRect(w * 0.72, h * 0.45, 56, 56);
+          gameCtx.fillStyle = "#FFFFFF";
+          gameCtx.font = "800 12px 'Noto Sans KR', sans-serif";
+          gameCtx.textAlign = "center";
+          gameCtx.fillText("가격벽", w * 0.72 + 28, h * 0.45 + 32);
+
+          var barX = w * 0.12;
+          var barW = w * 0.76;
+          var barY = h * 0.16;
+          gameCtx.fillStyle = "#1E293B";
+          gameCtx.fillRect(barX, barY, barW, 22);
+          gameCtx.fillStyle = "#10B981";
+          gameCtx.fillRect(barX + barW * 0.55, barY, barW * 0.25, 22);
+          var mx = barX + barW * gameState.powerPos;
+          gameCtx.fillStyle = "#FACC15";
+          gameCtx.fillRect(mx - 4, barY - 4, 8, 30);
+
+          gameCtx.fillStyle = "#FFFFFF";
+          gameCtx.fillText("노란 바가 초록색(성공 구간)에 올 때 화면을 터치하세요!", w * 0.5, h - 18);
+        } else if (state.activeGameId === "mole") {
+          gameState.moleTimer++;
+          if (gameState.moleTimer > 42) {
+            gameState.moleTimer = 0;
+            gameState.moleHole = Math.floor(Math.random() * 9);
+          }
+          var cols = 3;
+          var cellW = Math.min(82, (w - 60) / 3);
+          var cellH = 56;
+          var startX = (w - cellW * 3 - 24) / 2;
+          var startY = 34;
+
+          for (var i = 0; i < 9; i++) {
+            var r = Math.floor(i / cols);
+            var c = i % cols;
+            var hx = startX + c * (cellW + 12);
+            var hy = startY + r * (cellH + 12);
+            gameCtx.fillStyle = i === gameState.moleHole ? "#F59E0B" : "#1E293B";
+            gameCtx.beginPath();
+            gameCtx.roundRect(hx, hy, cellW, cellH, 12);
+            gameCtx.fill();
+            if (i === gameState.moleHole) {
+              gameCtx.fillStyle = "#0F172A";
+              gameCtx.font = "800 12px 'Noto Sans KR', sans-serif";
+              gameCtx.textAlign = "center";
+              gameCtx.fillText("2만원 쿠폰!", hx + cellW / 2, hy + cellH / 2 + 4);
+            }
+          }
+        } else if (state.activeGameId === "shell") {
+          var boxW = Math.min(86, (w - 64) / 3);
+          var boxH = 82;
+          var sx = (w - boxW * 3 - 24) / 2;
+          var sy = h * 0.36;
+          for (var b = 0; b < 3; b++) {
+            var bx = sx + b * (boxW + 12);
+            gameCtx.fillStyle = "#1D4ED8";
+            gameCtx.beginPath();
+            gameCtx.roundRect(bx, sy, boxW, boxH, 14);
+            gameCtx.fill();
+            gameCtx.fillStyle = "#FFFFFF";
+            gameCtx.font = "800 13px 'Noto Sans KR', sans-serif";
+            gameCtx.textAlign = "center";
+            gameCtx.fillText(b + 1 + "번 박스", bx + boxW / 2, sy + boxH / 2 + 5);
+          }
+          gameCtx.fillStyle = "#FDE047";
+          gameCtx.font = "700 12px 'Noto Sans KR', sans-serif";
+          gameCtx.fillText("상품권이 숨겨진 박스를 클릭해 보세요!", w * 0.5, 36);
+        }
+
+        gameLoopId = requestAnimationFrame(runGameLoop);
+      }
+
+      if (gameCanvas) {
+        gameCanvas.addEventListener("click", function (e) {
+          var rect = gameCanvas.getBoundingClientRect();
+          var x = (e.clientX - rect.left) * (gameCanvas.width / rect.width);
+          var y = (e.clientY - rect.top) * (gameCanvas.height / rect.height);
+          var w = gameCanvas.width;
+          var h = gameCanvas.height;
+
+          var goal = state.activeGameId === "mole" ? 6 : state.activeGameId === "bazooka" ? 2 : state.activeGameId === "shell" ? 2 : 3;
+
+          if (state.activeGameId === "sniper") {
+            var dist = Math.hypot(x - gameState.targetX, y - gameState.targetY);
+            gameState.shotsLeft--;
+            if (dist <= 40) {
+              gameState.hits++;
+              playTone("hit");
+            } else {
+              playTone("miss");
+            }
+          } else if (state.activeGameId === "bazooka") {
+            gameState.shotsLeft--;
+            if (gameState.powerPos >= 0.53 && gameState.powerPos <= 0.82) {
+              gameState.hits++;
+              playTone("hit");
+            } else {
+              playTone("miss");
+            }
+          } else if (state.activeGameId === "mole") {
+            var cellW = Math.min(82, (w - 60) / 3);
+            var cellH = 56;
+            var startX = (w - cellW * 3 - 24) / 2;
+            var startY = 34;
+            var r = Math.floor(gameState.moleHole / 3);
+            var c = gameState.moleHole % 3;
+            var hx = startX + c * (cellW + 12);
+            var hy = startY + r * (cellH + 12);
+            gameState.shotsLeft--;
+            if (x >= hx && x <= hx + cellW && y >= hy && y <= hy + cellH) {
+              gameState.hits++;
+              gameState.moleHole = Math.floor(Math.random() * 9);
+              gameState.moleTimer = 0;
+              playTone("hit");
+            } else {
+              playTone("miss");
+            }
+          } else if (state.activeGameId === "shell") {
+            var boxW = Math.min(86, (w - 64) / 3);
+            var sx = (w - boxW * 3 - 24) / 2;
+            var clickedBox = Math.min(2, Math.max(0, Math.floor((x - sx) / (boxW + 12))));
+            gameState.shotsLeft--;
+            if (clickedBox === gameState.shellAnswer || gameState.shotsLeft === 1) {
+              gameState.hits++;
+              playTone("hit");
+            } else {
+              playTone("miss");
+            }
+            gameState.shellAnswer = Math.floor(Math.random() * 3);
+          }
+
+          updateGameHud();
+          if (gameState.hits >= goal) {
+            finishMiniGame(true);
+          } else if (gameState.shotsLeft <= 0) {
+            finishMiniGame(false);
+          }
+        });
+      }
+
+      function openGameModal(gameId) {
+        var modal = document.getElementById("modal-game");
+        if (!modal) return;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        startMiniGame(gameId || "sniper");
+      }
+
+      function closeGameModal() {
+        var modal = document.getElementById("modal-game");
+        if (!modal) return;
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        if (gameLoopId) cancelAnimationFrame(gameLoopId);
+      }
+
+      function openApplyModal(pkgId) {
+        if (pkgId) state.selectedPkgId = pkgId;
+        var pkg = findPackageById(state.selectedPkgId);
+        var metrics = computePackageMetrics(pkg);
+
+        document.getElementById("apply-form-view").classList.remove("hidden");
+        document.getElementById("apply-ticket-view").classList.add("hidden");
+        document.getElementById("apply-form-error").classList.add("hidden");
+
+        document.getElementById("apply-modal-title").textContent = "[" + pkg.name + "] 구매 신청";
+        document.getElementById("apply-pkg-name").textContent = pkg.name;
+        document.getElementById("apply-pkg-models").textContent =
+          "선택 구성(" + metrics.activeModels.length + "종): " + metrics.activeModels.join(", ");
+
+        var modeLabel =
+          state.payMode === "sub"
+            ? "가전구독 (월납)"
+            : state.payMode === "freed"
+            ? "하이프리드 결합"
+            : "일시불 특가";
+        document.getElementById("apply-pay-mode-tag").textContent = modeLabel;
+        document.getElementById("apply-coupon-note").textContent =
+          metrics.coupon > 0
+            ? "게임 적립 상품권 -" + formatKRW(metrics.coupon) + " 자동 차감됨"
+            : "게임 상품권 0원 적용 (미니게임 달성 시 최대 10만원 할인)";
+
+        var finalDisplay =
+          state.payMode === "sub"
+            ? "월 " + formatKRW(metrics.subMonthly) + " (체감 " + formatKRW(metrics.lumpPrice) + ")"
+            : state.payMode === "freed"
+            ? formatKRW(metrics.freedNetPrice)
+            : formatKRW(metrics.lumpPrice);
+        document.getElementById("apply-final-price").textContent = finalDisplay;
+
+        var modal = document.getElementById("modal-apply");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.getElementById("floating-bottom-bar").classList.add("hidden");
+      }
+
+      function closeApplyModal() {
+        var modal = document.getElementById("modal-apply");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.getElementById("floating-bottom-bar").classList.remove("hidden");
+      }
+
+      var phoneInput = document.getElementById("input-cust-phone");
+      if (phoneInput) {
+        phoneInput.addEventListener("input", function () {
+          var digits = phoneInput.value.replace(/\D/g, "").slice(0, 11);
+          if (digits.length < 4) {
+            phoneInput.value = digits;
+          } else if (digits.length < 8) {
+            phoneInput.value = digits.slice(0, 3) + "-" + digits.slice(3);
+          } else {
+            phoneInput.value = digits.slice(0, 3) + "-" + digits.slice(3, 7) + "-" + digits.slice(7);
+          }
+        });
+      }
+
+      document.getElementById("btn-mode-hybrid").addEventListener("click", function () {
+        state.viewMode = "hybrid";
+        document.getElementById("section-3d-stage").classList.remove("hidden");
+        document.getElementById("section-light-notice").classList.add("hidden");
+        document.getElementById("btn-mode-hybrid").className =
+          "btn-press rounded-lg bg-[#1D2B64] px-2.5 py-1.5 text-xs font-bold text-white";
+        document.getElementById("btn-mode-light").className =
+          "btn-press rounded-lg px-2.5 py-1.5 text-xs font-bold text-slate-600";
+        resizeTownCanvas();
+      });
+
+      document.getElementById("btn-mode-light").addEventListener("click", function () {
+        state.viewMode = "light";
+        document.getElementById("section-3d-stage").classList.add("hidden");
+        document.getElementById("section-light-notice").classList.remove("hidden");
+        document.getElementById("btn-mode-light").className =
+          "btn-press rounded-lg bg-[#1D2B64] px-2.5 py-1.5 text-xs font-bold text-white";
+        document.getElementById("btn-mode-hybrid").className =
+          "btn-press rounded-lg px-2.5 py-1.5 text-xs font-bold text-slate-600";
+      });
+
+      document.getElementById("btn-restore-3d").addEventListener("click", function () {
+        document.getElementById("btn-mode-hybrid").click();
+      });
+
+      document.getElementById("btn-3d-reset").addEventListener("click", function () {
+        townAngle = 0.62;
+        showToast("3D 타운 카메라 시점을 초기화했습니다.");
+      });
+
+      document.getElementById("btn-3d-rotate").addEventListener("click", function (e) {
+        state.autoRotate3D = !state.autoRotate3D;
+        e.currentTarget.textContent = state.autoRotate3D ? "자동 회전 켜짐" : "자동 회전 멈춤";
+      });
+
+      document.getElementById("btn-sound-toggle").addEventListener("click", function () {
+        state.soundEnabled = !state.soundEnabled;
+        document.getElementById("icon-sound-on").classList.toggle("hidden", !state.soundEnabled);
+        document.getElementById("icon-sound-off").classList.toggle("hidden", state.soundEnabled);
+        showToast(state.soundEnabled ? "게임 효과음이 켜졌습니다." : "게임 효과음이 꺼졌습니다.");
+      });
+
+      document.getElementById("btn-open-wallet").addEventListener("click", function () {
+        openGameModal("sniper");
+      });
+
+      document.getElementById("btn-stage-games").addEventListener("click", function () {
+        openGameModal("sniper");
+      });
+
+      document.getElementById("btn-sticky-game").addEventListener("click", function () {
+        openGameModal("sniper");
+      });
+
+      document.getElementById("btn-sticky-apply").addEventListener("click", function () {
+        openApplyModal(state.selectedPkgId);
+      });
+
+      document.querySelectorAll(".pay-mode-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          state.payMode = btn.getAttribute("data-pay-mode");
+          renderAllUI();
+        });
+      });
+
+      document.querySelectorAll(".btn-select-hall").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          selectHallAndScroll(btn.getAttribute("data-select-hall"));
+        });
+      });
+
+      document.querySelectorAll(".hall-jump-chip").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          selectHallAndScroll(btn.getAttribute("data-jump-hall"));
+        });
+      });
+
+      document.querySelectorAll(".hall-tab-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          state.activeHall = btn.getAttribute("data-tab-hall");
+          state.selectedPkgId = HALLS[state.activeHall].packages[0].id;
+          renderAllUI();
+        });
+      });
+
+      document.querySelectorAll(".btn-open-game").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          openGameModal(btn.getAttribute("data-open-game"));
+        });
+      });
+
+      document.querySelectorAll(".game-switch-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          startMiniGame(btn.getAttribute("data-switch-game"));
+        });
+      });
+
+      document.getElementById("btn-close-game").addEventListener("click", closeGameModal);
+      document.getElementById("btn-game-fire").addEventListener("click", function () {
+        startMiniGame(state.activeGameId);
+      });
+      document.getElementById("btn-game-retry").addEventListener("click", function () {
+        startMiniGame(state.activeGameId);
+      });
+      document.getElementById("btn-game-use-now").addEventListener("click", function () {
+        closeGameModal();
+        var sec = document.getElementById("section-hall-detail");
+        if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      document.getElementById("btn-close-apply").addEventListener("click", closeApplyModal);
+      document.getElementById("btn-toggle-privacy").addEventListener("click", function () {
+        var box = document.getElementById("privacy-detail-box");
+        box.classList.toggle("hidden");
+      });
+
+      document.getElementById("purchase-apply-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var nameVal = document.getElementById("input-cust-name").value.trim();
+        var phoneVal = document.getElementById("input-cust-phone").value.trim();
+        var agreed = document.getElementById("input-privacy-agree").checked;
+        var errEl = document.getElementById("apply-form-error");
+
+        if (!nameVal) {
+          errEl.textContent = "이름을 입력해 주세요. (예: 홍길동)";
+          errEl.classList.remove("hidden");
+          document.getElementById("input-cust-name").focus();
+          return;
+        }
+        if (phoneVal.replace(/\D/g, "").length < 10) {
+          errEl.textContent = "연락받으실 휴대폰 번호 10~11자리를 정확히 입력해 주세요.";
+          errEl.classList.remove("hidden");
+          document.getElementById("input-cust-phone").focus();
+          return;
+        }
+        if (!agreed) {
+          errEl.textContent = "상담 안내를 위해 개인정보 수집·이용에 동의해 주세요.";
+          errEl.classList.remove("hidden");
+          return;
+        }
+
+        errEl.classList.add("hidden");
+        playTone("win");
+
+        var pkg = findPackageById(state.selectedPkgId);
+        var metrics = computePackageMetrics(pkg);
+        var serial = "GJ-2026-" + Math.floor(1000 + Math.random() * 9000);
+        var finalPriceText = document.getElementById("apply-final-price").textContent;
+
+        document.getElementById("ticket-serial").textContent = serial;
+        document.getElementById("ticket-cust-info").textContent = nameVal + " 님 (" + phoneVal + ")";
+        document.getElementById("ticket-pkg-name").textContent = pkg.name;
+        document.getElementById("ticket-coupon-amt").textContent = "-" + formatKRW(metrics.coupon) + " 적용";
+        document.getElementById("ticket-final-price").textContent = finalPriceText;
+
+        document.getElementById("apply-form-view").classList.add("hidden");
+        document.getElementById("apply-ticket-view").classList.remove("hidden");
+      });
+
+      document.getElementById("btn-copy-ticket").addEventListener("click", function () {
+        var serial = document.getElementById("ticket-serial").textContent;
+        var cust = document.getElementById("ticket-cust-info").textContent;
+        var pkgName = document.getElementById("ticket-pkg-name").textContent;
+        var couponAmt = document.getElementById("ticket-coupon-amt").textContent;
+        var price = document.getElementById("ticket-final-price").textContent;
+        var summary =
+          "[롯데하이마트 경기광주점 팝업 사전신청]\n" +
+          "• 바우처 번호: " + serial + "\n" +
+          "• 신청자: " + cust + "\n" +
+          "• 패키지: " + pkgName + "\n" +
+          "• 게임 상품권: " + couponAmt + "\n" +
+          "• 예상 체감가: " + price;
+
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = summary;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          showToast("바우처 신청 내역이 클립보드에 복사되었습니다!");
+        } catch (err) {
+          showToast("복사를 완료했습니다.");
+        }
+      });
+
+      document.getElementById("btn-done-ticket").addEventListener("click", closeApplyModal);
+
+      renderAllUI();
+      requestAnimationFrame(renderTownFrame);
+    })();
+  </script>
+</body>
+</html>
