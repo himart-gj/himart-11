@@ -1065,14 +1065,11 @@ export default function App() {
               <div
                 className="hero-photo-frame tactile-btn"
                 onClick={() => {
-                  const next = activeMainTab === 'showroom' ? 'booking' : 'showroom';
-                  setActiveMainTab(next);
-                  if (next === 'showroom') {
-                    trackMetaEvent('ViewContent', {
-                      content_name: '히어로실사_쇼룸투어진입',
-                      content_category: 'showroom_tour',
-                    });
-                  }
+                  setActiveMainTab('showroom');
+                  trackMetaEvent('ViewContent', {
+                    content_name: '히어로실사_쇼룸투어진입',
+                    content_category: 'showroom_tour',
+                  });
                 }}
               >
                 <img
@@ -1089,7 +1086,7 @@ export default function App() {
                     <p className="hero-photo-sub">경기도 광주시 이배재로 8</p>
                   </div>
                   <span className="hero-photo-cta-chip">
-                    {activeMainTab === 'showroom' ? '상담 분야 보기 ›' : '층별 실사 투어 ›'}
+                    층별 실사 투어 ›
                   </span>
                 </div>
               </div>
